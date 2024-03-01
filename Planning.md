@@ -1,25 +1,29 @@
-# Escape-from-Grandmas-House
-The Simpson's Escape from Grandma's House Adaptation with Phaser 3
-
-
 ## Art Assets
+- [ ] Menu Screen
+- [ ] Buttons
 - [ ] Living Room
     - [X] Stairs
     - [X] Walls
-    - [ ] Closet Door
-        - [ ] Monsters,     ~3 frames
+    - [X] Closet Door
+        - [X] Monsters,     ~3 frames
+    - [ ] Shelf (?)
 - [ ] Grandson
-    - [ ] Jumping Scared,   ~ 3 frames
+    - [x] Jumping Scared,   ~ 3 frames
     - [ ] Shooting,         ~
     - [ ] Getting Kisses,   ~ 5 frames
+    - [ ] Grabbing Gun,     ~ 4 frames
     if time:
         - [ ] Throwing (?)
 - [ ] Grandma
-    - [ ] Chasing,          ~2 frames
-    - [ ] Stunned,          ~ 
-    - [ ] Giving Kisses 
+    - [X] Chasing
+    - [X] Stunned
+    - [X] Giving Kisses 
+- [ ] Extra Anims
+    - [X] Hearts
+    - [X] Skulls
+    - [X] Gun Damage
 - [ ] Toys
-    - [ ] Nerf Guns
+    - [ ] Toy Gun
         - [ ] Darts
     if time:
     - [ ] Rubix Cube (or car/plane)
