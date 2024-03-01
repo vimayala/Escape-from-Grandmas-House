@@ -1,18 +1,23 @@
+## March 1
+### 1.5 hr
+- [X] Drew: Grandson Getting Kisses
+- [X] Drew: Grandson Getting and Shooting Gun
+- [X] Drew: Toy Gun
+
 ## Feb 29
 ### 3 hrs
 - [X] Drew: Gun Stars
 - [X] Drew: Monster Door
 - [X] Drew: Toy Gun
 - [X] Drew: Grandma Giving Kisses
-- [X] Code: Edited Set up, messed with displays
+- [X] Code: Edited set up, messed with displays
 - [X] Sprites: Joined Grandma for spacing
     Need:
-    - [ ] Photoshop grandson photos
-        - [ ] 5 kicking getting kisses
-        - [ ] 5 grabbing the gun
-        - [ ] 2 reaching for the gun
+
     - [ ] Prototype with living room, grandson, and grandma
     - [ ] Main Menu Screen
+    - [ ] Darts
+    - [ ] Plan more game mechanics
 
 
 ## Feb 28
@@ -33,8 +38,6 @@
 ### 1 hr w/ 22 + 26
 - [X] Drew: Completed living room (need to color)
 - [X] Drew: Door 
-    Need:
-    - [ ] Monsters on Door
 
 ## Feb 22
 - [X] Created plan
