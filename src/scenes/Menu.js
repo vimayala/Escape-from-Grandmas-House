@@ -8,31 +8,12 @@ class Menu extends Phaser.Scene {
         this.load.audio('ping', './assets/zapsplat_multimedia_game_sound_childrens_collect_grab_single_norification_ping_soft_002_49762.mp3')
         this.load.audio('click', './assets/zapsplat_multimedia_game_sound_childrens_collect_grab_single_norification_ping_soft_001_49806.mp3')
         this.load.audio('game-over', './assets/zapsplat_multimedia_game_sound_error_lose_thud_negative_001_74526.mp3')
-        this.load.audio('beyond', './assets/FarBeyondThe.m4a')
-        this.load.audio('waiting', './assets/Waiting.m4a')
 
         this.load.image('livingroom', './assets/EscapeLivingRoom.png')
-        this.load.image('clouds', './assets/clouds.png')              // images
-        this.load.image('park', './assets/park.png')
-        this.load.image('blue', './assets/park-temp.png')
-        this.load.image('tree', './assets/tree.png')
-        this.load.image('banana', './assets/banana.png')
-        this.load.image('watermelon', './assets/watermelon.png')
-        this.load.image('grapes', './assets/grapes.png')
-        this.load.image('can', './assets/can.png')
-        this.load.image('chips', './assets/chips.png')
-        this.load.image('trash-bag', './assets/trash.png')
         this.load.image('button', './assets/button.png')              // buttons
-        this.load.image('frog-button', './assets/frog-button.png')    
         this.load.image('up', './assets/up.png')                  
         this.load.image('down', './assets/down.png')
 
-        this.load.spritesheet('trash-stinks', './assets/trash-stinks.png', {
-            frameWidth: 1280,
-            frameHeight: 980,
-            startFrame: 0,
-            endFrame: 3
-        })
         this.load.spritesheet('lives', './assets/lives.png', {
             frameWidth: 960,
             frameHeight: 320,
@@ -40,18 +21,19 @@ class Menu extends Phaser.Scene {
             endFrame: 2
         })
 
-        this.load.spritesheet('duck-walk', './assets/duck-walks-blinks.png', {
-            frameWidth: 64,
-            frameHeight: 64,
+        this.load.spritesheet("grandma", "./assets/grandma.png", {
+            frameWidth: 400,
+            frameHeight: 400,
             startFrame: 0,
-            endFrame: 11
+            endFrame: 2
         })
-        this.load.spritesheet('duck-idle', './assets/duck-idle-blinks.png', {
-            frameWidth: 64,
-            frameHeight: 64,
+        this.load.spritesheet("grandson", "./assets/grandson.png", {
+            frameWidth: 300,
+            frameHeight: 400,
             startFrame: 0,
-            endFrame: 8
+            endFrame: 2
         })
+
     }
 
     create() {

@@ -23,8 +23,6 @@ let config = {
 let game = new Phaser.Game(config)
 let keyLEFT, keyRIGHT, cursors
 
-const trashTypes = ['chips', 'can', 'trash-bag']
-const fruitTypes = ['banana', 'grapes', 'watermelon']
 
 let borderUISize = game.config.height / 15
 let borderPadding = borderUISize / 3

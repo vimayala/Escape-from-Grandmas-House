@@ -1,6 +1,12 @@
+### Need
+    - [ ] Prototype with living room, grandson, and grandma
+    - [ ] Main Menu Art
+    - [ ] Plan more game mechanics
+    - [ ] Shelf
+
 ## March 1
 #### 1.5 hr
-- [x] Drew: Grandson Getting Kisses
+- [X] Drew: Grandson Getting Kisses
 - [X] Drew: Grandson Getting and Shooting Gun
 - [X] Drew: Toy Gun
 - [X] Darts
@@ -13,12 +19,6 @@
 - [X] Drew: Grandma Giving Kisses
 - [X] Code: Edited set up, messed with displays
 - [X] Sprites: Joined Grandma for spacing
-    Need:
-
-    - [ ] Prototype with living room, grandson, and grandma
-    - [ ] Main Menu Art
-    - [ ] Plan more game mechanics
-
 
 ## Feb 28
 #### 2 hr
