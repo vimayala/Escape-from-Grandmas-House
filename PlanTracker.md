@@ -1,11 +1,12 @@
 ## March 1
-### 1.5 hr
-- [X] Drew: Grandson Getting Kisses
+#### 1.5 hr
+- [x] Drew: Grandson Getting Kisses
 - [X] Drew: Grandson Getting and Shooting Gun
 - [X] Drew: Toy Gun
+- [X] Darts
 
 ## Feb 29
-### 3 hrs
+#### 3 hrs
 - [X] Drew: Gun Stars
 - [X] Drew: Monster Door
 - [X] Drew: Toy Gun
@@ -15,30 +16,30 @@
     Need:
 
     - [ ] Prototype with living room, grandson, and grandma
-    - [ ] Main Menu Screen
-    - [ ] Darts
+    - [ ] Main Menu Art
     - [ ] Plan more game mechanics
 
 
 ## Feb 28
-### 2 hr
+#### 2 hr
 - [X] Drew: Color living room
 - [X] Drew: Grandma Chasing
 - [X] Drew: Grandson Running
 
 
 ## Feb 27
-### 2 hrs
+#### 2 hrs
 - [X] Photoshop photos to outline (about half)
 - [X] Drew: Grandson Scared 
 - [X] Drew: Grandma Standing
 - [X] Drew: Completed living room (need to color)
 
 ## Feb 26
-### 1 hr w/ 22 + 26
+#### 1 hr
 - [X] Drew: Completed living room (need to color)
 - [X] Drew: Door 
 
 ## Feb 22
+### 30 min
 - [X] Created plan
 - [X] Began living room outline
