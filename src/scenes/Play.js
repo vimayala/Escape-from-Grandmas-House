@@ -194,7 +194,7 @@ class Play extends Phaser.Scene {
         this.grandma.play('chasing')
         // this.kid.x += 45
         // this.kid.y-=30
-        this.kid.play('scared')
+        this.kid.play('˛scared')
 
 
     }

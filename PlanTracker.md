@@ -1,15 +1,21 @@
 ### Need
-    - [ ] Prototype with living room, grandson, and grandma
     - [ ] Main Menu Art
     - [ ] Plan more game mechanics
     - [ ] Shelf
 
+## March 2
+#### 2.5 hrs
+- [X] Drew: Basic Animated Menu Screen
+    - [ ] Better Animation got corrupted and deleted :))) super fun
+
 ## March 1
-#### 1.5 hr
+#### 2 hr
 - [X] Drew: Grandson Getting Kisses
 - [X] Drew: Grandson Getting and Shooting Gun
 - [X] Drew: Toy Gun
 - [X] Darts
+- [X] Prototype with living room, grandson, and grandma
+
 
 ## Feb 29
 #### 3 hrs
