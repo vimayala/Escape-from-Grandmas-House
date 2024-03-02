@@ -1,12 +1,15 @@
 ### Need
-    - [ ] Main Menu Art
     - [ ] Plan more game mechanics
     - [ ] Shelf
+    - [ ] Link Scenes
+    - [ ] Prefabs for grandma, grandson
+    - [ ] State Machining
 
 ## March 2
-#### 2.5 hrs
+#### 3 hrs
 - [X] Drew: Basic Animated Menu Screen
     - [ ] Better Animation got corrupted and deleted :))) super fun
+- [X] Code: Added Animation for Menu Screen
 
 ## March 1
 #### 2 hr
