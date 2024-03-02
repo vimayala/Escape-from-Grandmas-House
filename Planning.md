@@ -8,23 +8,23 @@
         - [X] Monsters,     ~3 frames
     - [ ] Shelf (?)
 - [ ] Grandson
-    - [x] Jumping Scared,   ~ 3 frames
-    - [ ] Shooting,         ~
-    - [ ] Getting Kisses,   ~ 5 frames
-    - [ ] Grabbing Gun,     ~ 4 frames
+    - [x] Jumping Scared
+    - [X] Shooting,     
+    - [X] Getting Kisses
+    - [X] Grabbing Gun
     if time:
         - [ ] Throwing (?)
 - [ ] Grandma
     - [X] Chasing
     - [X] Stunned
     - [X] Giving Kisses 
-- [ ] Extra Anims
+- [X] Extra Anims
     - [X] Hearts
     - [X] Skulls
     - [X] Gun Damage
-- [ ] Toys
-    - [ ] Toy Gun
-        - [ ] Darts
+- [] Toys
+    - [X] Toy Gun
+        - [X] Darts
     if time:
     - [ ] Rubix Cube (or car/plane)
     - [ ] Legos (?)
