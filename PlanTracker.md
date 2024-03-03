@@ -1,14 +1,24 @@
+## General
 ### Need
     - [ ] Plan more game mechanics
     - [ ] Shelf
     - [ ] Link Scenes
     - [ ] Prefabs for grandma, grandson
     - [ ] State Machining
+    - [ ] Adjust Score
+    - [ ] Find/Make Font
+
+### Fix
+
+## March 3
+#### 2 hr
+- [X] Code: Started State Machines
+- [X] Animation: Make Grandson Jump Right X and Y amount
 
 ## March 2
 #### 3 hrs
 - [X] Drew: Basic Animated Menu Screen
-    - [ ] Better Animation got corrupted and deleted :))) super fun
+    <!-- - [ ] Better Animation got corrupted and deleted :))) super fun -->
 - [X] Code: Added Animation for Menu Screen
 
 ## March 1
