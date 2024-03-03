@@ -4,7 +4,6 @@ class Menu extends Phaser.Scene {
     }
 
     preload() {
-
         this.load.audio('collect', './assets/zapsplat_multimedia_game_sound_collect_treasure_coin_001_40559.mp3')
         this.load.audio('ping', './assets/zapsplat_multimedia_game_sound_childrens_collect_grab_single_norification_ping_soft_002_49762.mp3')
         this.load.audio('click', './assets/zapsplat_multimedia_game_sound_childrens_collect_grab_single_norification_ping_soft_001_49806.mp3')
@@ -36,8 +35,8 @@ class Menu extends Phaser.Scene {
             endFrame: 7
         })
         this.load.spritesheet("grandson", "./assets/grandson.png", {
-            frameWidth: 300,
-            frameHeight: 400,
+            frameWidth: 200,
+            frameHeight: 250,
             startFrame: 0,
             endFrame: 23
         })
@@ -109,39 +108,52 @@ class Menu extends Phaser.Scene {
 
         // Grandson Animations
         this.anims.create({
+            key: 'idle-right',
+            frameRate: 4.5,
+            repeat: 0,
+            frames: this.anims.generateFrameNumbers('grandson', {
+                start: 0,
+                end: 0
+            })
+        })
+
+        this.anims.create({
+            key: 'idle-left',
+            frameRate: 4.5,
+            repeat: 0,
+            frames: this.anims.generateFrameNumbers('grandson', {
+                start: 1,
+                end: 1
+            })
+        })
+
+        this.anims.create({
             key: 'scared',
             frameRate: 4.5,
             repeat: -1,
             frames: this.anims.generateFrameNumbers('grandson', {
-                start: 0,
-                end: 2
+                start: 2,
+                end: 3
             })
         })
     
         this.anims.create({
-            key: 'jumping',
-            frameRate: 6,
-            repeat: -1,
+            key: 'running-left',
+            frameRate: 15,
+            repeat: 0,
+            // frames: this.anims.generateFrameNumbers('grandson', {
+            //     start: 4,
+            //     end: 6
+            // })
             frames: this.anims.generateFrameNumbers('grandson', {
-                start: 3,
-                end: 5
+                frames: [4, 5, 6, 6, 6, 5, 4]
             })
         })
 
         this.anims.create({
-            key: 'mothballs',
+            key: 'running-right',
             frameRate: 6,
-            repeat: -1,
-            frames: this.anims.generateFrameNumbers('grandson', {
-                start: 6,
-                end: 6
-            })
-        })
-
-        this.anims.create({
-            key: 'kissed',
-            frameRate: 6,
-            repeat: -1,
+            repeat: 0,
             frames: this.anims.generateFrameNumbers('grandson', {
                 start: 7,
                 end: 9
@@ -149,35 +161,94 @@ class Menu extends Phaser.Scene {
         })
 
         this.anims.create({
-            key: 'grabGun',
+            key: 'mothballs',
             frameRate: 6,
-            repeat: -1,
+            repeat: 0,
             frames: this.anims.generateFrameNumbers('grandson', {
                 start: 10,
-                end: 11
+                end: 10
             })
         })
 
         this.anims.create({
-            key: 'holdGun',
+            key: 'kissed-left',
             frameRate: 6,
             repeat: -1,
             frames: this.anims.generateFrameNumbers('grandson', {
                 start: 12,
-                end: 13
+                end: 14
             })
         })
 
         this.anims.create({
-            key: 'shootGun',
+            key: 'kissed-right',
+            frameRate: 6,
+            repeat: -1,
+            frames: this.anims.generateFrameNumbers('grandson', {
+                start: 15,
+                end: 17
+            })
+        })
+
+        this.anims.create({
+            key: 'grabGun-left',
+            frameRate: 6,
+            repeat: -1,
+            frames: this.anims.generateFrameNumbers('grandson', {
+                start: 18,
+                end: 19
+            })
+        })
+
+        this.anims.create({
+            key: 'holdGun-left',
+            frameRate: 6,
+            repeat: -1,
+            frames: this.anims.generateFrameNumbers('grandson', {
+                start: 20,
+                end: 21
+            })
+        })
+
+        this.anims.create({
+            key: 'shootGun-left',
             frameRate: 6,
             repeat: 0,
             frames: this.anims.generateFrameNumbers('grandson', {
-                start: 14,
-                end: 15
+                start: 22,
+                end: 23
             })
         })
         
+        this.anims.create({
+            key: 'grabGun-right',
+            frameRate: 6,
+            repeat: -1,
+            frames: this.anims.generateFrameNumbers('grandson', {
+                start: 24,
+                end: 25
+            })
+        })
+
+        this.anims.create({
+            key: 'holdGun-right',
+            frameRate: 6,
+            repeat: -1,
+            frames: this.anims.generateFrameNumbers('grandson', {
+                start: 26,
+                end: 27
+            })
+        })
+
+        this.anims.create({
+            key: 'shootGun-right',
+            frameRate: 6,
+            repeat: 0,
+            frames: this.anims.generateFrameNumbers('grandson', {
+                start: 28,
+                end: 29
+            })
+        })
 
         let menuConfig = {
             fontFamily: 'American Typewriter',
@@ -204,6 +275,8 @@ class Menu extends Phaser.Scene {
 
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT)
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT)
+        keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE)
+
         
 
         // this.menu.play('startup')
@@ -233,6 +306,13 @@ class Menu extends Phaser.Scene {
     }
 
     update() {
+        if(keySPACE.isDown) {
+            this.scene.start('playScene')
+        }
+
+        // if(Phaser.Input.Keyboard.JustDown(keySPACE)) {
+        //     this.scene.start("playScene")
+        // }
 
     }
 

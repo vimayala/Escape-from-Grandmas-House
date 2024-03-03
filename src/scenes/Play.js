@@ -188,18 +188,22 @@ class Play extends Phaser.Scene {
     
         this.lives = this.add.sprite(155, borderUISize + borderPadding - 20, 'lives').setScale(0.1)
 
-        this.kid = this.add.sprite(width / 2, height / 1.75, 'grandson').setScale(0.8)
+
+        this.kid = new Grandson(this, width / 2, height / 1.525, 'grandson', 0)
+        this.kid.setScale(0.8)
+        // this.kid = this.add.sprite(width / 2, height / 1.75, 'grandson').setScale(0.8)
         this.grandma = this.add.sprite(width / 1.65, height / 1.65, 'grandma').setScale(0.8)
 
         this.grandma.play('chasing')
         // this.kid.x += 45
         // this.kid.y-=30
-        this.kid.play('˛scared')
+        // this.kid.play('˛scared')
 
 
     }
 
     update() {
+        this.kid.update()
         // let playerVector = new Phaser.Math.Vector2(0, 0)
         // if(this.p1duck.y >= 135){
         //     if(cursors.up.isDown){
