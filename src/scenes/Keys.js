@@ -51,10 +51,10 @@ class Keys extends Phaser.Scene {
         const { KeyCodes } = Phaser.Input.Keyboard
         this.KEYS = this.input.keyboard.addKeys({
             JUMP:   KeyCodes.SPACE,
-            // ATTACK: KeyCodes.D,
             LEFT:   KeyCodes.LEFT,
             RIGHT:  KeyCodes.RIGHT,
-            SHIFT:  KeyCodes.SHIFT
+            SHIFT:  KeyCodes.SHIFT,
+            SPACE: KeyCodes.SPACE
         })
         
         // launch next scene so it will run concurrently with this one

@@ -3,9 +3,12 @@ class Play extends Phaser.Scene {
         super('playScene')
     }
 
-    // init() {
-    //     // Add any constants
-    // }
+    init() {
+        // Add any constants
+
+        // Initializing Variables
+        this.gunCount = 3
+    }
 
     create() {
         // Get keyboard binding from Keys scene

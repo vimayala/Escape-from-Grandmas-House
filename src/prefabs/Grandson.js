@@ -109,39 +109,29 @@ class IdleState extends State {
 
 class JumpState extends State {
     enter(scene, grandson) {
-        // play frame by frame ?
+        
+        /* Temporary: Print direction when entering jump state */
         console.log(grandson.direction)
 
+        // To simulate jump, play frame by frame with delayed called
         if(grandson.direction === 'left'){
-            // grandson.setFrame(4)
-            // grandson.x -= 50
-            // grandson.setFrame(5)
-            // grandson.y -= 50
-            // grandson.setFrame(6)
-            // grandson.setFrame(5)
-            // grandson.setFrame(4)
-            // // grandson.setFrame(0)
-
-            // grandson.anims.play(`jumping-${grandson.direction}`)
-
-            // var startX = grandson.x
             this.jumpAnim(scene, grandson, 4, 0, -25, -20)
-            this.jumpAnim(scene, grandson, 5, 70, -15, -10)
-            this.jumpAnim(scene, grandson, 6, 140, -10, -10)
+            this.jumpAnim(scene, grandson, 5, 60, -15, -10)
+            this.jumpAnim(scene, grandson, 6, 120, -10, -10)
             // var endX = grandson.x
-            this.jumpAnim(scene, grandson, 5, 300, -15, 10)
-            this.jumpAnim(scene, grandson, 4, 400, -10, 10)
-            this.jumpAnim(scene, grandson, 1, 400, -5, 20)
-
-
-
-
+            this.jumpAnim(scene, grandson, 5, 180, -15, 10)
+            this.jumpAnim(scene, grandson, 4, 240, -10, 10)
+            this.jumpAnim(scene, grandson, 1, 300, -5, 20)
         } 
         else {
-            grandson.anims.play(`jumping-${grandson.direction}`)
+            this.jumpAnim(scene, grandson, 7, 0, 25, -20)
+            this.jumpAnim(scene, grandson, 8, 60, 15, -10)
+            this.jumpAnim(scene, grandson, 9, 120, 10, -10)
+            this.jumpAnim(scene, grandson, 8, 180, 15, 10)
+            this.jumpAnim(scene, grandson, 7, 240, 10, 10)
+            this.jumpAnim(scene, grandson, 0, 300, 5, 20)
         }
-        // grandson.y += 50
-
+        this.jump = false
 
     }
 
@@ -156,10 +146,26 @@ class JumpState extends State {
         // const FKey = scene.keys.FKey
 
         // jump if pressing left or right
-        // if(Phaser.Input.Keyboard.JustDown(LEFT) || Phaser.Input.Keyboard.JustDown(RIGHT)) {
-        //     this.stateMachine.transition('jump')
-        //     return
-        // }
+
+        if(KEYS.LEFT.isDown && this.jump === true) {
+            grandson.direction = 'left'
+            this.stateMachine.transition('jump')
+            this.jump = true
+            return
+        }
+
+        if(KEYS.RIGHT.isDown && this.jump === true) {
+            grandson.direction = 'right'
+            this.stateMachine.transition('jump')
+            this.jump = true
+            return
+        }
+
+        // grab gun if shift clicked and enough guns
+        if(KEYS.SHIFT.isDown && scene.gunCount > 0) {
+            this.stateMachine.transition('shoot')
+            return
+        }
     }
 
     jumpAnim(scene, grandson, frame, delay, x, y){
@@ -185,6 +191,7 @@ class GrabGunState extends State {
     enter(scene, grandson) {
         // play frame by frame ?
         grandson.anims.play(`grabGun-${grandson.direction}`)
+        grandson.anims.play(`holdGun-${grandson.direction}`)
     }
 
     execute(scene, grandson) {
@@ -197,7 +204,7 @@ class GrabGunState extends State {
         // const FKey = scene.keys.FKey
 
         // shoot if pressing shift
-        if(Phaser.Input.Keyboard.JustDown(shift)){
+        if(KEYS.SHOOT.isDown){
             this.stateMachine.transition('shoot')
             return
         }
@@ -208,7 +215,12 @@ class GrabGunState extends State {
 class ShootGunState extends State {
     enter(scene, grandson) {
         // play frame by frame ?
+
+        console.log(grandson.direction)
         grandson.anims.play(`grabGun-${grandson.direction}`)
+        grandson.anims.play(`holdGun-${grandson.direction}`)
+
+        grandson.anims.play(`shootGun-${grandson.direction}`)
     }
 
     execute(scene, grandson) {
