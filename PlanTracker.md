@@ -6,14 +6,15 @@
     - [ ] Prefabs for grandma, grandson
     - [ ] State Machining
     - [ ] Adjust Score
-    - [ ] Find/Make Font
 
 ### Fix
+    - [ ] Allow Jump in same direction
 
 ## March 3
-#### 2 hr
+#### 3 hr
 - [X] Code: Started State Machines
 - [X] Animation: Make Grandson Jump Right X and Y amount
+- [X] Assets: Added Bitmap Font for Scoring
 
 ## March 2
 #### 3 hrs

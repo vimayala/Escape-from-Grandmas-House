@@ -36,25 +36,8 @@ class Play extends Phaser.Scene {
 
         // Score
         playerScore = 0
-        let scoreConfig = {
-            fontFamily: 'Verdana',
-            fontSize: '24px', 
-            backgroundColor: '#B1D5EFE0', 
-            color: '#FFFFFF',
-            align: 'left', padding: {
-                top: 2,
-                bottom: 2,
-            },
-            fixedWidth: 100
-        }
-        this.scoreDisplay = this.add.text(game.config.width - borderUISize, borderUISize + borderPadding * 2 - 50, 'Score: ', scoreConfig)
-        scoreConfig.align = 'right'
-        scoreConfig.fontSize = '30px'
-        this.scoreLeft = this.add.text(borderUISize + borderPadding - 40 , borderUISize + borderPadding * 2 - 20, `${playerScore}`, scoreConfig)
-        this.gameOver = false
-        scoreConfig.fixedWidth = 0
-    
-
+        // this.add.bitmapText(game.config.width / 2, borderUISize + borderPadding * 2 - 50, 'blockFont', 'Score: ', 72)
+        this.add.bitmapText(game.config.width / 1.175, borderUISize + borderPadding * 2 + 5 , 'blockFont',`87892789`, 72, 'right').setOrigin(0.5)
 
     }
 

@@ -13,6 +13,8 @@ class Keys extends Phaser.Scene {
         // this.load.audio('click', './assets/zapsplat_multimedia_game_sound_childrens_collect_grab_single_norification_ping_soft_001_49806.mp3')
         // this.load.audio('game-over', './assets/zapsplat_multimedia_game_sound_error_lose_thud_negative_001_74526.mp3')
 
+        this.load.bitmapFont('blockFont', './assets/bigblock.png', './assets/bigblock.xml')
+
         this.load.image('livingroom', './assets/EscapeLivingRoom.png')
         this.load.image('button', './assets/button.png')              // buttons
         this.load.image('up', './assets/up.png')                  
