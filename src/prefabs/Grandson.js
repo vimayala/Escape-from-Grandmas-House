@@ -27,7 +27,7 @@ class Grandson extends Phaser.Physics.Arcade.Sprite {
             idle: new IdleState(),
             jump: new JumpState(),
             jump2: new JumpState2(),
-            grab: new GrabGunState(),
+            // grab: new GrabGunState(),
             shoot: new ShootGunState(),
         }, [scene, this])   // pass these as arguments to maintain scene/object context in the FSM
 
@@ -115,49 +115,7 @@ class JumpState extends State {
         console.log(grandson.direction)
 
         // To simulate jump, play frame by frame with delayed called
-        this.jump = true
-        this.doJump(scene, grandson)
-        this.jump = false
 
-    }
-
-    execute(scene, grandson) {
-
-        const { KEYS } = scene
-
-
-        // // use destructuring to make a local copy of the keyboard object
-        // const { left, right, up, down, space, shift } = scene.keys
-        // const HKey = scene.keys.HKey
-        // const FKey = scene.keys.FKey
-
-        // jump if pressing left or right
-
-        if(KEYS.LEFT.isDown && (grandson.frame.name === 1 || grandson.frame.name === 0)) {
-            console.log('cacaacaca')
-            grandson.direction = 'left'
-            // this.jump = true
-            // this.doJump(scene, grandson)
-            this.stateMachine.transition('jump2')
-            return
-        }
-
-        if(KEYS.RIGHT.isDown && (grandson.frame.name === 1 || grandson.frame.name === 0)) {
-            grandson.direction = 'right'
-            // this.jump = true
-            // this.doJump(scene, grandson)
-            this.stateMachine.transition('jump2')
-            return
-        }
-
-        // grab gun if shift clicked and enough guns
-        if(KEYS.SHIFT.isDown && scene.gunCount > 0) {
-            this.stateMachine.transition('shoot')
-            return
-        }
-    }
-
-    doJump(scene, grandson){
         if(grandson.direction === 'left'){
             this.jumpAnim(scene, grandson, 4, 0, -25, -20)
             this.jumpAnim(scene, grandson, 5, 60, -15, -10)
@@ -175,8 +133,68 @@ class JumpState extends State {
             this.jumpAnim(scene, grandson, 7, 240, 10, 10)
             this.jumpAnim(scene, grandson, 0, 300, 5, 20)
         }
-        this.jump = false
+        // this.jump = false
+
+        // this.jump = true
+        // this.doJump(scene, grandson)
+        // this.jump = false
+
     }
+
+    execute(scene, grandson) {
+
+        const { KEYS } = scene
+
+
+        // // use destructuring to make a local copy of the keyboard object
+        // const { left, right, up, down, space, shift } = scene.keys
+        // const HKey = scene.keys.HKey
+        // const FKey = scene.keys.FKey
+
+        // jump if pressing left or right
+
+        if(KEYS.LEFT.isDown && (grandson.frame.name === 0 || grandson.frame.name === 1)) {
+            console.log('cacaacaca')
+            grandson.direction = 'left'
+            // this.jump = true
+            // this.doJump(scene, grandson)
+            this.stateMachine.transition('jump2')
+            return
+        }
+
+        if(KEYS.RIGHT.isDown && (grandson.frame.name === 0 || grandson.frame.name === 1)) {
+            grandson.direction = 'right'
+            this.stateMachine.transition('jump2')
+            return
+        }
+
+        // grab gun if shift clicked and enough guns
+        if(KEYS.SHIFT.isDown && scene.gunCount > 0) {
+            this.stateMachine.transition('shoot')
+            return
+        }
+    }
+
+    // doJump(scene, grandson){
+    //     if(grandson.direction === 'left'){
+    //         this.jumpAnim(scene, grandson, 4, 0, -25, -20)
+    //         this.jumpAnim(scene, grandson, 5, 60, -15, -10)
+    //         this.jumpAnim(scene, grandson, 6, 120, -10, -10)
+    //         // var endX = grandson.x
+    //         this.jumpAnim(scene, grandson, 5, 180, -15, 10)
+    //         this.jumpAnim(scene, grandson, 4, 240, -10, 10)
+    //         this.jumpAnim(scene, grandson, 1, 300, -5, 20)
+    //     } 
+    //     else {
+    //         this.jumpAnim(scene, grandson, 7, 0, 25, -20)
+    //         this.jumpAnim(scene, grandson, 8, 60, 15, -10)
+    //         this.jumpAnim(scene, grandson, 9, 120, 10, -10)
+    //         this.jumpAnim(scene, grandson, 8, 180, 15, 10)
+    //         this.jumpAnim(scene, grandson, 7, 240, 10, 10)
+    //         this.jumpAnim(scene, grandson, 0, 300, 5, 20)
+    //     }
+    //     this.jump = false
+    // }
 
     jumpAnim(scene, grandson, frame, delay, x, y){
         // To move in a direction, use positive vs negative as follows
@@ -252,25 +270,25 @@ class JumpState2 extends State {
     }
 }
 
-class GrabGunState extends State {
-    enter(scene, grandson) {
-        // play frame by frame ?
-        grandson.anims.play(`grabGun-${grandson.direction}`)
-        grandson.anims.play(`holdGun-${grandson.direction}`)
-    }
+// class GrabGunState extends State {
+//     enter(scene, grandson) {
+//         // play frame by frame ?
+//         grandson.anims.play(`grabGun-${grandson.direction}`)
+//         grandson.anims.play(`holdGun-${grandson.direction}`)
+//     }
 
-    execute(scene, grandson) {
+//     execute(scene, grandson) {
 
-        const { KEYS } = scene
+//         const { KEYS } = scene
 
-        // shoot if pressing shift
-        if(KEYS.SHOOT.isDown){
-            this.stateMachine.transition('shoot')
-            return
-        }
+//         // shoot if pressing shift
+//         if(KEYS.SHOOT.isDown){
+//             this.stateMachine.transition('shoot')
+//             return
+//         }
 
-    }
-}
+//     }
+// }
 
 class ShootGunState extends State {
     enter(scene, grandson) {

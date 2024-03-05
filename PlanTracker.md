@@ -1,18 +1,32 @@
 ## General
+### Original Plan
+The living room scene, 
+the end screen (unanimated), and a 
+menu screen (possibly using the older art style map if it suits the style). 
+The living room scene will depict the grandma beginning on the right side of the screen and heading towards the grandchild while walking back and forth so the player can predict her movement. The player will be able to shoot at her or throw toys. After a certain amount of points have been collected, the player will be able to escape the grandmother. This will call the event where she will either be tired or have back pain in which the player has enough time to escape her.
+A score scene displaying the player’s score and a prompt to play again or return to the menu as well as a ranking of the type of grandchild they are.
+A credits scene accessible from the menu
+A street sequence where the child runs away from the grandma and her house
+
+
+
 ### Need
     - [ ] Plan more game mechanics
     - [ ] Shelf
     - [ ] Link Scenes
     - [ ] Prefabs for grandma, grandson
     - [ ] State Machining
+        - [ ] Change states from shooting to jumping so on
     - [ ] Adjust Score
 
 ### Fix
     - [ ] Allow Jump in same direction
 
+
+
 ## March 3
-#### 3 hr
-- [X] Code: Started State Machines
+#### 3.5 hr
+- [X] Code: State Machines
 - [X] Animation: Make Grandson Jump Right X and Y amount
 - [X] Assets: Added Bitmap Font for Scoring
 

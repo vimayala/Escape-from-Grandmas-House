@@ -28,6 +28,7 @@ class Play extends Phaser.Scene {
         // Add Grandma and Grandson from prefabs
         this.kid = new Grandson(this, width / 2, height / 1.525, 'grandson', 0, 'right')
         this.kid.setScale(0.8)
+        /* */
         this.grandma = this.add.sprite(width / 1.65, height / 1.65, 'grandma').setScale(0.8)
         this.grandma.play('kissing')
 
@@ -37,7 +38,7 @@ class Play extends Phaser.Scene {
         // Score
         playerScore = 0
         // this.add.bitmapText(game.config.width / 2, borderUISize + borderPadding * 2 - 50, 'blockFont', 'Score: ', 72)
-        this.add.bitmapText(game.config.width / 1.175, borderUISize + borderPadding * 2 + 5 , 'blockFont',`87892789`, 72, 'right').setOrigin(0.5)
+        this.add.bitmapText(game.config.width / 1.175, borderUISize + borderPadding * 2 + 5 , 'blockFont',`190789`, 72, 'right').setOrigin(0.5)
 
     }
 
