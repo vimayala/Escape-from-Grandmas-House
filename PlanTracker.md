@@ -17,16 +17,20 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
 
 ### Need
     - [ ] Plan more game mechanics
-    - [ ] Shelf
-    - [ ] Link Scenes
     - [ ] Prefabs for grandma, grandson
-    - [ ] State Machining
         - [ ] Change states from shooting to jumping so on
     - [ ] Adjust Score Placement
+    - [ ] Add space bar for grandson ? double jump/straight jump
+    - [ ] Export all art
+    - [ ] Add Sound Effects
+
+    - [ ] Change Grandma's State when Dart Hits
 
 ### Fix
     - [ ] Dart Spawn Location
     - [ ] Change Hit Boxes
+    - [ ] Change Bounds for both
+    
 
 ## March 6
 #### 

@@ -64,7 +64,7 @@ class Menu extends Phaser.Scene {
 
         this.anims.create({
             key: 'shot-left',
-            frameRate: 2,
+            frameRate: 7,
             repeat: 0,
             frames: this.anims.generateFrameNumbers('grandma', {
                 start: 4,
@@ -74,7 +74,7 @@ class Menu extends Phaser.Scene {
 
         this.anims.create({
             key: 'shot-right',
-            frameRate: 2,
+            frameRate: 7,
             repeat: 0,
             frames: this.anims.generateFrameNumbers('grandma', {
                 start: 8,

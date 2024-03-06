@@ -4,7 +4,8 @@ class Grandson extends Phaser.Physics.Arcade.Sprite {
         scene.add.existing(this)           // add grandson to existing scene
         scene.physics.add.existing(this)   // add physics body to scene
 
-        this.body.setSize(this.width / 2, this.height / 2)
+        this.body.setSize(this.width / 4, this.height / 1.5)
+        this.body.setOffset(this.width/2.85, this.height/5.25)
         this.body.setCollideWorldBounds(true)
         this.direction = direction 
 
@@ -61,18 +62,17 @@ class IdleState extends State {
             this.stateMachine.transition('jump')
             return
         }
+        if(KEYS.SHIFT.isDown && scene.gunCount > 0) {
+            this.stateMachine.transition('shoot')
+            return
+        }
         
     }
 }
 
 class JumpState extends State {
     enter(scene, grandson) {
-        
-        /* Temporary: Print direction when entering jump state */
-        console.log(grandson.direction)
-
         // To simulate jump, play frame by frame with delayed called
-
         if(grandson.direction === 'left'){
             this.jumpAnim(scene, grandson, 4, 0, -25, -20)
             this.jumpAnim(scene, grandson, 5, 60, -15, -10)
@@ -90,29 +90,15 @@ class JumpState extends State {
             this.jumpAnim(scene, grandson, 7, 240, 10, 10)
             this.jumpAnim(scene, grandson, 0, 300, 5, 20)
         }
-        // this.jump = false
-
-        // this.jump = true
-        // this.doJump(scene, grandson)
-        // this.jump = false
-
     }
 
     execute(scene, grandson) {
         const { KEYS } = scene
 
 
-        // // use destructuring to make a local copy of the keyboard object
-        // const { left, right, up, down, space, shift } = scene.keys
-        // const HKey = scene.keys.HKey
-        // const FKey = scene.keys.FKey
-
         // jump if pressing left or right
-
         if(KEYS.LEFT.isDown && (grandson.frame.name === 0 || grandson.frame.name === 1)) {
             grandson.direction = 'left'
-            // this.jump = true
-            // this.doJump(scene, grandson)
             this.stateMachine.transition('jump')
             return
         }
@@ -149,26 +135,6 @@ class JumpState extends State {
     }
 }
 
-// class GrabGunState extends State {
-//     enter(scene, grandson) {
-//         // play frame by frame ?
-//         grandson.anims.play(`grabGun-${grandson.direction}`)
-//         grandson.anims.play(`holdGun-${grandson.direction}`)
-//     }
-
-//     execute(scene, grandson) {
-
-//         const { KEYS } = scene
-
-//         // shoot if pressing shift
-//         if(KEYS.SHOOT.isDown){
-//             this.stateMachine.transition('shoot')
-//             return
-//         }
-
-//     }
-// }
-
 class ShootGunState extends State {
     enter(scene, grandson) {
         this.stateFlag = false
@@ -182,9 +148,12 @@ class ShootGunState extends State {
             // if(grandson.frame.name === 22 || grandson.frame.name === 28){
 
 
-                // if left, use one dart eq else use other
+                // if left, use one dart spawn eq else use other
 
-                console.log("spawned dart")
+                /*  Move to prefab */
+                
+
+
                 this.dart = scene.add.sprite(grandson.x/2, grandson.y / 2, 'dart').setScale(0.075)
                 let direction = 1
                 if(grandson.direction === 'left'){
@@ -193,6 +162,13 @@ class ShootGunState extends State {
                 }
                 this.dart.x = grandson.y - grandson.width / 2 * direction
                 this.dart.y = grandson.x - grandson.height / 2
+
+                // this.dartMovement(this.dart, direction)
+
+
+
+            // this.dart = new Dart(grandson.x/2, grandson.y / 2, 'dart', 0, grandson.direction)
+
 
                 // make dart moving function ? or prefab ?
 
@@ -239,5 +215,6 @@ class ShootGunState extends State {
             return
         }
     }
+
 }
 
