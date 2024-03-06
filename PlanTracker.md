@@ -22,12 +22,17 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
     - [ ] Prefabs for grandma, grandson
     - [ ] State Machining
         - [ ] Change states from shooting to jumping so on
-    - [ ] Adjust Score
+    - [ ] Adjust Score Placement
 
 ### Fix
     - [ ] Dart Spawn Location
     - [ ] Change Hit Boxes
 
+## March 6
+#### 
+- [ ] Code: Grandma Prefab + State Machines
+- [ ] Code: Grandson Fixing State Machine Transitions
+- [ ] 
 
 ## March 5
 #### 30 min

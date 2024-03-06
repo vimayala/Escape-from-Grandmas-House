@@ -35,11 +35,11 @@ class Keys extends Phaser.Scene {
             endFrame: 36
         })
 
-        this.load.spritesheet("grandma", "./assets/grandma.png", {
-            frameWidth: 400,
-            frameHeight: 400,
+        this.load.spritesheet("grandma", "./assets/granny.png", {
+            frameWidth: 290,
+            frameHeight: 350,
             startFrame: 0,
-            endFrame: 8
+            endFrame: 17
         })
         this.load.spritesheet("grandson", "./assets/grandson.png", {
             frameWidth: 200,

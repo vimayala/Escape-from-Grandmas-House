@@ -13,7 +13,7 @@ class Grandma extends Phaser.Physics.Arcade.Sprite {
 
 
 
-        this.velocity = 10    // in pixels
+        this.velocity = 0.5    // in pixels
         // this.dashCooldown = 300    // in ms
         // this.hurtTimer = 250       // in ms
 
@@ -42,8 +42,7 @@ class Grandma extends Phaser.Physics.Arcade.Sprite {
 
 class ChasingState extends State {
     enter(scene, grandma) {
-        // grandma.anims.play(`chasing-${grandson.direction}`)
-        grandma.anims.play("chasing")
+        grandma.anims.play(`chasing-${grandma.direction}`)
     }
 
     execute(scene, grandma) {
@@ -58,8 +57,8 @@ class ChasingState extends State {
 
 class ShotState extends State {
     enter(scene, grandma) {
-        // grandma.anims.play(`shot-${grandson.direction}`)
-        grandma.anims.play("shot")
+        grandma.anims.play(`shot-${grandson.direction}`)
+        // grandma.anims.play("shot")
     }
 
     execute(scene, grandma) {
@@ -76,8 +75,8 @@ class ShotState extends State {
 
 class KissingState extends State {
     enter(scene, grandma) {
-        // grandma.anims.play(`kissing-${grandson.direction}`)
-        grandma.anims.play("kissing")
+        grandma.anims.play(`kissing-${grandson.direction}`)
+        // grandma.anims.play("kissing")
     }
 
     execute(scene, grandson) {

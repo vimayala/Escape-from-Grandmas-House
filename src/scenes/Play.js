@@ -50,6 +50,7 @@ class Play extends Phaser.Scene {
 
         // this.kid.update()
         this.grandsonFSM.step()
+        this.grandmaFSM.step()
 
         // let playerVector = new Phaser.Math.Vector2(0, 0)
         // if(this.p1duck.y >= 135){
