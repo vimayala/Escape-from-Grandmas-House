@@ -4,24 +4,18 @@ class Grandson extends Phaser.Physics.Arcade.Sprite {
         scene.add.existing(this)           // add grandson to existing scene
         scene.physics.add.existing(this)   // add physics body to scene
 
-
-        // this.isFiring = false
-        // this.moveSpeed = 2
-        // this.sfxShot = scene.sound.add('sfx-shot')
-        // this.timeFlag = false
-
-
         this.body.setSize(this.width / 2, this.height / 2)
         this.body.setCollideWorldBounds(true)
-
-        this.play('scared')
-
-
         this.direction = direction 
+
+
 
         // this.velocity = 100    // in pixels
         // this.dashCooldown = 300    // in ms
         // this.hurtTimer = 250       // in ms
+
+        this.play('scared')
+
 
         scene.grandsonFSM = new StateMachine('idle', {
             idle: new IdleState(),
@@ -33,48 +27,12 @@ class Grandson extends Phaser.Physics.Arcade.Sprite {
 
     }
 
-    update () {
-        // if(keyLEFT.isDown && this.x >= borderUISize + this.width) {
-        //     // this.play("running-left").once('animationcomplete', () => {
-        //     //     this.play("idle-left")
-        //     //     // this.checkDirection(this.direction, 'left')
-        //     //     this.direction = 'left'
-        //     //  })
-        //     // this.x -= 5
-        //     jumpLeft()
-        // }
+    // update () {
 
-        // else if(keyRIGHT.isDown && this.x <= game.config.width - borderUISize - this.width) {
-        //     // make jump, up, jump down by 
-        //     this.play("running-right").once('animationcomplete', () => {
-        //         this.play("idle-right")
-        //         // this.checkDirection(this.direction, 'right')
-        //         this.direction = 'right'
-        //      })
-            
-        //     this.x += 5
-        // }
-
-        // if(this.anims.currentAnim.key === 'running-left'){
-        //     this.y -= 3
-        // }
-
-    }
+    // }
 
     // reset() {
-    //     this.isFiring = false
-    //     this.y = game.config.height - borderUISize - borderPadding
     // }
-
-    // checkDirection(oldDirection, newDirection){
-    //     if(oldDirection != newDirection){
-    //         this.flipX = false
-    //     }
-    //     else {
-    //         this.flipX = true
-    //     }
-    // }
-
 
 
 }
@@ -154,7 +112,6 @@ class JumpState extends State {
         // jump if pressing left or right
 
         if(KEYS.LEFT.isDown && (grandson.frame.name === 0 || grandson.frame.name === 1)) {
-            console.log('cacaacaca')
             grandson.direction = 'left'
             // this.jump = true
             // this.doJump(scene, grandson)
@@ -174,27 +131,6 @@ class JumpState extends State {
             return
         }
     }
-
-    // doJump(scene, grandson){
-    //     if(grandson.direction === 'left'){
-    //         this.jumpAnim(scene, grandson, 4, 0, -25, -20)
-    //         this.jumpAnim(scene, grandson, 5, 60, -15, -10)
-    //         this.jumpAnim(scene, grandson, 6, 120, -10, -10)
-    //         // var endX = grandson.x
-    //         this.jumpAnim(scene, grandson, 5, 180, -15, 10)
-    //         this.jumpAnim(scene, grandson, 4, 240, -10, 10)
-    //         this.jumpAnim(scene, grandson, 1, 300, -5, 20)
-    //     } 
-    //     else {
-    //         this.jumpAnim(scene, grandson, 7, 0, 25, -20)
-    //         this.jumpAnim(scene, grandson, 8, 60, 15, -10)
-    //         this.jumpAnim(scene, grandson, 9, 120, 10, -10)
-    //         this.jumpAnim(scene, grandson, 8, 180, 15, 10)
-    //         this.jumpAnim(scene, grandson, 7, 240, 10, 10)
-    //         this.jumpAnim(scene, grandson, 0, 300, 5, 20)
-    //     }
-    //     this.jump = false
-    // }
 
     jumpAnim(scene, grandson, frame, delay, x, y){
         // To move in a direction, use positive vs negative as follows
@@ -221,16 +157,7 @@ class JumpState2 extends State {
     }
 
     execute(scene, grandson) {
-
         const { KEYS } = scene
-
-
-        // // use destructuring to make a local copy of the keyboard object
-        // const { left, right, up, down, space, shift } = scene.keys
-        // const HKey = scene.keys.HKey
-        // const FKey = scene.keys.FKey
-
-        // jump if pressing left or right
 
         if(KEYS.LEFT.isDown) {
             grandson.direction = 'left'
@@ -295,11 +222,19 @@ class ShootGunState extends State {
         grandson.anims.play(`grabGun-${grandson.direction}`)
         grandson.anims.play(`holdGun-${grandson.direction}`)
         grandson.anims.play(`shootGun-${grandson.direction}`)
+        this.dart = scene.add.sprite(grandson.x/2, grandson.y / 2, 'dart').setScale(0.075)
+        let direction = 1
+        if(grandson.direction === 'left'){
+            direction *= -1
+            this.dart.flipX = true
+        }
+        this.dart.x = grandson.y - grandson.width / 2 * direction
+        this.dart.y = grandson.x - grandson.height / 2
+        /*  animate dart */ 
     }
 
     execute(scene, grandson) {
         const { KEYS } = scene
-
 
 
     }

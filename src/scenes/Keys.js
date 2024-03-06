@@ -19,6 +19,7 @@ class Keys extends Phaser.Scene {
         this.load.image('button', './assets/button.png')              // buttons
         this.load.image('up', './assets/up.png')                  
         this.load.image('down', './assets/down.png')
+        this.load.image('dart', './assets/dart.png')
 
         this.load.spritesheet('lives', './assets/lives.png', {
             frameWidth: 960,

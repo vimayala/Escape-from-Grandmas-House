@@ -3,46 +3,6 @@ class Menu extends Phaser.Scene {
         super('menuScene')
     }
 
-    // preload() {
-    //     this.load.audio('collect', './assets/zapsplat_multimedia_game_sound_collect_treasure_coin_001_40559.mp3')
-    //     this.load.audio('ping', './assets/zapsplat_multimedia_game_sound_childrens_collect_grab_single_norification_ping_soft_002_49762.mp3')
-    //     this.load.audio('click', './assets/zapsplat_multimedia_game_sound_childrens_collect_grab_single_norification_ping_soft_001_49806.mp3')
-    //     this.load.audio('game-over', './assets/zapsplat_multimedia_game_sound_error_lose_thud_negative_001_74526.mp3')
-
-    //     this.load.image('livingroom', './assets/EscapeLivingRoom.png')
-    //     this.load.image('button', './assets/button.png')              // buttons
-    //     this.load.image('up', './assets/up.png')                  
-    //     this.load.image('down', './assets/down.png')
-
-    //     this.load.spritesheet('lives', './assets/lives.png', {
-    //         frameWidth: 960,
-    //         frameHeight: 320,
-    //         startFrame: 0,
-    //         endFrame: 2
-    //     })
-
-    //     this.load.spritesheet('menu', "./assets/menu.png",{
-    //         frameWidth: 1236,
-    //         frameHeight: 873,
-    //         startFrame: 0,
-    //         endFrame: 36
-    //     })
-
-    //     this.load.spritesheet("grandma", "./assets/grandma.png", {
-    //         frameWidth: 400,
-    //         frameHeight: 400,
-    //         startFrame: 0,
-    //         endFrame: 7
-    //     })
-    //     this.load.spritesheet("grandson", "./assets/grandson.png", {
-    //         frameWidth: 200,
-    //         frameHeight: 250,
-    //         startFrame: 0,
-    //         endFrame: 23
-    //     })
-
-    // }
-
     create() {
 
         // grab keyboard binding from Keys scene
@@ -315,6 +275,16 @@ class Menu extends Phaser.Scene {
         if(KEYS.SPACE.isDown) {
             this.scene.start('playScene')
         }
+
+        // Credits if shift is clicked
+        // if(KEYS.SHIFT.isDown) {
+        //     this.scene.start('playScene')
+        // }
+
+        // Controls if ... is clicked
+        // if(KEYS.SHIFT.isDown) {
+        //     this.scene.start('playScene')
+        // }
 
         // if(Phaser.Input.Keyboard.JustDown(keySPACE)) {
         //     this.scene.start("playScene")

@@ -28,8 +28,9 @@ class Play extends Phaser.Scene {
         // Add Grandma and Grandson from prefabs
         this.kid = new Grandson(this, width / 2, height / 1.525, 'grandson', 0, 'right')
         this.kid.setScale(0.8)
-        /* */
-        this.grandma = this.add.sprite(width / 1.65, height / 1.65, 'grandma').setScale(0.8)
+        /* Make from grandma prefab */
+        this.grandma = new Grandma(this, width / 1.65, height / 1.65, "grandma", 0, 'left')
+        this.grandma.setScale(0.8)
         this.grandma.play('kissing')
 
 

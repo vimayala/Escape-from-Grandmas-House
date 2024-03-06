@@ -8,7 +8,12 @@ A score scene displaying the player’s score and a prompt to play again or retu
 A credits scene accessible from the menu
 A street sequence where the child runs away from the grandma and her house
 
+### Scene Goals
+## Living Room
+Shoot the grandma as much as possible until x points (maybe 50,000, may adjust) reached. Then grandson runs away past screen and grandma chases (if possible).
 
+## Street
+Avoid the hearts and kisses while grandma chases you. If you run into one, slow down and get closer to grandma. Or grandma gets closer instead.
 
 ### Need
     - [ ] Plan more game mechanics
@@ -20,9 +25,15 @@ A street sequence where the child runs away from the grandma and her house
     - [ ] Adjust Score
 
 ### Fix
-    - [ ] Allow Jump in same direction
+    - [ ] Dart Spawn Location
+    - [ ] Change Hit Boxes
 
 
+## March 5
+#### 30 min
+- [X] Code: Added Darts, need to fix where they spawn
+- [X] Assets: Started Street, need to draw the rest
+- [X] Planned more game flows and mechanics
 
 ## March 3
 #### 3.5 hr
