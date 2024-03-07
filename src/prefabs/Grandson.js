@@ -141,56 +141,43 @@ class JumpState extends State {
 
 class ShootGunState extends State {
     enter(scene, grandson) {
-        this.stateFlag = false
+
         grandson.anims.play(`grabGun-${grandson.direction}`)
         grandson.anims.play(`holdGun-${grandson.direction}`)
         // grandson.anims.play(`shootGun-${grandson.direction}`)
         // grandson.anims.play(`shootGun-${grandson.direction}`)
 
         grandson.anims.play(`shootGun-before-${grandson.direction}`).once('animationcomplete', () => {
-            this.stateFlag = true
-            console.log('testing')
-            // if(grandson.frame.name === 22 || grandson.frame.name === 28){
+            // Uses frame number so only executed once            
+            if(grandson.frame.name === 22 || grandson.frame.name === 28){
+
+                // if left, use one dart spawn eq else use other
+                // ideally, you would use dart sprite size
+                let factor = 0
+                if(grandson.direction === 'left'){
+                    factor = -48
+                }
+                else{
+                    factor = 48
+                }
+
+                scene.dartCreate(grandson, factor, 10)  
+                
+                // maybe wait 3 seconds before shooting another?? bc issues caused by numerous darts shooting          
 
 
-            // if left, use one dart spawn eq else use other
-            // ideally, you would use dart sprite size
-            let factor = 0
-            if(grandson.direction === 'left'){
-                 factor = -48
             }
-            else{
-                factor = 48
-            }
-
-            scene.dartCreate(grandson, factor, 10)  
-            // maybe wait 3 seconds before shooting another?? bc issues caused by numerous darts shooting          
-
-                // make dart moving function ? or prefab ?
-
-            // }
             grandson.anims.play(`shootGun-after-${grandson.direction}`)
         })
 
-
-
-
-        /*  animate dart */ 
     }
 
     execute(scene, grandson) {
         const { KEYS } = scene
-
-
-        // // use destructuring to make a local copy of the keyboard object
-        // const { left, right, up, down, space, shift } = scene.keys
-        // const HKey = scene.keys.HKey
-        // const FKey = scene.keys.FKey
-
-        // jump if pressing left or right
+        // console.log(grandson.frame.name)
 
         // if(KEYS.LEFT.isDown && (grandson.frame.name === 0 || grandson.frame.name === 1)) {
-        if(KEYS.LEFT.isDown && this.stateFlag == true) {
+        if(KEYS.LEFT.isDown && (grandson.frame.name === 23 || grandson.frame.name === 29 || grandson.frame.name === 0 || grandson.frame.name === 1)) {
 
             grandson.direction = 'left'
             // this.jump = true
@@ -199,14 +186,13 @@ class ShootGunState extends State {
             return
         }
 
-        if(KEYS.RIGHT.isDown && this.stateFlag == true) {
+        if(KEYS.RIGHT.isDown  && (grandson.frame.name === 23 || grandson.frame.name === 29  || grandson.frame.name === 0 || grandson.frame.name === 1)) {
             grandson.direction = 'right'
             this.stateMachine.transition('jump')
             return
         }
 
-        // grab gun if shift clicked and enough guns
-        if(KEYS.SHIFT.isDown && scene.gunCount > 0) {
+        if(KEYS.SHIFT.isDown  && (grandson.frame.name === 23 || grandson.frame.name === 29  || grandson.frame.name === 0 || grandson.frame.name === 1)) {
             this.stateMachine.transition('shoot')
             return
         }

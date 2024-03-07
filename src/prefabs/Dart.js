@@ -16,18 +16,8 @@ class Dart extends Phaser.Physics.Arcade.Sprite {
         
         if(direction === 'left'){
             this.directionFactor *= -1
-            this.flipX = true               // check if it flips
+            this.flipX = true
         }
-
-
-
-
-
-        // this.dart = scene.add.sprite(grandson.x/2, grandson.y / 2, 'dart').setScale(0.075)
-
-        // this.dart.x = grandson.y - grandson.width / 2 * direction
-        // this.dart.y = grandson.x - grandson.height / 2
-
 
     }
 

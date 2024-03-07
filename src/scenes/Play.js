@@ -65,6 +65,7 @@ class Play extends Phaser.Scene {
         // this.kid.update()
         this.grandsonFSM.step()
         this.grandmaFSM.step()
+        console.log(this.grandmaFSM.state)
 
         // let playerVector = new Phaser.Math.Vector2(0, 0)
         // if(this.p1duck.y >= 135){
@@ -100,7 +101,7 @@ class Play extends Phaser.Scene {
             this.grandma.direction = 'left'
            }
         }
-        console.log(this.grandma.direction)
+        // console.log(this.grandma.direction)
         this.grandmaFSM.transition('shot')
         dart.destroy()
     }

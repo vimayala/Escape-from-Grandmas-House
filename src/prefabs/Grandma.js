@@ -48,11 +48,13 @@ class Grandma extends Phaser.Physics.Arcade.Sprite {
 class ChasingState extends State {
     enter(scene, grandma) {
         grandma.anims.play(`chasing-${grandma.direction}`)
-        console.log('entered chasing')
     }
 
     execute(scene, grandma) {
         // const { KEYS } = scene
+
+        console.log('chasing state!')
+        console.log(grandma.direction)
 
         let directionFactor = 1
         if(grandma.direction === 'right'){
@@ -61,24 +63,31 @@ class ChasingState extends State {
 
 
         // move back and forth until borders hit
-        if(grandma.x > 280 || grandma.x < 678){
+        if(grandma.x >= 280 && grandma.x <= 678){
+            console.log(grandma.x)
             grandma.x -= grandma.velocity * directionFactor
         }
         else{
+            console.log('else')
             // make else change anim and make her
-            if(grandma.direction === 'right'){
+            if(grandma.x > 678){
                 grandma.direction = 'left'
-                grandma.flipX = false
+                grandma.flipX = true
             }
             else{
                 grandma.direction = 'right'
-                grandma.flipX = true
+                grandma.flipX = false
             }
-            // grandma.anims.play(`chasing-${grandma.direction}`)
             directionFactor *= -1
             grandma.x -= grandma.velocity * directionFactor
 
         }
+        // if(grandma.x < 280){
+        //     grandma.x = 280
+        //     grandma.flipX = true
+        //     grandma.x -= grandma.velocity * directionFactor
+
+        // }
 
         // if grandma's x hits 0, change direction
         // if x < 0, keep it moving
