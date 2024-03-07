@@ -28,12 +28,11 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
 
 ### Fix
     - [ ] Dart Spawn Location
-    - [ ] Change Hit Boxes
     - [ ] Change Bounds for both
     
 
 ## March 6
-#### 
+#### 1.5 hr
 - [ ] Code: Grandma Prefab + State Machines
 - [ ] Code: Grandson Fixing State Machine Transitions
 - [ ] 

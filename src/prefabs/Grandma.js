@@ -24,7 +24,7 @@ class Grandma extends Phaser.Physics.Arcade.Sprite {
         // this.dashCooldown = 300    // in ms
         // this.hurtTimer = 250       // in ms
 
-        scene.grandmaFSM = new StateMachine('shot', {
+        scene.grandmaFSM = new StateMachine('chasing', {
             chasing: new ChasingState(),
             shot: new ShotState(),
             kissing: new KissingState(),
@@ -54,8 +54,41 @@ class ChasingState extends State {
 
     execute(scene, grandma) {
         // const { KEYS } = scene
-        grandma.x -= grandma.velocity
+
+        let directionFactor = 1
+        if(grandma.direction === 'right'){
+            directionFactor *= -1
+        }
+
+
         // move back and forth until borders hit
+        if(grandma.x > 280 && grandma.x < 678){
+            grandma.x -= grandma.velocity * directionFactor
+            console.log(grandma.x)
+        }
+        else{
+            // make else change anim and make her
+            if(grandma.direction === 'right'){
+                grandma.direction = 'left'
+                grandma.flipX = false
+            }
+            else{
+                grandma.direction = 'right'
+                grandma.flipX = true
+            }
+            // grandma.anims.play(`chasing-${grandma.direction}`)
+            directionFactor *= -1
+            grandma.x -= grandma.velocity * directionFactor
+
+        }
+
+        // if grandma's x hits 0, change direction
+        // if x < 0, keep it moving
+        // if hits 
+
+
+
+
 
         // if grandma's hand (maybe change hit box) touches grandson, change to kissing state
             // change grandson to struggle state either here or in play...
@@ -73,42 +106,22 @@ class ShotState extends State {
 
             scene.time.addEvent({ delay: 525, callback: () => {
                 this.stateMachine.transition('chasing')
-    
             }, callbackScope: this})
         } 
         else {
-            this.jumpAnim(scene, grandma, 7, 0, 25, -20)
-            this.jumpAnim(scene, grandma, 8, 60, 15, -10)
-            this.jumpAnim(scene, grandma, 9, 120, 10, -10)
-            this.jumpAnim(scene, grandma, 8, 180, 15, 10)
-            this.jumpAnim(scene, grandma, 7, 240, 10, 10)
-            this.jumpAnim(scene, grandma, 0, 300, 5, 20)
+            this.jumpAnim(scene, grandma, 8, 0, 5, 0)
+            this.jumpAnim(scene, grandma, 9, 175, 4, 0)
+            this.jumpAnim(scene, grandma, 10, 300, 3, 0)
+            this.jumpAnim(scene, grandma, 11, 400, 2, 0)
+
+            scene.time.addEvent({ delay: 525, callback: () => {
+                this.stateMachine.transition('chasing')
+            }, callbackScope: this})
         }
-        // grandma.anims.play(`shot-${grandma.direction}`)
-
-
-
-        // grandma.anims.play("shot")
     }
 
-    execute(scene, grandma) {
-        // go back to chasing after shot animation plays
-        
-        // if(grandma.frame.name === 7 || grandma.frame.name === 11){
-
-        //     this.stateMachine.transition('chasing')
-        // }
-
-
-        // const { KEYS } = scene
-        
-        // grandma.x -= 5
-
-        // move back and forth until borders hit
-
-        // if grandma's hand (maybe change hit box) touches grandson, change to kissing state
-            // change grandson to struggle state either here or in play...
-    }
+    // execute(scene, grandma) {
+    // }
 
     jumpAnim(scene, grandma, frame, delay, x, y){
         // To move in a direction, use positive vs negative as follows
