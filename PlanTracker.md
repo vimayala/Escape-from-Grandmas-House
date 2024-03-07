@@ -16,23 +16,22 @@ Shoot the grandma as much as possible until x points (maybe 50,000, may adjust) 
 Avoid the hearts and kisses while grandma chases you. If you run into one, slow down and get closer to grandma. Or grandma gets closer instead.
 
 ### Need
-    - [ ] Plan more game mechanics
     - [ ] Prefabs for grandma, grandson
         - [ ] Change states from shooting to jumping so on
     - [ ] Adjust Score Placement
     - [ ] Add space bar for grandson ? double jump/straight jump
-    - [ ] Export all art
     - [ ] Add Sound Effects
 
-    - [ ] Change Grandma's State when Dart Hits
+    - [ ] Export all art
 
-### Fix
-    - [ ] Dart Spawn Location
-    - [ ] Change Bounds for both
+    - [ ] Change grandma shot anim to react to dart direction (if kid behind, she moves forward...maybe move grandma by dart instead of by grandma direction)
+        - or make a property of the grandma that changes when the grandma gets hit so the prefab can access it
+
+
     
 
 ## March 6
-#### 1.5 hr
+#### 3 hr
 - [ ] Code: Grandma Prefab + State Machines
 - [ ] Code: Grandson Fixing State Machine Transitions
 - [ ] Code: Dart Prefab

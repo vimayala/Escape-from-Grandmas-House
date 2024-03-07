@@ -31,14 +31,12 @@ class Play extends Phaser.Scene {
         this.grandma = new Grandma(this, width / 1.65, height / 1.65, "grandma", 0, 'left')
         this.grandma.setScale(0.8)
 
-        // this.physics.add.collider(this.p1duck, this.fruitGroup, this.handleFruitCollision, null, this, this.fruitGroup)
-        this.physics.add.collider(this.kid, this.grandma, this.handleKidCollision)
-
-
         this.dartGroup = this.physics.add.group({
             runChildUpdate: true
         })
 
+        this.physics.add.collider(this.kid, this.grandma, this.handleKidCollision)
+        this.physics.add.collider(this.grandma, this.dartGroup, this.dartGrandmaCollision, null, this, this.dartGroup)
 
 
     /*  Fix Score Position */
@@ -84,9 +82,27 @@ class Play extends Phaser.Scene {
     }
 
     dartCreate(grandson, factor, speed){
-        let dart = new Dart(this, grandson.x + factor, grandson.y , 'dart', 0, grandson.direction, speed)
+        let dart = new Dart(this, grandson.x + factor, grandson.y + 30 , 'dart', 0, grandson.direction, speed)
         // add dart to group
         this.dartGroup.add(dart)
+    }
+
+    dartGrandmaCollision(grandma, dart){
+        // change grandma to shot 
+        // destroy/drop dart 
+        // increase points
+        // if facing same direction, change grandma's direction
+        if(grandma.direction != dart.direction){
+           if(grandma.direction === 'left'){
+            this.grandma.direction = 'right'
+           }
+           else{
+            this.grandma.direction = 'left'
+           }
+        }
+        console.log(this.grandma.direction)
+        this.grandmaFSM.transition('shot')
+        dart.destroy()
     }
 
 }

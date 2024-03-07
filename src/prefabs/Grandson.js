@@ -74,21 +74,25 @@ class JumpState extends State {
     enter(scene, grandson) {
         // To simulate jump, play frame by frame with delayed called
         if(grandson.direction === 'left'){
-            this.jumpAnim(scene, grandson, 4, 0, -25, -20)
-            this.jumpAnim(scene, grandson, 5, 60, -15, -10)
-            this.jumpAnim(scene, grandson, 6, 120, -10, -10)
-            // var endX = grandson.x
-            this.jumpAnim(scene, grandson, 5, 180, -15, 10)
-            this.jumpAnim(scene, grandson, 4, 240, -10, 10)
-            this.jumpAnim(scene, grandson, 1, 300, -5, 20)
+            if(grandson.x > 280){
+                this.jumpAnim(scene, grandson, 4, 0, -25, -30)
+                this.jumpAnim(scene, grandson, 5, 70, -15, -40)
+                this.jumpAnim(scene, grandson, 6, 150, -10, -20)
+                // var endX = grandson.x
+                this.jumpAnim(scene, grandson, 5, 230, -15, 30)
+                this.jumpAnim(scene, grandson, 4, 300, -10, 40)
+                this.jumpAnim(scene, grandson, 1, 370, -5, 20)
+            }
         } 
         else {
-            this.jumpAnim(scene, grandson, 7, 0, 25, -20)
-            this.jumpAnim(scene, grandson, 8, 60, 15, -10)
-            this.jumpAnim(scene, grandson, 9, 120, 10, -10)
-            this.jumpAnim(scene, grandson, 8, 180, 15, 10)
-            this.jumpAnim(scene, grandson, 7, 240, 10, 10)
-            this.jumpAnim(scene, grandson, 0, 300, 5, 20)
+            if(grandson.x < 680){
+                this.jumpAnim(scene, grandson, 7, 0, 25, -20)
+                this.jumpAnim(scene, grandson, 8, 70, 15, -10)
+                this.jumpAnim(scene, grandson, 9, 150, 10, -10)
+                this.jumpAnim(scene, grandson, 8, 230, 15, 10)
+                this.jumpAnim(scene, grandson, 7, 30, 10, 10)
+                this.jumpAnim(scene, grandson, 0, 370, 5, 20)
+            }
         }
     }
 
@@ -145,6 +149,7 @@ class ShootGunState extends State {
 
         grandson.anims.play(`shootGun-before-${grandson.direction}`).once('animationcomplete', () => {
             this.stateFlag = true
+            console.log('testing')
             // if(grandson.frame.name === 22 || grandson.frame.name === 28){
 
 
@@ -158,7 +163,8 @@ class ShootGunState extends State {
                 factor = 48
             }
 
-            scene.dartCreate(grandson, factor, 10)            
+            scene.dartCreate(grandson, factor, 10)  
+            // maybe wait 3 seconds before shooting another?? bc issues caused by numerous darts shooting          
 
                 // make dart moving function ? or prefab ?
 

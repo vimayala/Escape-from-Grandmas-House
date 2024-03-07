@@ -33,9 +33,9 @@ class Dart extends Phaser.Physics.Arcade.Sprite {
 
     update () {
         this.x += this.speed * this.directionFactor
-        // if(this.x < -this.width || this.x < 0) {
-        //     this.destroy()
-        // }
+        if(this.x > 920 || this.x < 100) {
+            this.destroy()
+        }
     }
 
     // reset() {

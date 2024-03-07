@@ -48,6 +48,7 @@ class Grandma extends Phaser.Physics.Arcade.Sprite {
 class ChasingState extends State {
     enter(scene, grandma) {
         grandma.anims.play(`chasing-${grandma.direction}`)
+        console.log('entered chasing')
     }
 
     execute(scene, grandma) {
@@ -60,7 +61,7 @@ class ChasingState extends State {
 
 
         // move back and forth until borders hit
-        if(grandma.x > 280 && grandma.x < 678){
+        if(grandma.x > 280 || grandma.x < 678){
             grandma.x -= grandma.velocity * directionFactor
         }
         else{
@@ -96,20 +97,23 @@ class ShotState extends State {
     enter(scene, grandma) {
 
         if(grandma.direction === 'left'){
-            this.jumpAnim(scene, grandma, 4, 0, 5, 0)
-            this.jumpAnim(scene, grandma, 5, 175, 4, 0)
-            this.jumpAnim(scene, grandma, 6, 300, 3, 0)
-            this.jumpAnim(scene, grandma, 7, 400, 2, 0)
+            // this.jumpAnim(scene, grandma, 4, 0, 5, 0)
+            // this.jumpAnim(scene, grandma, 5, 175, 4, 0)
+            // this.jumpAnim(scene, grandma, 6, 300, 3, 0)
+            // this.jumpAnim(scene, grandma, 7, 400, 2, 0)
 
+            grandma.anims.play(`shot-${grandma.direction}`)
             scene.time.addEvent({ delay: 525, callback: () => {
                 this.stateMachine.transition('chasing')
             }, callbackScope: this})
         } 
         else {
-            this.jumpAnim(scene, grandma, 8, 0, 5, 0)
-            this.jumpAnim(scene, grandma, 9, 175, 4, 0)
-            this.jumpAnim(scene, grandma, 10, 300, 3, 0)
-            this.jumpAnim(scene, grandma, 11, 400, 2, 0)
+        //     this.jumpAnim(scene, grandma, 8, 0, 5, 0)
+        //     this.jumpAnim(scene, grandma, 9, 175, 4, 0)
+        //     this.jumpAnim(scene, grandma, 10, 300, 3, 0)
+        //     this.jumpAnim(scene, grandma, 11, 400, 2, 0)
+
+            grandma.anims.play(`shot-${grandma.direction}`)
 
             scene.time.addEvent({ delay: 525, callback: () => {
                 this.stateMachine.transition('chasing')
@@ -128,7 +132,7 @@ class ShotState extends State {
         // from RexRainbow Phaser 3 notes
         scene.time.addEvent({
             delay: delay,                // ms
-            callback: () => {console.log(`frame: ${frame}`); grandma.setFrame(frame), grandma.x += x; grandma.y += y},
+            callback: () => {grandma.setFrame(frame), grandma.x += x; grandma.y += y},
             args: [],
             loop: false,
             repeat: 0,
