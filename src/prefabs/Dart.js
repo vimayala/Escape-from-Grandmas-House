@@ -1,6 +1,6 @@
 // structure taken from Prof Nathan Altice's Paddle Parkour, reimplemented to suit my game and needs
 class Dart extends Phaser.Physics.Arcade.Sprite {
-    constructor(scene, x, y, texture, frame, direction) {
+    constructor(scene, x, y, texture, frame, direction, speed) {
         super(scene, x, y, texture, frame, direction)
         scene.add.existing(this)
         // this.texture = 'dart'
@@ -9,6 +9,7 @@ class Dart extends Phaser.Physics.Arcade.Sprite {
         // set up physics sprite
         this.parentScene.add.existing(this)
         this.parentScene.physics.add.existing(this)
+        this.setScale(0.075)
 
         this.speed = speed
         this.directionFactor = 1
@@ -31,7 +32,7 @@ class Dart extends Phaser.Physics.Arcade.Sprite {
     }
 
     update () {
-        // this.x -= this.speed * this.directionFactor
+        this.x += this.speed * this.directionFactor
         // if(this.x < -this.width || this.x < 0) {
         //     this.destroy()
         // }

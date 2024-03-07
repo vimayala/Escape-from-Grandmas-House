@@ -30,10 +30,14 @@ class Play extends Phaser.Scene {
         this.kid.setScale(0.8)
         this.grandma = new Grandma(this, width / 1.65, height / 1.65, "grandma", 0, 'left')
         this.grandma.setScale(0.8)
-        this.grandma.play('kissing')
 
         // this.physics.add.collider(this.p1duck, this.fruitGroup, this.handleFruitCollision, null, this, this.fruitGroup)
         this.physics.add.collider(this.kid, this.grandma, this.handleKidCollision)
+
+
+        this.dartGroup = this.physics.add.group({
+            runChildUpdate: true
+        })
 
 
 
@@ -79,11 +83,10 @@ class Play extends Phaser.Scene {
         // this.p1duck.setVelocity(this.PLAYER_VELOCITY * playerVector.x, this.PLAYER_VELOCITY * playerVector.y)
     }
 
-    dartUpdate(dart, speed, direction){
-        dart.x -= speed * direction
-        if(dart.x < -this.width || this.x < 0) {
-            this.destroy()
-        }
+    dartCreate(grandson, factor, speed){
+        let dart = new Dart(this, grandson.x + factor, grandson.y , 'dart', 0, grandson.direction, speed)
+        // add dart to group
+        this.dartGroup.add(dart)
     }
 
 }

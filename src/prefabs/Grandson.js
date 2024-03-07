@@ -124,7 +124,7 @@ class JumpState extends State {
         // from RexRainbow Phaser 3 notes
         scene.time.addEvent({
             delay: delay,                // ms
-            callback: () => {console.log(`frame: ${frame}`); grandson.setFrame(frame), grandson.x += x; grandson.y += y},
+            callback: () => {grandson.setFrame(frame), grandson.x += x; grandson.y += y},
             args: [],
             loop: false,
             repeat: 0,
@@ -148,27 +148,17 @@ class ShootGunState extends State {
             // if(grandson.frame.name === 22 || grandson.frame.name === 28){
 
 
-                // if left, use one dart spawn eq else use other
+            // if left, use one dart spawn eq else use other
+            // ideally, you would use dart sprite size
+            let factor = 0
+            if(grandson.direction === 'left'){
+                 factor = -48
+            }
+            else{
+                factor = 48
+            }
 
-                /*  Move to prefab */
-                
-
-
-                this.dart = scene.add.sprite(grandson.x/2, grandson.y / 2, 'dart').setScale(0.075)
-                let direction = 1
-                if(grandson.direction === 'left'){
-                    direction *= -1
-                    this.dart.flipX = true
-                }
-                this.dart.x = grandson.y - grandson.width / 2 * direction
-                this.dart.y = grandson.x - grandson.height / 2
-
-                // this.dartMovement(this.dart, direction)
-
-
-
-            // this.dart = new Dart(grandson.x/2, grandson.y / 2, 'dart', 0, grandson.direction)
-
+            scene.dartCreate(grandson, factor, 10)            
 
                 // make dart moving function ? or prefab ?
 

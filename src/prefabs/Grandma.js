@@ -16,8 +16,6 @@ class Grandma extends Phaser.Physics.Arcade.Sprite {
         this.direction = direction 
 
 
-        this.play('chasing')
-
 
 
         this.velocity = 0.5    // in pixels
@@ -64,7 +62,6 @@ class ChasingState extends State {
         // move back and forth until borders hit
         if(grandma.x > 280 && grandma.x < 678){
             grandma.x -= grandma.velocity * directionFactor
-            console.log(grandma.x)
         }
         else{
             // make else change anim and make her
