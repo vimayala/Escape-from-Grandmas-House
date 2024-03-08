@@ -13,6 +13,12 @@ class Keys extends Phaser.Scene {
         // this.load.audio('click', './assets/zapsplat_multimedia_game_sound_childrens_collect_grab_single_norification_ping_soft_001_49806.mp3')
         // this.load.audio('game-over', './assets/zapsplat_multimedia_game_sound_error_lose_thud_negative_001_74526.mp3')
 
+        this.load.audio('toy-gun1', './assets/356906-FGF-GunShot-DryFire-FoamGun4-MediumChamber-SilentThud3-96k.wav')
+        this.load.audio('toy-gun2', './assets/356914-FGF-GunShot-DryFire-FoamGun15-MediumChamber-SpringRecoil5-96k.wav')
+        this.load.audio('ouch', './assets/470444-Mature_Female_Expressing_Pain_Ow_2_55.wav')
+        this.load.audio('jump', './assets/542312-zapsplat-cartoon-spring-boing-jaw-harp-short-60817.wav')
+
+
         this.load.bitmapFont('blockFont', './assets/bigblock.png', './assets/bigblock.xml')
 
         this.load.image('livingroom', './assets/EscapeLivingRoom.png')
@@ -58,7 +64,8 @@ class Keys extends Phaser.Scene {
             LEFT:   KeyCodes.LEFT,
             RIGHT:  KeyCodes.RIGHT,
             SHIFT:  KeyCodes.SHIFT,
-            SPACE: KeyCodes.SPACE
+            SPACE: KeyCodes.SPACE,
+            S: KeyCodes.S
         })
         
         // launch next scene so it will run concurrently with this one

@@ -49,7 +49,7 @@ class Grandma extends Phaser.Physics.Arcade.Sprite {
 
 class ChasingState extends State {
     enter(scene, grandma) {
-        console.log(`Current Direction ChasingState: ${grandma.direction}`)
+        // console.log(`Current Direction ChasingState: ${grandma.direction}`)
 
         // grandma.anims.play(`chasing-left`)
         grandma.anims.play(`chasing-${grandma.direction}`)
@@ -69,11 +69,11 @@ class ChasingState extends State {
 
         // move back and forth until borders hit
         if(grandma.x >= 300 && grandma.x <= 670){
-            console.log(grandma.x)
+            // console.log(grandma.x)
             grandma.x -= grandma.velocity * directionFactor
         }
         else{
-            console.log('else')
+            // console.log('else')
             // console.log(`else: ${grandma.x}`)
 
             // make else change anim and make her
@@ -116,7 +116,7 @@ class ChasingState extends State {
 
 class ShotState extends State {
     enter(scene, grandma) {
-        console.log(`Current Direction ShotState: ${grandma.direction}`)
+        // console.log(`Current Direction ShotState: ${grandma.direction}`)
 
         let directionFactor = 1
         // if(grandma.x > 680 || grandma.x < 285){
@@ -134,6 +134,8 @@ class ShotState extends State {
                 grandma.direction = 'right'
             }
         }
+
+        scene.sound.play('ouch', {volume: 0.2, rate: 1.425})
 
         if(grandma.direction === 'left'){
             this.jumpAnim(scene, grandma, 4, 0, 5 * directionFactor, 0)
@@ -165,11 +167,22 @@ class ShotState extends State {
         }
     }
 
+    /* State changes even if held down >:( */
+
     execute(scene, grandma) {
+
         scene.time.addEvent({ delay: 525, callback: () => {
-            this.stateMachine.transition('chasing')
+
+            const { KEYS } = scene
+            // if(KEYS.SHIFT.isUp){
+            //     console.log('key up')
+                this.stateMachine.transition('chasing')
+            // }
+
+            
             
         }, callbackScope: this})
+        
     }
 
     jumpAnim(scene, grandma, frame, delay, x, y){
