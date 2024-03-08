@@ -69,11 +69,11 @@ class ChasingState extends State {
 
         // move back and forth until borders hit
         if(grandma.x >= 300 && grandma.x <= 670){
-            // console.log(grandma.x)
+            console.log(grandma.x)
             grandma.x -= grandma.velocity * directionFactor
         }
         else{
-            // console.log('else')
+            console.log('else')
             // console.log(`else: ${grandma.x}`)
 
             // make else change anim and make her
@@ -86,7 +86,7 @@ class ChasingState extends State {
             else{
                 grandma.direction = 'right'
                 // grandma.flipX = true
-                directionFactor *= -1
+                // directionFactor *= -1
             }
             grandma.anims.play(`chasing-${grandma.direction}`)
 
@@ -124,8 +124,15 @@ class ShotState extends State {
         // }
 
         if(grandma.changeDirection == true){
-            directionFactor *= -1
+            // directionFactor *= -1
             grandma.changeDirection = false
+            /* Move grandma direction after shot behind to chase */
+            if(grandma.direction === 'right'){
+                grandma.direction = 'left'
+            }
+            else{
+                grandma.direction = 'right'
+            }
         }
 
         if(grandma.direction === 'left'){

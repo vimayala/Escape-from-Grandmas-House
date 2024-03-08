@@ -20,20 +20,22 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
     - [ ] Add space bar for grandson ? double jump/straight jump
     - [ ] Add Sound Effects
 
-    - [ ] Export all art
-
-    - [ ] Change grandma shot anim to react to dart direction (if kid behind, she moves forward...maybe move grandma by dart instead of by grandma direction)
-        - or make a property of the grandma that changes when the grandma gets hit so the prefab can access it
 
     - [ ] Change Street Photo (Less house, more street)
     - [ ] Add Dart Cooldown
-    
+
+    - [ ] Export all art
+
+
+### Fixes
+    - [ ] Change grandma shot anim to react to dart direction (if kid behind, she moves forward...maybe move grandma by dart instead of by grandma direction)
+        - or make a property of the grandma that changes when the grandma gets hit so the prefab can access it
 
 ## March 7
-### 4 hr
+### 5 hr
 Detailed Goals
 - [X] Art: Draw Street Scene
-- [ ] Implement Grandma getting hit and moving in correct direction
+- [X] Code: Implement Grandma getting hit and moving in correct direction
 - [ ] Export Art
 - [ ] End Screen + Anims (maybe with tweens?)
 
