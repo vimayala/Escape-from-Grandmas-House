@@ -49,7 +49,10 @@ class Grandma extends Phaser.Physics.Arcade.Sprite {
 
 class ChasingState extends State {
     enter(scene, grandma) {
-        grandma.anims.play(`chasing-${grandma.direction}`)
+        console.log(`Current Direction ChasingState: ${grandma.direction}`)
+
+
+        grandma.anims.play(`chasing-left`)
     }
 
     execute(scene, grandma) {
@@ -65,25 +68,26 @@ class ChasingState extends State {
 
 
         // move back and forth until borders hit
-        if(grandma.x >= 290 && grandma.x <= 670){
-            console.log(grandma.x)
+        if(grandma.x >= 300 && grandma.x <= 670){
+            // console.log(grandma.x)
             grandma.x -= grandma.velocity * directionFactor
         }
         else{
-            console.log('else')
-            console.log(`else: ${grandma.x}`)
+            // console.log('else')
+            // console.log(`else: ${grandma.x}`)
 
             // make else change anim and make her
             if(grandma.x > 670){
                 grandma.direction = 'left'
                 grandma.flipX = false
-                directionFactor *= -1
+                
             }
             else{
                 grandma.direction = 'right'
                 grandma.flipX = true
+                directionFactor *= -1
             }
-            directionFactor *= -1
+            // directionFactor *= -1
             grandma.x -= grandma.velocity * directionFactor
 
         }
@@ -109,10 +113,12 @@ class ChasingState extends State {
 
 class ShotState extends State {
     enter(scene, grandma) {
+        console.log(`Current Direction ShotState: ${grandma.direction}`)
+
         let directionFactor = 1
-        if(grandma.x > 680 || grandma.x < 285){
-            directionFactor = 0
-        }
+        // if(grandma.x > 680 || grandma.x < 285){
+        //     directionFactor = 0
+        // }
         if(grandma.direction === 'left'){
             this.jumpAnim(scene, grandma, 4, 0, 5 * directionFactor, 0)
             this.jumpAnim(scene, grandma, 5, 175, 4 * directionFactor, 0)
@@ -121,24 +127,24 @@ class ShotState extends State {
 
             // grandma.anims.play(`shot-${grandma.direction}`)
 
-            if(grandma.changeDirection == true){
-                if(grandma.direction === 'right'){
-                    grandma.direction = 'left'
-                }
-                else{
-                    grandma.direction = 'right'
-                }
-            }
+            // if(grandma.changeDirection == true){
+            //     if(grandma.direction === 'right'){
+            //         grandma.direction = 'left'
+            //     }
+            //     else{
+            //         grandma.direction = 'right'
+            //     }
+            // }
 
             scene.time.addEvent({ delay: 525, callback: () => {
                 this.stateMachine.transition('chasing')
             }, callbackScope: this})
         } 
         else {
-            this.jumpAnim(scene, grandma, 8, 0, 5 * directionFactor, 0)
-            this.jumpAnim(scene, grandma, 9, 175, 4 * directionFactor, 0)
-            this.jumpAnim(scene, grandma, 10, 300, 3 * directionFactor, 0)
-            this.jumpAnim(scene, grandma, 11, 400, 2 * directionFactor, 0)
+            this.jumpAnim(scene, grandma, 4, 0, 5 * directionFactor, 0)
+            this.jumpAnim(scene, grandma, 5, 175, 4 * directionFactor, 0)
+            this.jumpAnim(scene, grandma, 6, 300, 3 * directionFactor, 0)
+            this.jumpAnim(scene, grandma, 7, 400, 2 * directionFactor, 0)
 
             // grandma.anims.play(`shot-${grandma.direction}`)
 
