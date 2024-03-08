@@ -1,29 +1,32 @@
 class Grandma extends Phaser.Physics.Arcade.Sprite {
     constructor(scene, x, y, texture, frame, direction) {
-        super(scene, x, y, texture, frame, direction) // call Sprite parent class
-        scene.add.existing(this)                      // add grandson to existing scene
-        scene.physics.add.existing(this)              // add physics body to scene
+        // Add grandma to the scene with physics
+        super(scene, x, y, texture, frame, direction) 
+        scene.add.existing(this)                     
+        scene.physics.add.existing(this)             
+
 
         // this.body.setSize(this.width / 2, this.height / 2)
 
         // this.body.setSize(this.width / 3, this.height / 1.5)
         // this.body.setOffset(this.width/2, this.height/5.25)
+        
+        // Make grandma's collision area a circle ]
+
         this.body.setCircle(this.width / 4)
         this.body.setOffset(this.width/5, this.height/4)
         // this.setImmovable()
 
-
+        // Change grandma to collide with world bounds set in play
         this.body.setCollideWorldBounds(true)
+
+        // Adjust custom grandma properties
         this.direction = direction 
         this.changeDirection = false
-
-
-
-
         this.velocity = 0.5    // in pixels
-        // this.dashCooldown = 300    // in ms
         // this.hurtTimer = 250       // in ms
 
+        // Add grandma's state machine and begin with chasing
         scene.grandmaFSM = new StateMachine('chasing', {
             chasing: new ChasingState(),
             shot: new ShotState(),
@@ -33,33 +36,24 @@ class Grandma extends Phaser.Physics.Arcade.Sprite {
 
     }
 
+    // Grandma update (left out because state machine updates in play)
     update () {
-        // this.x -= this.moveSpeed        // move spaceship left
-        // if(this.x <= 0 - this.width) {
-        //     this.x = game.config.width
-        // }
     }
-
-    reset() {
-        // this.x = game.config.width
-    }
-
     
 }
 
+// Grandma's Chasing State
+// Play the chasing animation decided by direction
+// Change the direction being moved when grandma needs to flip to face other direction
+// If she hits the bounds, then the animation is flipped
+// Else she walks forward normally
+
 class ChasingState extends State {
     enter(scene, grandma) {
-        // console.log(`Current Direction ChasingState: ${grandma.direction}`)
-
-        // grandma.anims.play(`chasing-left`)
         grandma.anims.play(`chasing-${grandma.direction}`)
     }
 
     execute(scene, grandma) {
-        // const { KEYS } = scene
-
-        // console.log('chasing state!')
-        // console.log(grandma.direction)
 
         let directionFactor = 1
         if(grandma.direction === 'right'){
@@ -67,64 +61,37 @@ class ChasingState extends State {
         }
 
 
-        // move back and forth until borders hit
+        // Move back and forth until borders hit
         if(grandma.x >= 300 && grandma.x <= 670){
-            // console.log(grandma.x)
             grandma.x -= grandma.velocity * directionFactor
         }
         else{
-            // console.log('else')
-            // console.log(`else: ${grandma.x}`)
-
-            // make else change anim and make her
             if(grandma.x > 670){
                 grandma.direction = 'left'
-                // grandma.flipX = false
-                // grandma.anims.play(`chasing-${grandma.direction}`)
                 
             }
             else{
                 grandma.direction = 'right'
-                // grandma.flipX = true
-                // directionFactor *= -1
             }
             grandma.anims.play(`chasing-${grandma.direction}`)
-
-            // directionFactor *= -1
             grandma.x -= grandma.velocity * directionFactor
 
         }
-        // if(grandma.x < 280){
-        //     grandma.x = 280
-        //     grandma.flipX = true
-        //     grandma.x -= grandma.velocity * directionFactor
-
-        // }
-
-        // if grandma's x hits 0, change direction
-        // if x < 0, keep it moving
-        // if hits 
-
-
-
 
 
         // if grandma's hand (maybe change hit box) touches grandson, change to kissing state
             // change grandson to struggle state either here or in play...
+
+
+
     }
 }
 
+// Grandma's Shot State
 class ShotState extends State {
     enter(scene, grandma) {
-        // console.log(`Current Direction ShotState: ${grandma.direction}`)
-
         let directionFactor = 1
-        // if(grandma.x > 680 || grandma.x < 285){
-        //     directionFactor = 0
-        // }
-
         if(grandma.changeDirection == true){
-            // directionFactor *= -1
             grandma.changeDirection = false
             if(grandma.direction === 'right'){
                 grandma.direction = 'left'

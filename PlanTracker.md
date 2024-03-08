@@ -16,17 +16,17 @@ Shoot the grandma as much as possible until x points (maybe 50,000, may adjust) 
 Avoid the hearts and kisses while grandma chases you. If you run into one, slow down and get closer to grandma. Or grandma gets closer instead.
 
 ### Need
-    - [ ] Adjust Score Placement
-    - [ ] Add space bar for grandson ? double jump/straight jump
-    - [ ] Add More Sound Effects
 
-
-    - [ ] Change Street Photo (Less house, more street)
     - [ ] Add Dart Cooldown
     - [ ] Jump Over Grandma
-
     - [ ] Export all art
-    - [ ] Interactive Stairs ?
+
+    - [ ] Adjust Score Placement
+    - [ ] Add space bar for grandson ? double jump/straight jump
+
+    - [ ] Add More Sound Effects
+    - [ ] Change Street Photo (Less house, more street)
+    - [ ] Music
 
 
 ### Fixes
@@ -34,6 +34,7 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
         - or make a property of the grandma that changes when the grandma gets hit so the prefab can access it
     - [ ] Overlapping states ... ?
     - [ ] Play Gun Sound w/ hit or launch
+    - [ ] When Jump SFX plays
 
 ## March 7
 ### 6 hr
