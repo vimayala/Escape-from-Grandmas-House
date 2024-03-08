@@ -123,10 +123,10 @@ class ShotState extends State {
         //     directionFactor = 0
         // }
 
-        // if(grandma.changeDirection == true){
-        //     directionFactor *= -1
-        //     grandma.changeDirection = false
-        // }
+        if(grandma.changeDirection == true){
+            directionFactor *= -1
+            grandma.changeDirection = false
+        }
 
         if(grandma.direction === 'left'){
             this.jumpAnim(scene, grandma, 4, 0, 5 * directionFactor, 0)
@@ -145,32 +145,25 @@ class ShotState extends State {
             //     }
             // }
 
-            scene.time.addEvent({ delay: 525, callback: () => {
-                this.stateMachine.transition('chasing')
-                
-            }, callbackScope: this})
         } 
         else {
-            // this.jumpAnim(scene, grandma, 4, 0, 5 * directionFactor, 0)
-            // this.jumpAnim(scene, grandma, 5, 175, 4 * directionFactor, 0)
-            // this.jumpAnim(scene, grandma, 6, 300, 3 * directionFactor, 0)
-            // this.jumpAnim(scene, grandma, 7, 400, 2 * directionFactor, 0)
+
+            directionFactor *= -1
             this.jumpAnim(scene, grandma, 8, 0, 5 * directionFactor, 0)
             this.jumpAnim(scene, grandma, 9, 175, 4 * directionFactor, 0)
             this.jumpAnim(scene, grandma, 10, 300, 3 * directionFactor, 0)
             this.jumpAnim(scene, grandma, 11, 400, 2 * directionFactor, 0)
 
-            // grandma.anims.play(`shot-${grandma.direction}`)
-
-            scene.time.addEvent({ delay: 525, callback: () => {
-                this.stateMachine.transition('chasing')
-                
-            }, callbackScope: this})
+           
         }
     }
 
-    // execute(scene, grandma) {
-    // }
+    execute(scene, grandma) {
+        scene.time.addEvent({ delay: 525, callback: () => {
+            this.stateMachine.transition('chasing')
+            
+        }, callbackScope: this})
+    }
 
     jumpAnim(scene, grandma, frame, delay, x, y){
         // To move in a direction, use positive vs negative as follows
