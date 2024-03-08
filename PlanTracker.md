@@ -18,7 +18,7 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
 ### Need
     - [ ] Adjust Score Placement
     - [ ] Add space bar for grandson ? double jump/straight jump
-    - [ ] Add Sound Effects
+    - [ ] Add More Sound Effects
 
 
     - [ ] Change Street Photo (Less house, more street)
@@ -42,7 +42,7 @@ Detailed Goals
 - [X] Code: Implement Grandma getting hit and moving in correct direction
 - [ ] Export Art
 - [ ] End Screen + Anims (maybe with tweens?)
-- [ ] Sound Effects
+- [X] Sound Effects
 
 ## March 6
 #### 4 hr

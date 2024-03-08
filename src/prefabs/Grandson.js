@@ -72,6 +72,7 @@ class IdleState extends State {
 
 class JumpState extends State {
     enter(scene, grandson) {
+        scene.sound.play('jump', {rate: 1.16})
         // To simulate jump, play frame by frame with delayed called
         if(grandson.direction === 'left'){
             if(grandson.x > 280){

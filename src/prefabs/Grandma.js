@@ -126,7 +126,6 @@ class ShotState extends State {
         if(grandma.changeDirection == true){
             // directionFactor *= -1
             grandma.changeDirection = false
-            /* Move grandma direction after shot behind to chase */
             if(grandma.direction === 'right'){
                 grandma.direction = 'left'
             }
