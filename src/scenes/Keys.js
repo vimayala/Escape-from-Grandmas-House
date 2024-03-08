@@ -16,6 +16,7 @@ class Keys extends Phaser.Scene {
         this.load.bitmapFont('blockFont', './assets/bigblock.png', './assets/bigblock.xml')
 
         this.load.image('livingroom', './assets/EscapeLivingRoom.png')
+        this.load.image('street', './assets/street.png')
         this.load.image('button', './assets/button.png')              // buttons
         this.load.image('up', './assets/up.png')                  
         this.load.image('down', './assets/down.png')

@@ -11,6 +11,9 @@ class Play extends Phaser.Scene {
     }
 
     create() {
+
+        this.physics.world.setBounds(220, 0, 500, game.config.height)
+
         // Get keyboard binding from Keys scene
         this.KEYS = this.scene.get('sceneKeys').KEYS
 
@@ -22,7 +25,8 @@ class Play extends Phaser.Scene {
 
         // Add living room background
         this.livingRoom = this.add.tileSprite(0, 0, 2472, 1746, 'livingroom').setOrigin(0,0).setScale(0.4)
-        
+        // this.street2 = this.add.tileSprite(0, 0, 9888, 1746, 'street').setOrigin(0,0).setScale(0.4)
+
 
 
         // Add Grandma and Grandson from prefabs
@@ -93,16 +97,25 @@ class Play extends Phaser.Scene {
         // destroy/drop dart 
         // increase points
         // if facing same direction, change grandma's direction
-        if(grandma.direction != dart.direction){
+        if(grandma.direction == dart.direction){
            if(grandma.direction === 'left'){
             this.grandma.direction = 'right'
+            this.grandma.changeDirection = true
+            this.grandmaFSM.transition('shot')
            }
            else{
             this.grandma.direction = 'left'
+            this.grandma.changeDirection = true
+            this.grandmaFSM.transition('shot')
            }
         }
+        else{
+            this.grandmaFSM.transition('shot')
+        }
         // console.log(this.grandma.direction)
-        this.grandmaFSM.transition('shot')
+        // this.grandmaFSM.transition('shot')
+
+
         dart.destroy()
     }
 

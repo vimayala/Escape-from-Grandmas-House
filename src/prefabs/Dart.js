@@ -11,6 +11,9 @@ class Dart extends Phaser.Physics.Arcade.Sprite {
         this.parentScene.physics.add.existing(this)
         this.setScale(0.075)
 
+        this.body.setImmovable()
+
+
         this.speed = speed
         this.directionFactor = 1
         
