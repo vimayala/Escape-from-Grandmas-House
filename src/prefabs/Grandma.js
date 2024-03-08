@@ -51,8 +51,8 @@ class ChasingState extends State {
     enter(scene, grandma) {
         console.log(`Current Direction ChasingState: ${grandma.direction}`)
 
-
-        grandma.anims.play(`chasing-left`)
+        // grandma.anims.play(`chasing-left`)
+        grandma.anims.play(`chasing-${grandma.direction}`)
     }
 
     execute(scene, grandma) {
@@ -79,14 +79,17 @@ class ChasingState extends State {
             // make else change anim and make her
             if(grandma.x > 670){
                 grandma.direction = 'left'
-                grandma.flipX = false
+                // grandma.flipX = false
+                // grandma.anims.play(`chasing-${grandma.direction}`)
                 
             }
             else{
                 grandma.direction = 'right'
-                grandma.flipX = true
+                // grandma.flipX = true
                 directionFactor *= -1
             }
+            grandma.anims.play(`chasing-${grandma.direction}`)
+
             // directionFactor *= -1
             grandma.x -= grandma.velocity * directionFactor
 
@@ -141,10 +144,14 @@ class ShotState extends State {
             }, callbackScope: this})
         } 
         else {
-            this.jumpAnim(scene, grandma, 4, 0, 5 * directionFactor, 0)
-            this.jumpAnim(scene, grandma, 5, 175, 4 * directionFactor, 0)
-            this.jumpAnim(scene, grandma, 6, 300, 3 * directionFactor, 0)
-            this.jumpAnim(scene, grandma, 7, 400, 2 * directionFactor, 0)
+            // this.jumpAnim(scene, grandma, 4, 0, 5 * directionFactor, 0)
+            // this.jumpAnim(scene, grandma, 5, 175, 4 * directionFactor, 0)
+            // this.jumpAnim(scene, grandma, 6, 300, 3 * directionFactor, 0)
+            // this.jumpAnim(scene, grandma, 7, 400, 2 * directionFactor, 0)
+            this.jumpAnim(scene, grandma, 8, 0, 5 * directionFactor, 0)
+            this.jumpAnim(scene, grandma, 9, 175, 4 * directionFactor, 0)
+            this.jumpAnim(scene, grandma, 10, 300, 3 * directionFactor, 0)
+            this.jumpAnim(scene, grandma, 11, 400, 2 * directionFactor, 0)
 
             // grandma.anims.play(`shot-${grandma.direction}`)
 
