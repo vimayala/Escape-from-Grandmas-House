@@ -169,7 +169,7 @@ class Menu extends Phaser.Scene {
         this.anims.create({
             key: 'kissed-left',
             frameRate: 6,
-            repeat: -1,
+            repeat: 0,
             frames: this.anims.generateFrameNumbers('grandson', {
                 start: 12,
                 end: 14
@@ -179,7 +179,7 @@ class Menu extends Phaser.Scene {
         this.anims.create({
             key: 'kissed-right',
             frameRate: 6,
-            repeat: -1,
+            repeat: 0,
             frames: this.anims.generateFrameNumbers('grandson', {
                 start: 15,
                 end: 17
@@ -345,15 +345,13 @@ class Menu extends Phaser.Scene {
     }
 
     playMenu(){
-        // this.menu.play("startup").once('animationcomplete', () => {
-            this.menu.play("menuSet").once('animationcomplete', () => {
+        this.menu.play("menuSet").once('animationcomplete', () => {
+            this.menu.play("menu").once('animationcomplete', () => {
                 this.menu.play("menu").once('animationcomplete', () => {
-                    this.menu.play("menu").once('animationcomplete', () => {
-                        this.playMenu()
-                     })
-                 })
-             })
-        // })
+                    this.playMenu()
+                    })
+                })
+            })
     }
 
 }

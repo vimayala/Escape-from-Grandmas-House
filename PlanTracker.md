@@ -22,12 +22,18 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
     - [ ] Export all art
 
     - [ ] Adjust Score Placement
+    - [ ] Implement points
+        - [ ] Score tween
+        - [ ] Sound effect
     - [ ] Add space bar for grandson ? double jump/straight jump
+    - [ ] Add text to title screen for directions
 
     - [ ] Add More Sound Effects
     - [ ] Change Street Photo (Less house, more street)
     - [ ] Music
 
+    - [ ] End Screen + Anims (maybe with tweens?)
+    - [ ] Move jumpAnim to global scope ?
 
 ### Fixes
     - [ ] Change grandma shot anim to react to dart direction (if kid behind, she moves forward...maybe move grandma by dart instead of by grandma direction)
@@ -35,14 +41,22 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
     - [ ] Overlapping states ... ?
     - [ ] Play Gun Sound w/ hit or launch
     - [ ] When Jump SFX plays
+    - [ ] Add more flags ? like kissing states ??
+    - [ ] Make grandson change direction function and direction facotr (being reused a lot)
+
+## March 8
+### Goals
+- [X] Code: Add Comments
+- [X] Code: Add Grandma/Grandson Collision (temp print message)
+- [ ] Code: Change Grandson jump distance
+- [ ] Code: Add Grandson Dart Cooldown
+- [ ]
+
 
 ## March 7
 ### 6 hr
-Detailed Goals
 - [X] Art: Draw Street Scene
 - [X] Code: Implement Grandma getting hit and moving in correct direction
-- [ ] Export Art
-- [ ] End Screen + Anims (maybe with tweens?)
 - [X] Sound Effects
 
 ## March 6
