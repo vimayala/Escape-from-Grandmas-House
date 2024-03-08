@@ -15,6 +15,7 @@ class Dart extends Phaser.Physics.Arcade.Sprite {
 
 
         this.speed = speed
+        this.direction = direction
         this.directionFactor = 1
         
         if(direction === 'left'){

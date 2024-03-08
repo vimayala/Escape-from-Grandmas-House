@@ -69,7 +69,7 @@ class Play extends Phaser.Scene {
         // this.kid.update()
         this.grandsonFSM.step()
         this.grandmaFSM.step()
-        // console.log(this.grandmaFSM.state)
+        console.log(this.grandmaFSM.state)
 
         // let playerVector = new Phaser.Math.Vector2(0, 0)
         // if(this.p1duck.y >= 135){
@@ -97,22 +97,28 @@ class Play extends Phaser.Scene {
         // destroy/drop dart 
         // increase points
         // if facing same direction, change grandma's direction
-        // if(grandma.direction == dart.direction){
-        //    if(grandma.direction === 'left'){
-        //     this.grandma.direction = 'right'
-        //     this.grandma.changeDirection = true
-        //     this.grandmaFSM.transition('shot')
-        //    }
-        //    else{
-        //     this.grandma.direction = 'left'
-        //     this.grandma.changeDirection = true
-        //     this.grandmaFSM.transition('shot')
-        //    }
-        // }
-        // else{
-            console.log(`Current Direction DGC: ${grandma.direction}`)
+        if(grandma.direction == dart.direction){
+           if(grandma.direction === 'left'){
+            // this.grandma.direction = 'right'
+            this.grandma.changeDirection = true
             this.grandmaFSM.transition('shot')
-        // }
+           }
+           else{
+            // this.grandma.direction = 'left'
+            this.grandma.changeDirection = true
+            this.grandmaFSM.transition('shot')
+           }
+           console.log('change direction true')
+        }
+        else{
+            // console.log(`Current Direction DGC: ${grandma.direction}`)
+            console.log(' not true >:( ')
+            console.log(` directions:`)
+            console.log(` grndma: ${grandma.direction}`)
+            console.log(` dart: ${dart.direction}`)
+
+            this.grandmaFSM.transition('shot')
+        }
         // console.log(this.grandma.direction)
         // this.grandmaFSM.transition('shot')
 
