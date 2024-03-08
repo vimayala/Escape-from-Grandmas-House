@@ -123,12 +123,12 @@ class ShotState extends State {
         //     directionFactor = 0
         // }
         if(grandma.direction === 'left'){
-            this.jumpAnim(scene, grandma, 4, 0, 5 * directionFactor, 0)
-            this.jumpAnim(scene, grandma, 5, 175, 4 * directionFactor, 0)
-            this.jumpAnim(scene, grandma, 6, 300, 3 * directionFactor, 0)
-            this.jumpAnim(scene, grandma, 7, 400, 2 * directionFactor, 0)
+            // this.jumpAnim(scene, grandma, 4, 0, 5 * directionFactor, 0)
+            // this.jumpAnim(scene, grandma, 5, 175, 4 * directionFactor, 0)
+            // this.jumpAnim(scene, grandma, 6, 300, 3 * directionFactor, 0)
+            // this.jumpAnim(scene, grandma, 7, 400, 2 * directionFactor, 0)
 
-            // grandma.anims.play(`shot-${grandma.direction}`)
+            grandma.anims.play(`shot-${grandma.direction}`)
 
             // if(grandma.changeDirection == true){
             //     if(grandma.direction === 'right'){
@@ -139,8 +139,9 @@ class ShotState extends State {
             //     }
             // }
 
-            scene.time.addEvent({ delay: 525, callback: () => {
+            scene.time.addEvent({ delay: 525, callback: () => { if(grandma.frame.name === 7){
                 this.stateMachine.transition('chasing')
+                }
             }, callbackScope: this})
         } 
         else {
