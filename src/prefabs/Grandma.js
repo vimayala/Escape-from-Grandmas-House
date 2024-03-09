@@ -6,10 +6,16 @@ class Grandma extends Phaser.Physics.Arcade.Sprite {
         scene.physics.add.existing(this)             
 
         
-        // Make grandma's collision area a circle 
+        // Edit grandma's collision
 
-        this.body.setCircle(this.width / 4)
-        this.body.setOffset(this.width/5, this.height/4)
+        // this.body.setCircle(this.width / 4)
+        // this.body.setOffset(this.width/5, this.height/4)
+
+
+
+        this.body.setSize(this.width / 2, this.height / 1.75)
+        this.body.setOffset(this.width / 4, this.height / 3.5)
+
         // this.setImmovable()
 
         // Change grandma to collide with world bounds set in play

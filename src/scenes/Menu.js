@@ -4,8 +4,7 @@ class Menu extends Phaser.Scene {
     }
 
     create() {
-
-        // grab keyboard binding from Keys scene
+        // Get keyboard binding from Keys scene
         this.KEYS = this.scene.get('sceneKeys').KEYS
 
         // Menu Animations
@@ -137,10 +136,6 @@ class Menu extends Phaser.Scene {
             key: 'jumping-left',
             frameRate: 7,
             repeat: 0,
-            // frames: this.anims.generateFrameNumbers('grandson', {
-            //     start: 4,
-            //     end: 6
-            // })
             frames: this.anims.generateFrameNumbers('grandson', {
                 frames: [4, 5, 6, 5, 4, 0]
             })
@@ -279,25 +274,8 @@ class Menu extends Phaser.Scene {
         }
 
 
-        // this.begin.setInteractive({
-        //     useHandCursor: true
-        // })
-        // this.controls.setInteractive({
-        //     useHandCursor: true
-        // })
-        // this.credits.setInteractive({
-        //     useHandCursor: true
-        // })
 
-        // keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT)
-        // keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT)
-        // keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE)
-
-        
-
-        // this.menu.play('startup')
-
-        this.playMenu()
+        // this.playMenu()
         this.menu.play("startup").once('animationcomplete', () => {
             this.playMenu()
         })

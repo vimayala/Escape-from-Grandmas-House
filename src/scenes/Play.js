@@ -102,13 +102,14 @@ class Play extends Phaser.Scene {
         //         grandson.x -= 50
 
         // if(this.collisionFlag == false){
+        //     grandson.y -= 50
         //     this.collisionFlag = true
         //     this.grandsonFSM.transition('kissed')
         //     this.grandmaFSM.transition('kissing')
         //     /* Play end screen */
         // }
 
-        // console.log('DEATH)
+        console.log('DEATH')
 
     }
 

@@ -67,22 +67,39 @@ class JumpState extends State {
 
         if(grandson.direction === 'left'){
             if(grandson.x > 280){
-                this.jumpAnim(scene, grandson, 4, 0, -25, -30)
-                this.jumpAnim(scene, grandson, 5, 70, -15, -40)
-                this.jumpAnim(scene, grandson, 6, 150, -10, -20)
-                this.jumpAnim(scene, grandson, 5, 230, -15, 30)
-                this.jumpAnim(scene, grandson, 4, 300, -10, 40)
-                this.jumpAnim(scene, grandson, 1, 370, -5, 20)
+                // this.jumpAnim(scene, grandson, 4, 0, -25, -30)
+                // this.jumpAnim(scene, grandson, 5, 70, -15, -40)
+                // this.jumpAnim(scene, grandson, 6, 150, -10, -20)
+                // this.jumpAnim(scene, grandson, 5, 230, -15, 30)
+                // this.jumpAnim(scene, grandson, 4, 300, -10, 40)
+                // this.jumpAnim(scene, grandson, 1, 370, -5, 20)
+                
+                // // testing changing jump values
+                this.jumpAnim(scene, grandson, 4,   0,    -45,  -80)
+                this.jumpAnim(scene, grandson, 5,   70,   -15,  -100)
+                this.jumpAnim(scene, grandson, 6,   150,  -10,  -80)
+                this.jumpAnim(scene, grandson, 5,   230,  -20,  80)
+                this.jumpAnim(scene, grandson, 4,   300,  -40,  100)
+                this.jumpAnim(scene, grandson, 1,   370,  -5,   80)     
+
             }
         } 
         else {
             if(grandson.x < 680){
-                this.jumpAnim(scene, grandson, 7, 0, 25, -20)
-                this.jumpAnim(scene, grandson, 8, 70, 15, -10)
-                this.jumpAnim(scene, grandson, 9, 150, 10, -10)
-                this.jumpAnim(scene, grandson, 8, 230, 15, 10)
-                this.jumpAnim(scene, grandson, 7, 30, 10, 10)
-                this.jumpAnim(scene, grandson, 0, 370, 5, 20)
+                // this.jumpAnim(scene, grandson, 7, 0, 25, -20)
+                // this.jumpAnim(scene, grandson, 8, 70, 15, -10)
+                // this.jumpAnim(scene, grandson, 9, 150, 10, -10)
+                // this.jumpAnim(scene, grandson, 8, 230, 15, 10)
+                // this.jumpAnim(scene, grandson, 7, 30, 10, 10)
+                // this.jumpAnim(scene, grandson, 0, 370, 5, 20)
+
+
+                this.jumpAnim(scene, grandson, 7, 0,    45,  -80)
+                this.jumpAnim(scene, grandson, 8, 70,   15,  -100)
+                this.jumpAnim(scene, grandson, 9, 150,  10,  -80)
+                this.jumpAnim(scene, grandson, 8, 230,  20,  80)
+                this.jumpAnim(scene, grandson, 7, 300,  40,  100)
+                this.jumpAnim(scene, grandson, 0, 370,  5,   80)
             }
         }
     }
@@ -200,10 +217,10 @@ class ShootGunState extends State {
 class KissedState extends State {
     enter(scene, grandson){
         // swap directions
-        grandson.anims.play(`kissed-${grandson.direction}`).once('animationcomplete', () => {
-            grandson.anims.play(`kissed-${grandson.direction}`).once('animationcomplete', () => {
-                grandson.anims.play(`kissed-${grandson.direction}`).once('animationcomplete', () => {
-                    grandson.anims.play(`kissed-${grandson.direction}`).once('animationcomplete', () => {
+        grandson.anims.play(`kissed-right`).once('animationcomplete', () => {
+            grandson.anims.play(`kissed-left`).once('animationcomplete', () => {
+                grandson.anims.play(`kissed-right`).once('animationcomplete', () => {
+                    grandson.anims.play(`kissed-left`).once('animationcomplete', () => {
                         // end game
                     })
                 })
