@@ -14,8 +14,12 @@ let config = {
     physics: {
         default: 'arcade',
         arcade: {
-            debug: true
+            debug: false
         }
+    },
+    scale: {
+        mode: Phaser.Scale.FIT,
+        autoCenter: Phaser.Scale.CENTER_BOTH,
     },
     scene : [ Keys, Menu, Play, Street, Controls, GameOver, Credits ]
 }
