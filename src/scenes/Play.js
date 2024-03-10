@@ -6,6 +6,7 @@ class Play extends Phaser.Scene {
     init() {
         // Initializing Variables
         this.shootCount = 0
+        this.allowSuperJump = false
     }
 
     create() {
@@ -44,9 +45,21 @@ class Play extends Phaser.Scene {
         /*  Fix Score Position */
 
         // Add player score
-        this.playerScore = 0
+        playerScore = 0
         this.scoreDisplay = this.add.bitmapText(game.config.width / 1.4, borderUISize + borderPadding * 2 + 5 , 'blockFont',`0`, 72).setOrigin(0.5)
 
+        // Taken from phaserjs GitHub Counter Tween Example
+        this.updateTween = this.tweens.addCounter({
+            from: oldScore,
+            to: playerScore,
+            duration: 1000,
+            ease: 'linear',
+            onUpdate: tween =>
+            {
+                const value = Math.round(tween.getValue())
+                this.scoreDisplay.setText(`${value}`)
+            }
+        })
     }
 
     update() {
@@ -63,6 +76,38 @@ class Play extends Phaser.Scene {
         if(KEYS.S.isDown){
             this.scene.start('streetScene')
         }
+
+        if(playerScore >= 50000){
+            this.scene.start('streetScene')
+        }
+    }
+
+    // Taken from phaserjs GitHub Counter Tween Example
+    updateScore() {
+        oldScore = playerScore;
+        playerScore += 1000;
+
+        if (this.updateTween.isPlaying())
+        {
+            //  The tween is already running, so we'll update the end value with resetting it
+            this.updateTween.updateTo('value', playerScore)
+        }
+        else
+        {
+            //  The tween has finished, so create a new one
+            this.updateTween = this.tweens.addCounter({
+                from: oldScore,
+                to: playerScore,
+                duration: 1000,
+                ease: 'linear',
+                onUpdate: tween =>
+                {
+                    const value = Math.round(tween.getValue())
+                    this.scoreDisplay.setText(`${value}`)
+                }
+            })
+        }
+
     }
 
     dartCreate(grandson, factor, speed){
@@ -77,8 +122,12 @@ class Play extends Phaser.Scene {
     // Destroy the dart 
     dartGrandmaCollision(grandma, dart){
         this.sound.play('toy-gun1')
-        this.playerScore += 1000
-        this.scoreDisplay.text = this.playerScore
+        // this.updateTween.updateTo('value', playerScore)
+        // this.scoreDisplay.text = playerScore
+
+
+        this.updateScore()
+    
 
         if(grandma.direction == dart.direction){
            if(grandma.direction === 'left'){
@@ -96,6 +145,10 @@ class Play extends Phaser.Scene {
         }
 
         dart.destroy()
+        this.shootCount += 1
+        if(this.shootCount >= 3){
+            this.allowSuperJump = true
+        }
     }
 
     // If grandma and grandson collide, end the game
@@ -103,12 +156,12 @@ class Play extends Phaser.Scene {
     handleKidCollision(grandson, grandma){
         //         grandson.x -= 50
 
-        // if(this.collisionFlag == false && this.grandsonFSM.state != 'superJump'){
-        //     grandson.y -= 40
-        //     this.collisionFlag = true
-        //     this.grandsonFSM.transition('kissed')
-        //     this.grandmaFSM.transition('kissing')
-        // }
+        if(this.collisionFlag == false && this.grandsonFSM.state != 'superJump'){
+            grandson.y -= 40
+            this.collisionFlag = true
+            this.grandsonFSM.transition('kissed')
+            this.grandmaFSM.transition('kissing')
+        }
 
         console.log('DEATH')
 

@@ -46,5 +46,6 @@ let borderUISize = game.config.height / 15
 let borderPadding = borderUISize / 3
 
 var playerScore = 0
+var oldScore = 0
 
 let { height, width } = game.config

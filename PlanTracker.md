@@ -20,7 +20,6 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
     - [ ] Add scene change for credit and controls
 
 ## Play.js
-    - [ ] Adjust Score Placement
     - [ ] Implement points
         - [ ] Score tween
         - [ ] Sound effect
@@ -37,6 +36,7 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
 
 ## GameOver.js
     - [ ] End Screen + Anims (maybe with tweens?)
+    - [ ] Allow restarting
 
 ## Other
     - [ ] Export all art
@@ -45,11 +45,22 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
     - [ ] Add scared sprites in both directions
     - [ ] Move jumpAnim to global scope ?
 
+## If time allows
+    - [ ] Add more animation to menu
+    - [ ] Warning/tint when you're gonna be captured
+    - [ ] Add another level (probably not by due date :/)
+
 ### Fixes
     - [ ] Overlapping states ... ?
     - [ ] When Jump SFX + Dart SFX plays
     - [ ] Add more flags ? like kissing states ??
     - [ ] Make grandson change direction function and direction factor (being reused a lot)
+
+
+## March 10
+### 30 min
+- [X] Code: Fixed super jump state
+
 
 ## March 9
 ### 3 hr

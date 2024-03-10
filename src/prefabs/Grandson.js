@@ -55,7 +55,11 @@ class IdleState extends State {
             this.stateMachine.transition('shoot')
             return
         }
-        
+        /* Temp for testing */
+        // if(KEYS.SPACE.isDown && scene.allowSuperJump == true && (grandson.frame.name === 0 || grandson.frame.name === 1)) {
+        //     this.stateMachine.transition('superJump')
+        //     return
+        // }
     }
 }
 
@@ -112,7 +116,7 @@ class JumpState extends State {
             return
         }
 
-        if(KEYS.SPACE.isDown &&  (grandson.frame.name === 0 || grandson.frame.name === 1)) {
+        if(KEYS.SPACE.isDown && scene.allowSuperJump == true && (grandson.frame.name === 0 || grandson.frame.name === 1)) {
             this.stateMachine.transition('superJump')
             return
         }
@@ -141,27 +145,29 @@ class JumpState extends State {
 class SuperJumpState extends State {
     // To simulate jump, play frame by frame with delayed called
     enter(scene, grandson) {
+        console.log('superJump')
 
         scene.sound.play('jump', {rate: 1.16})
+        console.log(grandson.direction)
 
         if(grandson.direction === 'left'){
             if(grandson.x > 280){
-                this.jumpAnim(scene, grandson, 4, 0, -35, -30)
-                this.jumpAnim(scene, grandson, 5, 70, -25, -40)
-                this.jumpAnim(scene, grandson, 6, 150, -20, -20)
-                this.jumpAnim(scene, grandson, 5, 230, -25, 30)
-                this.jumpAnim(scene, grandson, 4, 300, -20, 40)
-                this.jumpAnim(scene, grandson, 1, 370, -15, 20)
+                this.jumpAnim(scene, grandson, 4, 0, -55, -30)
+                this.jumpAnim(scene, grandson, 5, 70, -45, -40)
+                this.jumpAnim(scene, grandson, 6, 150, -40, -20)
+                this.jumpAnim(scene, grandson, 5, 230, -45, 30)
+                this.jumpAnim(scene, grandson, 4, 300, -40, 40)
+                this.jumpAnim(scene, grandson, 1, 370, -25, 20) 
             }
         } 
         else {
             if(grandson.x < 680){
-                this.jumpAnim(scene, grandson, 7, 0, 25, -20)
-                this.jumpAnim(scene, grandson, 8, 70, 15, -10)
-                this.jumpAnim(scene, grandson, 9, 150, 10, -10)
-                this.jumpAnim(scene, grandson, 8, 230, 15, 10)
-                this.jumpAnim(scene, grandson, 7, 30, 10, 10)
-                this.jumpAnim(scene, grandson, 0, 370, 5, 20)
+                this.jumpAnim(scene, grandson, 7, 0, 55, -30)
+                this.jumpAnim(scene, grandson, 8, 70, 45, -40)
+                this.jumpAnim(scene, grandson, 9, 150, 40, -20)
+                this.jumpAnim(scene, grandson, 8, 230, 45, 30)
+                this.jumpAnim(scene, grandson, 7, 300, 40, 40)
+                this.jumpAnim(scene, grandson, 0, 370, 25, 20) 
             }
         }
     }
@@ -173,24 +179,22 @@ class SuperJumpState extends State {
 
         // jump if pressing left or right
         if(KEYS.LEFT.isDown && (grandson.frame.name === 0 || grandson.frame.name === 1)) {
+            scene.allowSuperJump = false
             grandson.direction = 'left'
             this.stateMachine.transition('jump')
             return
         }
 
         if(KEYS.RIGHT.isDown && (grandson.frame.name === 0 || grandson.frame.name === 1)) {
+            scene.allowSuperJump = false
             grandson.direction = 'right'
             this.stateMachine.transition('jump')
             return
         }
 
         if(KEYS.SHIFT.isDown &&  (grandson.frame.name === 0 || grandson.frame.name === 1)) {
+            scene.allowSuperJump = false
             this.stateMachine.transition('shoot')
-            return
-        }
-
-        if(KEYS.SPACE.isDown &&  (grandson.frame.name === 0 || grandson.frame.name === 1)) {
-            this.stateMachine.transition('superJump')
             return
         }
     }
@@ -276,6 +280,11 @@ class ShootGunState extends State {
 
         if(KEYS.SHIFT.isDown) {
             this.stateMachine.transition('shoot')
+            return
+        }
+
+        if(KEYS.SPACE.isDown && scene.allowSuperJump == true) {
+            this.stateMachine.transition('superJump')
             return
         }
     }
