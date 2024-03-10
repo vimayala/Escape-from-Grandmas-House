@@ -60,11 +60,11 @@ class ChasingState extends State {
             directionFactor *= -1
         }
 
-        if(grandma.x >= 300 && grandma.x <= 670){
+        if(grandma.x >= 260 && grandma.x <= 720){
             grandma.x -= grandma.velocity * directionFactor
         }
         else{
-            if(grandma.x > 670){
+            if(grandma.x > 720){
                 grandma.direction = 'left'
                 
             }
@@ -75,13 +75,6 @@ class ChasingState extends State {
             grandma.x -= grandma.velocity * directionFactor
 
         }
-
-
-        // if grandma's hand (maybe change hit box) touches grandson, change to kissing state
-            // change grandson to struggle state either here or in play...
-
-
-
     }
 }
 

@@ -16,41 +16,49 @@ Shoot the grandma as much as possible until x points (maybe 50,000, may adjust) 
 Avoid the hearts and kisses while grandma chases you. If you run into one, slow down and get closer to grandma. Or grandma gets closer instead.
 
 ### Need
+## Menu.js
+    - [ ] Add text to title screen for directions
+    - [ ] Add controls for credit and controls
+
+## Play.js
+    - [ ] Adjust Score Placement
+    - [ ] Implement points
+        - [ ] Score tween
+        - [ ] Sound effect
+    - [ ] Heart and Skull Particles or Anim (or both)
 
     - [ ] Either: 
         - Get on other side:             
             - super space
             - or space to dash past
+    - [ ] Change grandma velocity as points increase
 
-
-    - [ ] Export all art
-
-    - [ ] Adjust Score Placement
-    - [ ] Implement points
-        - [ ] Score tween
-        - [ ] Sound effect
-    - [ ] Add space bar for grandson ? double jump/straight jump
-    - [ ] Add text to title screen for directions
-
-    - [ ] Add More Sound Effects
+## Street.js
     - [ ] Change Street Photo (Less house, more street)
-    - [ ] Music
 
+## GameOver.js
     - [ ] End Screen + Anims (maybe with tweens?)
+
+## Other
+    - [ ] Export all art
+    - [ ] Add More Sound Effects
+    - [ ] Music
+    - [ ] Add scared sprites in both directions
     - [ ] Move jumpAnim to global scope ?
 
         
 
 ### Fixes
     - [ ] Overlapping states ... ?
-    - [ ] Play Gun Sound w/ hit or launch
     - [ ] When Jump SFX plays
     - [ ] Add more flags ? like kissing states ??
     - [ ] Make grandson change direction function and direction factor (being reused a lot)
 
 ## March 9
-### 30 min
-- [ ] 
+### 2 hr
+- [ ] Code: Added super jump state, still testing
+- [ ] Code: Edits to Grandma and Grandson
+- [ ] Scene: Started End Screen
 
 
 ## March 8

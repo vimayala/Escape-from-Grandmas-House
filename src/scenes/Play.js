@@ -11,7 +11,7 @@ class Play extends Phaser.Scene {
     create() {
 
         // Set custom world bounds to for living room floor
-        this.physics.world.setBounds(220, 0, 550, game.config.height)
+        this.physics.world.setBounds(125, 0, 700, game.config.height)
 
         // Get keyboard binding from Keys scene
         this.KEYS = this.scene.get('sceneKeys').KEYS
@@ -20,9 +20,9 @@ class Play extends Phaser.Scene {
         this.livingRoom = this.add.tileSprite(0, 0, 2472, 1746, 'livingroom').setOrigin(0,0).setScale(0.4)
 
         // Add Grandma and Grandson from prefabs
-        this.kid = new Grandson(this, width / 2.25, height / 1.525, "grandson", 0, 'right')
+        this.kid = new Grandson(this, width / 2.25, height / 1.525 + 20, "grandson", 0, 'right')
         this.kid.setScale(0.8)
-        this.grandma = new Grandma(this, width / 1.65, height / 1.6, "grandma", 0, 'left')
+        this.grandma = new Grandma(this, width / 1.65, height / 1.6 + 20, "grandma", 0, 'left')
         this.grandma.setScale(0.8)
 
         // Create a dart group to run updates for each prefab item created
@@ -106,13 +106,12 @@ class Play extends Phaser.Scene {
     handleKidCollision(grandson, grandma){
         //         grandson.x -= 50
 
-        // if(this.collisionFlag == false && this.shootCount < 3){
-        //     grandson.y -= 40
-        //     this.collisionFlag = true
-        //     this.grandsonFSM.transition('kissed')
-        //     this.grandmaFSM.transition('kissing')
-        //     /* Play end screen */
-        // }
+        if(this.collisionFlag == false && this.grandsonFSM.state != 'superJump'){
+            grandson.y -= 40
+            this.collisionFlag = true
+            this.grandsonFSM.transition('kissed')
+            this.grandmaFSM.transition('kissing')
+        }
 
         console.log('DEATH')
 

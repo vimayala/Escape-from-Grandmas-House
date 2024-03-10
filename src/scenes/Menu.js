@@ -4,6 +4,7 @@ class Menu extends Phaser.Scene {
     }
 
     create() {
+
         // Get keyboard binding from Keys scene
         this.KEYS = this.scene.get('sceneKeys').KEYS
 
@@ -135,18 +136,18 @@ class Menu extends Phaser.Scene {
         this.anims.create({
             key: 'jumping-left',
             frameRate: 7,
-            repeat: 0,
+            repeat: -1,
             frames: this.anims.generateFrameNumbers('grandson', {
-                frames: [4, 5, 6, 5, 4, 0]
+                frames: [4, 5, 6, 5, 4]
             })
         })
 
         this.anims.create({
             key: 'jumping-right',
             frameRate: 7,
-            repeat: 0,
+            repeat: -1,
             frames: this.anims.generateFrameNumbers('grandson', {
-                frames: [7, 8, 9, 8, 7, 1]
+                frames: [7, 8, 9, 8, 7]
 
             })
         })
@@ -275,9 +276,15 @@ class Menu extends Phaser.Scene {
 
 
 
-        // this.playMenu()
+        /* Temp - make blink */
+        this.beginText = this.add.bitmapText(game.config.width / 2, game.config.height / 1.1325 , 'pinkBlocko',`[ Space ] - Play`, 48).setOrigin(0.5)
+        this.controlText = this.add.bitmapText(game.config.width / 2, game.config.height / 1.075 , 'pinkBlocko',`[ Shift ] -  Controls`, 32).setOrigin(0.5)
+        this.creditText = this.add.bitmapText(game.config.width / 2, game.config.height / 1.0325 , 'pinkBlocko',`[ F ]     -   Credits`, 32).setOrigin(0.5)
+
         this.menu.play("startup").once('animationcomplete', () => {
+
             this.playMenu()
+
         })
 
 

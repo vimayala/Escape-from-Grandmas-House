@@ -19,9 +19,13 @@ class Keys extends Phaser.Scene {
         this.load.audio('jump', './assets/542312-zapsplat-cartoon-spring-boing-jaw-harp-short-60817.wav')
 
 
-        this.load.bitmapFont('blockFont', './assets/bigblock.png', './assets/bigblock.xml')
+        this.load.bitmapFont('blockFont', './assets/bigblocks.png', './assets/bigblocks.xml')
+        this.load.bitmapFont('blocko', './assets/blocko.png', './assets/blocko.xml')
+        this.load.bitmapFont('pinkBlocko', './assets/pinkblocko.png', './assets/pinkblocko.xml')
+
 
         this.load.image('livingroom', './assets/EscapeLivingRoom.png')
+        this.load.image('purple', './assets/purple.png')
         this.load.image('street', './assets/street.png')
         this.load.image('button', './assets/button.png')              // buttons
         this.load.image('up', './assets/up.png')                  

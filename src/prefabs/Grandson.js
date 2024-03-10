@@ -64,43 +64,27 @@ class JumpState extends State {
     // To simulate jump, play frame by frame with delayed called
     enter(scene, grandson) {
 
-        scene.sound.play('jump', {rate: 1.16})
 
         if(grandson.direction === 'left'){
-            if(grandson.x > 280){
+            if(grandson.x > 200){
+                scene.sound.play('jump', {rate: 1.16})
                 this.jumpAnim(scene, grandson, 4, 0, -25, -30)
                 this.jumpAnim(scene, grandson, 5, 70, -15, -40)
                 this.jumpAnim(scene, grandson, 6, 150, -10, -20)
                 this.jumpAnim(scene, grandson, 5, 230, -15, 30)
                 this.jumpAnim(scene, grandson, 4, 300, -10, 40)
                 this.jumpAnim(scene, grandson, 1, 370, -5, 20)
-                
-                // // testing changing jump values
-                // this.jumpAnim(scene, grandson, 4,   0,    -45,  -80)
-                // this.jumpAnim(scene, grandson, 5,   70,   -15,  -100)
-                // this.jumpAnim(scene, grandson, 6,   150,  -10,  -80)
-                // this.jumpAnim(scene, grandson, 5,   230,  -20,  80)
-                // this.jumpAnim(scene, grandson, 4,   300,  -40,  100)
-                // this.jumpAnim(scene, grandson, 1,   370,  -5,   80)     
-
             }
         } 
         else {
-            if(grandson.x < 680){
+            if(grandson.x < 760){
+                scene.sound.play('jump', {rate: 1.16})
                 this.jumpAnim(scene, grandson, 7, 0, 25, -20)
                 this.jumpAnim(scene, grandson, 8, 70, 15, -10)
                 this.jumpAnim(scene, grandson, 9, 150, 10, -10)
                 this.jumpAnim(scene, grandson, 8, 230, 15, 10)
                 this.jumpAnim(scene, grandson, 7, 30, 10, 10)
                 this.jumpAnim(scene, grandson, 0, 370, 5, 20)
-
-
-                // this.jumpAnim(scene, grandson, 7, 0,    45,  -80)
-                // this.jumpAnim(scene, grandson, 8, 70,   15,  -100)
-                // this.jumpAnim(scene, grandson, 9, 150,  10,  -80)
-                // this.jumpAnim(scene, grandson, 8, 230,  20,  80)
-                // this.jumpAnim(scene, grandson, 7, 300,  40,  100)
-                // this.jumpAnim(scene, grandson, 0, 370,  5,   80)
             }
         }
     }
@@ -157,20 +141,17 @@ class JumpState extends State {
 class SuperJumpState extends State {
     // To simulate jump, play frame by frame with delayed called
     enter(scene, grandson) {
-        console.log('super jump')
 
-        scene.sound.play('jump', {rate: 1.1})
+        scene.sound.play('jump', {rate: 1.16})
 
         if(grandson.direction === 'left'){
             if(grandson.x > 280){
-                this.jumpAnim(scene, grandson, 4, 0, -75, -90)
-                this.jumpAnim(scene, grandson, 5, 70, -55, -100)
-
-                this.jumpAnim(scene, grandson, 6, 150, -40, -80)
-                this.jumpAnim(scene, grandson, 5, 230, -35, 90)
-                this.jumpAnim(scene, grandson, 4, 300, -30, 100)
-                this.jumpAnim(scene, grandson, 1, 370, -25, 80)  
-
+                this.jumpAnim(scene, grandson, 4, 0, -35, -30)
+                this.jumpAnim(scene, grandson, 5, 70, -25, -40)
+                this.jumpAnim(scene, grandson, 6, 150, -20, -20)
+                this.jumpAnim(scene, grandson, 5, 230, -25, 30)
+                this.jumpAnim(scene, grandson, 4, 300, -20, 40)
+                this.jumpAnim(scene, grandson, 1, 370, -15, 20)
             }
         } 
         else {
@@ -205,6 +186,11 @@ class SuperJumpState extends State {
 
         if(KEYS.SHIFT.isDown &&  (grandson.frame.name === 0 || grandson.frame.name === 1)) {
             this.stateMachine.transition('shoot')
+            return
+        }
+
+        if(KEYS.SPACE.isDown &&  (grandson.frame.name === 0 || grandson.frame.name === 1)) {
+            this.stateMachine.transition('superJump')
             return
         }
     }
@@ -302,7 +288,7 @@ class KissedState extends State {
             grandson.anims.play(`kissed-left`).once('animationcomplete', () => {
                 grandson.anims.play(`kissed-right`).once('animationcomplete', () => {
                     grandson.anims.play(`kissed-left`).once('animationcomplete', () => {
-                        // end game
+                        scene.scene.start('gameOverScene')
                     })
                 })
             })
