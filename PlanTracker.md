@@ -17,8 +17,7 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
 
 ### Need
 ## Menu.js
-    - [ ] Add text to title screen for directions
-    - [ ] Add controls for credit and controls
+    - [ ] Add scene change for credit and controls
 
 ## Play.js
     - [ ] Adjust Score Placement
@@ -41,6 +40,7 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
 
 ## Other
     - [ ] Export all art
+    - [ ] Add arcade game frame to scenes
     - [ ] Add More Sound Effects
     - [ ] Music
     - [ ] Add scared sprites in both directions
@@ -58,6 +58,7 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
 ### 2 hr
 - [ ] Code: Added super jump state, still testing
 - [ ] Code: Edits to Grandma and Grandson
+- [ ] Code: Added beginning controls for scene changes
 - [ ] Scene: Started End Screen
 
 

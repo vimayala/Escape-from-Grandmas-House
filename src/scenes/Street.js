@@ -33,6 +33,8 @@ class Street extends Phaser.Scene {
         this.grandma = new Grandma(this, width / 1.65, height / 1.65, "grandma", 0, 'left')
         this.grandma.setScale(0.8)
 
+        this.add.image(0, 0, 'gameframe').setOrigin(0).setScale(0.8)
+
 
     }
 

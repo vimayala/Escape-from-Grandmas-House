@@ -262,6 +262,16 @@ class Menu extends Phaser.Scene {
             })
         })
 
+        this.anims.create({
+            key: 'hearts',
+            frameRate: 3,
+            repeat: -1,
+            frames: this.anims.generateFrameNumbers('heart', {
+                start: 0,
+                end: 2
+            })
+        })
+
         let menuConfig = {
             fontFamily: 'American Typewriter',
             fontSize: '48px', 
@@ -277,6 +287,7 @@ class Menu extends Phaser.Scene {
 
 
         /* Temp - make blink */
+
         this.beginText = this.add.bitmapText(game.config.width / 2, game.config.height / 1.1325 , 'pinkBlocko',`[ Space ] - Play`, 48).setOrigin(0.5)
         this.controlText = this.add.bitmapText(game.config.width / 2, game.config.height / 1.075 , 'pinkBlocko',`[ Shift ] -  Controls`, 32).setOrigin(0.5)
         this.creditText = this.add.bitmapText(game.config.width / 2, game.config.height / 1.0325 , 'pinkBlocko',`[ F ]     -   Credits`, 32).setOrigin(0.5)

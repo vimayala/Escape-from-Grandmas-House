@@ -16,6 +16,9 @@ class GameOver extends Phaser.Scene {
             this.grandson = this.add.sprite(game.config.width / 2,  height / 1.6 + 40, 'grandson').setScale(0.8)
             this.grandson.play('jumping-left')
             this.grandma = new Grandma(this, width / 1.4, height / 1.6 + 20, "grandma", 0, 'left').setScale(0.8)
+            this.hearts = this.add.sprite(game.config.width / 2,  height / 2, 'heart').setScale(0.1)
+            this.hearts.play('hearts')
+            this.add.image(0, 0, 'gameframe').setOrigin(0).setScale(0.8)
         }
     
         update() {

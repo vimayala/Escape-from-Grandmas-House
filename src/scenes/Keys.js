@@ -25,6 +25,7 @@ class Keys extends Phaser.Scene {
 
 
         this.load.image('livingroom', './assets/EscapeLivingRoom.png')
+        this.load.image('gameframe', './assets/gameframe.png')
         this.load.image('purple', './assets/purple.png')
         this.load.image('street', './assets/street.png')
         this.load.image('button', './assets/button.png')              // buttons
@@ -57,6 +58,13 @@ class Keys extends Phaser.Scene {
             frameHeight: 250,
             startFrame: 0,
             endFrame: 29
+        })
+
+        this.load.spritesheet("heart", "./assets/hearts.png",{
+            frameWidth: 480,
+            frameHeight: 510,
+            startFrame: 0,
+            endFrame: 2
         })
 
     }
