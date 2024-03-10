@@ -174,6 +174,7 @@ class SuperJumpState extends State {
 
     // Allow transition back into jump once animation done or shoot state
     execute(scene, grandson) {
+        scene.bonus = 1
         const { KEYS } = scene
 
 

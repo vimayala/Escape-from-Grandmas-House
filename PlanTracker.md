@@ -20,9 +20,8 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
     - [ ] Add scene change for credit and controls
 
 ## Play.js
-    - [ ] Implement points
-        - [ ] Score tween
-        - [ ] Sound effect
+    - [ ] Points
+        - [ ] Sound effect (?)
     - [ ] Heart and Skull Particles or Anim (or both)
 
     - [ ] Either: 
@@ -55,12 +54,15 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
     - [ ] When Jump SFX + Dart SFX plays
     - [ ] Add more flags ? like kissing states ??
     - [ ] Make grandson change direction function and direction factor (being reused a lot)
+    - [ ] Counter tween cuts off points (not in 500 increments)
+    - [ ] Find instances where grandma continues chasing (fix if able)
 
 
 ## March 10
-### 30 min
+### 1.5 hrs
 - [X] Code: Fixed super jump state
-
+- [X] Code: Added score counter tween
+- [ ] Scene: End screen
 
 ## March 9
 ### 3 hr

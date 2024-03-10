@@ -4,3 +4,8 @@
     - [ ] Space to move past grandma or jump over?
         - small screen, jump over doesn't work well
     - [ ] Score placement
+    - [ ] Sufficient score amount (50,000 vs 75,000 vs 100,000 or difficulties?)
+        - [ ] Difficulties too much text
+            - [ ] Could do 'press space to continue' then display all options
+    - [ ] Is text on menu too much? Should I do transition like above?
+    - [ ] Endless or score goal for street sequence?

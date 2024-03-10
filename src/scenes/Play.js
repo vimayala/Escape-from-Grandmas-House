@@ -7,6 +7,7 @@ class Play extends Phaser.Scene {
         // Initializing Variables
         this.shootCount = 0
         this.allowSuperJump = false
+        this.bonus = 1
     }
 
     create() {
@@ -84,8 +85,8 @@ class Play extends Phaser.Scene {
 
     // Taken from phaserjs GitHub Counter Tween Example
     updateScore() {
-        oldScore = playerScore;
-        playerScore += 1000;
+        oldScore = playerScore
+        playerScore += 1000 + (500 * this.bonus)
 
         if (this.updateTween.isPlaying())
         {
@@ -148,6 +149,7 @@ class Play extends Phaser.Scene {
         this.shootCount += 1
         if(this.shootCount >= 3){
             this.allowSuperJump = true
+            this.bonus *= 1.5
         }
     }
 

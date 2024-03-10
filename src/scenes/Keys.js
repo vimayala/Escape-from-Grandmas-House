@@ -23,6 +23,8 @@ class Keys extends Phaser.Scene {
         this.load.image('gameframe', './assets/gameframe.png')
         this.load.image('purple', './assets/purple.png')
         this.load.image('street', './assets/street.png')
+        this.load.image('street1', './assets/street1.png')
+
         this.load.image('button', './assets/button.png')              // buttons
         this.load.image('up', './assets/up.png')                  
         this.load.image('down', './assets/down.png')
