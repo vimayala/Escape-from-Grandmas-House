@@ -40,26 +40,24 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
 
 ## Other
     - [ ] Export all art
-    - [ ] Add arcade game frame to scenes
     - [ ] Add More Sound Effects
     - [ ] Music
     - [ ] Add scared sprites in both directions
     - [ ] Move jumpAnim to global scope ?
 
-        
-
 ### Fixes
     - [ ] Overlapping states ... ?
-    - [ ] When Jump SFX plays
+    - [ ] When Jump SFX + Dart SFX plays
     - [ ] Add more flags ? like kissing states ??
     - [ ] Make grandson change direction function and direction factor (being reused a lot)
 
 ## March 9
-### 2 hr
-- [ ] Code: Added super jump state, still testing
-- [ ] Code: Edits to Grandma and Grandson
-- [ ] Code: Added beginning controls for scene changes
-- [ ] Scene: Started End Screen
+### 3 hr
+- [X] Code: Added super jump state, still testing
+- [X] Code: Edits to Grandma and Grandson
+- [X] Code: Added beginning controls for scene changes
+- [X] Scene: Started End Screen
+- [X] Assets: Added Arcade Frame + Hearts
 
 
 ## March 8

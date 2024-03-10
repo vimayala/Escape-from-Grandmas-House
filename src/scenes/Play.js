@@ -45,7 +45,7 @@ class Play extends Phaser.Scene {
 
         // Add player score
         this.playerScore = 0
-        this.scoreDisplay = this.add.bitmapText(game.config.width / 1.175, borderUISize + borderPadding * 2 + 5 , 'blockFont',`0`, 72).setOrigin(0.5)
+        this.scoreDisplay = this.add.bitmapText(game.config.width / 1.4, borderUISize + borderPadding * 2 + 5 , 'blockFont',`0`, 72).setOrigin(0.5)
 
     }
 
@@ -75,9 +75,6 @@ class Play extends Phaser.Scene {
     // If behind, push foward
     // Else push back
     // Destroy the dart 
-
-    /* Increase points */
-
     dartGrandmaCollision(grandma, dart){
         this.sound.play('toy-gun1')
         this.playerScore += 1000
@@ -106,12 +103,12 @@ class Play extends Phaser.Scene {
     handleKidCollision(grandson, grandma){
         //         grandson.x -= 50
 
-        if(this.collisionFlag == false && this.grandsonFSM.state != 'superJump'){
-            grandson.y -= 40
-            this.collisionFlag = true
-            this.grandsonFSM.transition('kissed')
-            this.grandmaFSM.transition('kissing')
-        }
+        // if(this.collisionFlag == false && this.grandsonFSM.state != 'superJump'){
+        //     grandson.y -= 40
+        //     this.collisionFlag = true
+        //     this.grandsonFSM.transition('kissed')
+        //     this.grandmaFSM.transition('kissing')
+        // }
 
         console.log('DEATH')
 
