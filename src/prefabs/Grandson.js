@@ -24,6 +24,7 @@ class Grandson extends Phaser.Physics.Arcade.Sprite {
             jump: new JumpState(),
             shoot: new ShootGunState(),
             kissed: new KissedState(),
+            superJump: new SuperJumpState(),
         }, [scene, this])   // pass these as arguments to maintain scene/object context in the FSM
 
     }
@@ -100,6 +101,86 @@ class JumpState extends State {
                 // this.jumpAnim(scene, grandson, 8, 230,  20,  80)
                 // this.jumpAnim(scene, grandson, 7, 300,  40,  100)
                 // this.jumpAnim(scene, grandson, 0, 370,  5,   80)
+            }
+        }
+    }
+
+    // Allow transition back into jump once animation done or shoot state
+    execute(scene, grandson) {
+        const { KEYS } = scene
+
+
+        // jump if pressing left or right
+        if(KEYS.LEFT.isDown && (grandson.frame.name === 0 || grandson.frame.name === 1)) {
+            grandson.direction = 'left'
+            this.stateMachine.transition('jump')
+            return
+        }
+
+        if(KEYS.RIGHT.isDown && (grandson.frame.name === 0 || grandson.frame.name === 1)) {
+            grandson.direction = 'right'
+            this.stateMachine.transition('jump')
+            return
+        }
+
+        if(KEYS.SHIFT.isDown &&  (grandson.frame.name === 0 || grandson.frame.name === 1)) {
+            this.stateMachine.transition('shoot')
+            return
+        }
+
+        if(KEYS.SPACE.isDown &&  (grandson.frame.name === 0 || grandson.frame.name === 1)) {
+            this.stateMachine.transition('superJump')
+            return
+        }
+    }
+
+    // Function to delay animation calls for custom playing jump animation with direction
+    jumpAnim(scene, grandson, frame, delay, x, y){
+        // To move in a direction, use positive vs negative as follows
+        // (- , -) for ↖        (+, -) for ↗
+        // (-, +) for  ↙        (+, +) for ↘
+
+        // from RexRainbow Phaser 3 notes
+        scene.time.addEvent({
+            delay: delay,                // ms
+            callback: () => {grandson.setFrame(frame), grandson.x += x; grandson.y += y},
+            args: [],
+            loop: false,
+            repeat: 0,
+            startAt: 0,
+            timeScale: 1,
+            paused: false
+        });
+    }
+}
+
+class SuperJumpState extends State {
+    // To simulate jump, play frame by frame with delayed called
+    enter(scene, grandson) {
+        console.log('super jump')
+
+        scene.sound.play('jump', {rate: 1.1})
+
+        if(grandson.direction === 'left'){
+            if(grandson.x > 280){
+                this.jumpAnim(scene, grandson, 4, 0, -75, -90)
+                this.jumpAnim(scene, grandson, 5, 70, -55, -100)
+
+                this.jumpAnim(scene, grandson, 6, 150, -40, -80)
+                this.jumpAnim(scene, grandson, 5, 230, -35, 90)
+                this.jumpAnim(scene, grandson, 4, 300, -30, 100)
+                this.jumpAnim(scene, grandson, 1, 370, -25, 80)  
+
+            }
+        } 
+        else {
+            if(grandson.x < 680){
+                this.jumpAnim(scene, grandson, 7, 0, 25, -20)
+                this.jumpAnim(scene, grandson, 8, 70, 15, -10)
+                this.jumpAnim(scene, grandson, 9, 150, 10, -10)
+                this.jumpAnim(scene, grandson, 8, 230, 15, 10)
+                this.jumpAnim(scene, grandson, 7, 30, 10, 10)
+                this.jumpAnim(scene, grandson, 0, 370, 5, 20)
             }
         }
     }

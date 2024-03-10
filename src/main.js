@@ -1,6 +1,20 @@
 // Victoria Ayala
 // Escape from Grandma's House
 
+
+// +5 Your game uses at least five of Phaser's major components, which may include: 
+// physics systems, 
+// cameras, 
+// particle effects, 
+// text objects, 
+// the animation manager, 
+// the tween manager, 
+// timers, 
+// tilemaps, 
+// pipeline FX, etc.
+
+
+
 let config = {
     parent: 'phaser-game',  // for info text
     type: Phaser.AUTO,     // for tinting
@@ -14,7 +28,7 @@ let config = {
     physics: {
         default: 'arcade',
         arcade: {
-            debug: false
+            debug: true
         }
     },
     scale: {

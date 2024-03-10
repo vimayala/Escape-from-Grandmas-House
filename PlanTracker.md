@@ -17,11 +17,12 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
 
 ### Need
 
-    - [ ] Either: Add space to add jump distance
-        - or Hit x amount of times to walk past her
+    - [ ] Either: 
+        - Get on other side:             
+            - super space
+            - or space to dash past
 
-    - [ ] Add Dart Cooldown
-    - [ ] Jump Over Grandma
+
     - [ ] Export all art
 
     - [ ] Adjust Score Placement
@@ -37,32 +38,28 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
 
     - [ ] End Screen + Anims (maybe with tweens?)
     - [ ] Move jumpAnim to global scope ?
-    - [ ] Change scaling
-        - mode: Phaser.Scale.FIT
-        - autoCenter: Phaser.Scale.CENTER_BOTH
-        - https://rexrainbow.github.io/phaser3-rex-notes/docs/site/scalemanager/
-            - there's also full screen
-            - link with css style sheet to hide vertical bar
-            - use 24 framing example
 
         
 
 ### Fixes
-    - [ ] Change grandma shot anim to react to dart direction (if kid behind, she moves forward...maybe move grandma by dart instead of by grandma direction)
-        - or make a property of the grandma that changes when the grandma gets hit so the prefab can access it
     - [ ] Overlapping states ... ?
     - [ ] Play Gun Sound w/ hit or launch
     - [ ] When Jump SFX plays
     - [ ] Add more flags ? like kissing states ??
     - [ ] Make grandson change direction function and direction factor (being reused a lot)
 
+## March 9
+### 30 min
+- [ ] 
+
+
 ## March 8
-### Goals
+### 2 hrs
 - [X] Code: Add Comments
 - [X] Code: Add Grandma/Grandson Collision (temp print message)
-- [ ] Code: Change Grandson jump distance
-- [ ] Code: Add Grandson Dart Cooldown
-- [ ]
+- [X] Code: Change Grandson jump distance
+- [X] Code: Added scaling
+- [X] Code: Improvisational Dart Cooldown
 
 
 ## March 7

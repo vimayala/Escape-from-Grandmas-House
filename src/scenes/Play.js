@@ -5,7 +5,7 @@ class Play extends Phaser.Scene {
 
     init() {
         // Initializing Variables
-        this.gunCount = 3
+        this.shootCount = 0
     }
 
     create() {
@@ -22,7 +22,7 @@ class Play extends Phaser.Scene {
         // Add Grandma and Grandson from prefabs
         this.kid = new Grandson(this, width / 2.25, height / 1.525, "grandson", 0, 'right')
         this.kid.setScale(0.8)
-        this.grandma = new Grandma(this, width / 1.65, height / 1.65, "grandma", 0, 'left')
+        this.grandma = new Grandma(this, width / 1.65, height / 1.6, "grandma", 0, 'left')
         this.grandma.setScale(0.8)
 
         // Create a dart group to run updates for each prefab item created
@@ -45,7 +45,7 @@ class Play extends Phaser.Scene {
 
         // Add player score
         this.playerScore = 0
-        this.add.bitmapText(game.config.width / 1.175, borderUISize + borderPadding * 2 + 5 , 'blockFont',`0`, 72, 'right').setOrigin(0.5)
+        this.scoreDisplay = this.add.bitmapText(game.config.width / 1.175, borderUISize + borderPadding * 2 + 5 , 'blockFont',`0`, 72).setOrigin(0.5)
 
     }
 
@@ -57,7 +57,9 @@ class Play extends Phaser.Scene {
         this.grandsonFSM.step()
         this.grandmaFSM.step()
 
-        /* Start street scene (temp) */
+        // 
+
+        /* Temporary: Start street scene */
         if(KEYS.S.isDown){
             this.scene.start('streetScene')
         }
@@ -78,6 +80,8 @@ class Play extends Phaser.Scene {
 
     dartGrandmaCollision(grandma, dart){
         this.sound.play('toy-gun1')
+        this.playerScore += 1000
+        this.scoreDisplay.text = this.playerScore
 
         if(grandma.direction == dart.direction){
            if(grandma.direction === 'left'){
@@ -98,11 +102,12 @@ class Play extends Phaser.Scene {
     }
 
     // If grandma and grandson collide, end the game
+    // If grandson shoots 3 or more times, he can pass through 
     handleKidCollision(grandson, grandma){
         //         grandson.x -= 50
 
-        // if(this.collisionFlag == false){
-        //     grandson.y -= 50
+        // if(this.collisionFlag == false && this.shootCount < 3){
+        //     grandson.y -= 40
         //     this.collisionFlag = true
         //     this.grandsonFSM.transition('kissed')
         //     this.grandmaFSM.transition('kissing')
