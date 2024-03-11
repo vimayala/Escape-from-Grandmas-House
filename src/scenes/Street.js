@@ -172,7 +172,7 @@ class Street extends Phaser.Scene {
     }
 
     handleKidCollision(grandson, grandma){
-        console.log('collided')
+        // console.log('collided')
         if(this.collisionFlag == false){
             this.collisionFlag = true
             // this.grandsonFSM.transition('kissed')
