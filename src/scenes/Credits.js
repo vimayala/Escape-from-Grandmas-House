@@ -33,10 +33,14 @@ class Credits extends Phaser.Scene {
             fontFamily: 'Courier',
         }
 
-        this.livingRoomInstr = this.add.text(game.config.width / 3.5, game.config.height / 1.3 ,`[<] to jump left\n[>] to jump right\n[SHIFT] to shoot\n[SPACE] Unlocked after shooting grandma\nmore than 3 times\nHold [SPACE] to jump past grandma`, 24).setOrigin(0.5)
+        this.livingRoomEx = this.add.text(game.config.width / 3.5, game.config.height / 1.375 ,`Avoid grandma's kisses by shooting her\nGet 50,000 points to move to next level`, 24).setOrigin(0.5)
+        this.livingRoomInstr = this.add.text(game.config.width / 3.5, game.config.height / 1.2 ,`[LEFT] to jump left\n[RIGHT] to jump right\n[SHIFT] to shoot\n[SPACE] Unlocked after shooting grandma\nmore than 3 times\nHold [SPACE] to jump past grandma`, 24).setOrigin(0.5)
+        this.streetEx = this.add.text(game.config.width / 1.6125, game.config.height / 1.375 ,`Avoid grandma and her love\nGet across the street to win`, 24).setOrigin(0.5)
+        this.streetInstr = this.add.text(game.config.width / 1.5, game.config.height / 1.2 ,`[UP] to move up\n[DOWN] to jump right\n[SHIFT] to shoot\n[SPACE] Unlocked after shooting grandma\nmore than 3 times\nHold [SPACE] to jump past grandma`, 24).setOrigin(0.5)
 
     }
 
     update() {
+        // add a return to menu or play
     }
 }
