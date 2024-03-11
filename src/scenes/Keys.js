@@ -63,7 +63,6 @@ class Keys extends Phaser.Scene {
             startFrame: 0,
             endFrame: 2
         })
-
     }
 
     create() {
@@ -74,7 +73,9 @@ class Keys extends Phaser.Scene {
             RIGHT:  KeyCodes.RIGHT,
             SHIFT:  KeyCodes.SHIFT,
             SPACE: KeyCodes.SPACE,
-            S: KeyCodes.S
+            S: KeyCodes.S,
+            UP: KeyCodes.UP,
+            DOWN: KeyCodes.DOWN,
         })
         
         // launch next scene so it will run concurrently with this one

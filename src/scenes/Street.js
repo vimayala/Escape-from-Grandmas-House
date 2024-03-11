@@ -5,6 +5,7 @@ class Street extends Phaser.Scene {
 
     init() {
         // Add any constants
+        this.PLAYER_VELOCITY = 50
         this.obstacleSpawnDelay = 2500
         this.OBSTACLE_SPEED = 2
 
@@ -24,6 +25,10 @@ class Street extends Phaser.Scene {
         // cursors = this.input.keyboard.createCursorKeys()
 
         // Add street background
+
+        this.physics.world.setBounds(50, 0, 700, game.config.height)
+
+
         this.street = this.add.tileSprite(0, 0, 9888, 1746, 'street1').setOrigin(0,0).setScale(0.8)
         this.street.y -= 100
 
@@ -33,8 +38,19 @@ class Street extends Phaser.Scene {
         // Add Grandma and Grandson from prefabs
         this.kid = new Grandson(this, width / 2.25, height / 1.525, "grandson", 0, 'right')
         this.kid.setScale(0.8)
-        this.grandma = new Grandma(this, width / 1.65, height / 1.65, "grandma", 0, 'left')
+        this.grandma = new Grandma(this, width / 8, height / 1.65, "grandma", 0, 'right')
         this.grandma.setScale(0.8)
+
+
+        this.kid.flipX = true
+        this.kid.play('scared').once('animationcomplete', () => {
+            this.time.delayedCall(3000, () => { 
+                this.kid.flipX = false
+                this.kid.play('jumping-right')
+            })
+        })
+
+        this.grandmaFSM.transition('chasing')
 
         this.obstacleGroup = this.physics.add.group({
             runChildUpdate: true
@@ -44,8 +60,14 @@ class Street extends Phaser.Scene {
             this.addBarrier() 
         })
 
-        this.add.image(0, 0, 'gameframe').setOrigin(0).setScale(0.8)
+        // this.layer = this.add.layer()
 
+        this.gameFrame = this.add.image(0, 0, 'gameframe').setOrigin(0).setScale(0.8)
+        this.gameFrame.setDepth(1)
+        // const topLayer = this.add.layer()
+        // topLayer.add([gameFrame])
+
+        this.physics.add.collider(this.kid, this.obstacleGroup, this.handleObstacleCollision, null, this, this.obstacleGroup)
 
     }
 
@@ -54,7 +76,7 @@ class Street extends Phaser.Scene {
         this.street.tilePositionX += 4
 
         // // get local KEYS reference
-        // const { KEYS } = this
+        const { KEYS } = this
 
 
         
@@ -62,19 +84,20 @@ class Street extends Phaser.Scene {
         // this.grandsonFSM.step()
         // this.grandmaFSM.step()
 
-        // let playerVector = new Phaser.Math.Vector2(0, 0)
-        // if(this.p1duck.y >= 135){
-        //     if(cursors.up.isDown){
-        //         playerVector.y = -1
-        //     }
-        // }
-        // if(this.p1duck.y <= 400){
-        //     if(cursors.down.isDown){
-        //         playerVector.y = 1
-        //     }
-        // }
-        // playerVector.normalize()
-        // this.p1duck.setVelocity(this.PLAYER_VELOCITY * playerVector.x, this.PLAYER_VELOCITY * playerVector.y)
+        let playerVector = new Phaser.Math.Vector2(0, 0)
+        if(KEYS.UP.isDown){    
+            if(this.kid.y >= 200){
+                playerVector.y = -1
+            }
+        }
+        if(KEYS.DOWN.isDown){
+            if(this.kid.y <= 600){
+                playerVector.y = 1
+            }
+        }
+        playerVector.normalize()
+        this.kid.setVelocity(this.PLAYER_VELOCITY * playerVector.x, this.PLAYER_VELOCITY * playerVector.y)
+        
 
     }
 
@@ -109,25 +132,26 @@ class Street extends Phaser.Scene {
     /*  Add collider for grandson and grandma, when colliding, play animation and find offset OR change hit boxes so no math ? */
 
 
-    handleObstacleCollision(duck, trash){
-        duck.setTint(0xf05a4f)
+    handleObstacleCollision(kid, trash){
+        kid.setTint(0xf05a4f)
         this.time.addEvent({ delay: 175, callback: () => {
-            this.p1duck.clearTint()
-            this.time.addEvent({ delay: 100, callback: () => {this.p1duck.setTint(0xf05a4f)}, callbackScope: this});
-            this.time.addEvent({ delay: 125, callback: () => {this.p1duck.clearTint()}, callbackScope: this})
+            kid.clearTint()
+            this.time.addEvent({ delay: 100, callback: () => {this.kid.setTint(0xf05a4f)}, callbackScope: this});
+            this.time.addEvent({ delay: 125, callback: () => {this.kid.clearTint()}, callbackScope: this})
 
         }, callbackScope: this})
         trash.destroy()
-        this.sound.play('ping')
-        this.p1duck.trashCount += 1
+        // this.sound.play('ping')
 
-        if(this.p1duck.trashCount >=3) {
-            this.scene.start('gameOverScene') 
-            this.mySong.stop()
-        }
-        else{
-            this.lives.setFrame(this.p1duck.trashCount)
-        }
+        // this.p1duck.trashCount += 1
+
+        // if(this.p1duck.trashCount >=3) {
+        //     this.scene.start('gameOverScene') 
+        //     this.mySong.stop()
+        // }
+        // else{
+        //     this.lives.setFrame(this.p1duck.trashCount)
+        // }
         this.PLAYER_VELOCITY = 100
     }
 

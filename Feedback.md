@@ -9,3 +9,5 @@
             - [ ] Could do 'press space to continue' then display all options
     - [ ] Is text on menu too much? Should I do transition like above?
     - [ ] Endless or score goal for street sequence?
+        - [ ] Or move grandson's x forward every x points and end when grandson passes a certain x
+    - [ ] Pick up rewards in street sequence ?
