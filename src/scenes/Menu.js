@@ -298,23 +298,6 @@ class Menu extends Phaser.Scene {
 
         })
 
-
-        // this.begin.on('pointerdown', () => {
-        //     this.mySong.stop()
-        //     this.sound.play('click')
-        //     this.scene.start('playScene') 
-        // })
-        // this.controls.on('pointerdown', () => {
-        //     this.mySong.stop()
-        //     this.sound.play('click')
-        //     this.scene.start('controlScene') 
-        // })
-        // this.credits.on('pointerdown', () => {
-        //     // play sfx
-        //     this.mySong.stop()
-        //     this.sound.play('click')
-        //     this.scene.start('creditsScene') 
-        // })
     }
 
     update() {
@@ -331,7 +314,7 @@ class Menu extends Phaser.Scene {
 
         // Controls if shift is clicked
         if(KEYS.SHIFT.isDown) {
-            this.scene.start('creditsScene')
+            this.scene.start('controlsScene')
         }
 
         // if(Phaser.Input.Keyboard.JustDown(keySPACE)) {

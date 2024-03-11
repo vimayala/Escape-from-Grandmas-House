@@ -12,6 +12,8 @@ class Keys extends Phaser.Scene {
         this.load.audio('toy-gun2', './assets/356914-FGF-GunShot-DryFire-FoamGun15-MediumChamber-SpringRecoil5-96k.wav')
         this.load.audio('ouch', './assets/470444-Mature_Female_Expressing_Pain_Ow_2_55.wav')
         this.load.audio('jump', './assets/542312-zapsplat-cartoon-spring-boing-jaw-harp-short-60817.wav')
+        this.load.audio('damage', './assets/zapsplat_cartoon_hit_thud_thump_003_95554.mp3')
+
 
 
         this.load.bitmapFont('blockFont', './assets/bigblocks.png', './assets/bigblocks.xml')

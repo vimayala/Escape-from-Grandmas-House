@@ -17,7 +17,11 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
 
 ### Need
 ## Menu.js
-    - [ ] Add scene change for credit and controls
+    - [ ] Change button preview for credit and controls
+
+## Controls.js
+    - [ ] Make prettier
+        - [ ] Split into screens (?)
 
 ## Play.js
     - [ ] Points
@@ -59,12 +63,11 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
 
 
 ## March 10
-### 3 hrs
+### 5 hrs
 - [X] Code: Fixed super jump state
 - [X] Code: Added score counter tween
-- [ ] Scene: End screen
 - [X] Scene: Worked on Street scene
-- [ ] Scene: Add controls screen for tomorrow
+- [X] Scene: Add controls screen (basic)
 
 ## March 9
 ### 3 hr
