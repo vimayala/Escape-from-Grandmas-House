@@ -15,6 +15,7 @@ class Grandma extends Phaser.Physics.Arcade.Sprite {
 
         this.body.setSize(this.width / 2, this.height / 1.75)
         this.body.setOffset(this.width / 4, this.height / 3.5)
+        this.body.setImmovable()
 
         // this.setImmovable()
 

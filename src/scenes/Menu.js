@@ -329,10 +329,10 @@ class Menu extends Phaser.Scene {
         //     this.scene.start('playScene')
         // }
 
-        // Controls if ... is clicked
-        // if(KEYS.SHIFT.isDown) {
-        //     this.scene.start('playScene')
-        // }
+        // Controls if shift is clicked
+        if(KEYS.SHIFT.isDown) {
+            this.scene.start('creditsScene')
+        }
 
         // if(Phaser.Input.Keyboard.JustDown(keySPACE)) {
         //     this.scene.start("playScene")

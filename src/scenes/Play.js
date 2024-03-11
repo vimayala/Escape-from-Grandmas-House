@@ -156,17 +156,12 @@ class Play extends Phaser.Scene {
     // If grandma and grandson collide, end the game
     // If grandson shoots 3 or more times, he can pass through 
     handleKidCollision(grandson, grandma){
-        //         grandson.x -= 50
-
         if(this.collisionFlag == false && this.grandsonFSM.state != 'superJump'){
             grandson.y -= 40
             this.collisionFlag = true
             this.grandsonFSM.transition('kissed')
             this.grandmaFSM.transition('kissing')
         }
-
-        console.log('DEATH')
-
     }
 
 }

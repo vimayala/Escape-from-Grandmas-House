@@ -5,9 +5,10 @@ class Street extends Phaser.Scene {
 
     init() {
         // Add any constants
-        this.PLAYER_VELOCITY = 50
-        this.obstacleSpawnDelay = 2500
+        this.PLAYER_VELOCITY = 75
         this.OBSTACLE_SPEED = 2
+        this.GRANDMA_VELOCITY = 50
+        this.obstacleSpawnDelay = 2500
 
     }
 
@@ -36,15 +37,16 @@ class Street extends Phaser.Scene {
 
 
         // Add Grandma and Grandson from prefabs
-        this.kid = new Grandson(this, width / 2.25, height / 1.525, "grandson", 0, 'right')
+        this.kid = new Grandson(this, width / 2.8, height / 1.525, "grandson", 0, 'right')
         this.kid.setScale(0.8)
         this.grandma = new Grandma(this, width / 8, height / 1.65, "grandma", 0, 'right')
         this.grandma.setScale(0.8)
 
+        this.savedY = this.kid.y
 
         this.kid.flipX = true
         this.kid.play('scared').once('animationcomplete', () => {
-            this.time.delayedCall(3000, () => { 
+            this.time.delayedCall(500, () => {
                 this.kid.flipX = false
                 this.kid.play('jumping-right')
             })
@@ -60,15 +62,17 @@ class Street extends Phaser.Scene {
             this.addBarrier() 
         })
 
-        // this.layer = this.add.layer()
+        this.scoreDisplay = this.add.bitmapText(game.config.width / 1.4, borderUISize + borderPadding * 2 + 5 , 'blockFont',`0`, 72).setOrigin(0.5)
 
         this.gameFrame = this.add.image(0, 0, 'gameframe').setOrigin(0).setScale(0.8)
         this.gameFrame.setDepth(1)
         // const topLayer = this.add.layer()
         // topLayer.add([gameFrame])
-
+        this.physics.add.collider(this.kid, this.grandma, this.handleKidCollision, null, this, this.grandma)
         this.physics.add.collider(this.kid, this.obstacleGroup, this.handleObstacleCollision, null, this, this.obstacleGroup)
 
+        // create new timer
+            // restart/destroy timer in obstacle collision
     }
 
     update() {
@@ -86,17 +90,25 @@ class Street extends Phaser.Scene {
 
         let playerVector = new Phaser.Math.Vector2(0, 0)
         if(KEYS.UP.isDown){    
-            if(this.kid.y >= 200){
+            if(this.kid.y >= 225){
                 playerVector.y = -1
             }
         }
         if(KEYS.DOWN.isDown){
-            if(this.kid.y <= 600){
+            if(this.kid.y <= 590){
                 playerVector.y = 1
             }
         }
         playerVector.normalize()
         this.kid.setVelocity(this.PLAYER_VELOCITY * playerVector.x, this.PLAYER_VELOCITY * playerVector.y)
+
+        if(this.grandma.y == this.savedY){
+            this.grandma.setVelocity(0)
+        }
+        else{
+            // console.log(`grandma y: ${this.grandma.y}`)
+
+        }
         
 
     }
@@ -132,7 +144,7 @@ class Street extends Phaser.Scene {
     /*  Add collider for grandson and grandma, when colliding, play animation and find offset OR change hit boxes so no math ? */
 
 
-    handleObstacleCollision(kid, trash){
+    handleObstacleCollision(kid, obstacle){
         kid.setTint(0xf05a4f)
         this.time.addEvent({ delay: 175, callback: () => {
             kid.clearTint()
@@ -140,19 +152,42 @@ class Street extends Phaser.Scene {
             this.time.addEvent({ delay: 125, callback: () => {this.kid.clearTint()}, callbackScope: this})
 
         }, callbackScope: this})
-        trash.destroy()
+        obstacle.destroy()
         // this.sound.play('ping')
 
-        // this.p1duck.trashCount += 1
+        // this.p1duck.obstacleCount += 1
 
-        // if(this.p1duck.trashCount >=3) {
+        // if(this.p1duck.obstacleCount >=3) {
         //     this.scene.start('gameOverScene') 
         //     this.mySong.stop()
         // }
         // else{
-        //     this.lives.setFrame(this.p1duck.trashCount)
+        //     this.lives.setFrame(this.p1duck.obstacleCount)
         // }
+
+        console.log(`Saved Y: ${kid.y}`)
+
+        this.savedY = kid.y
+
+
+        let grandmaVector = new Phaser.Math.Vector2(0, 0)
+        grandmaVector.y = kid.y
+        grandmaVector.normalize()
+        this.grandma.setVelocity(0, this.GRANDMA_VELOCITY * grandmaVector.y)
+
+
+        kid.x -= 50
         this.PLAYER_VELOCITY = 100
+    }
+
+    handleKidCollision(grandson, grandma){
+        if(this.collisionFlag == false && this.grandsonFSM.state != 'superJump'){
+            // grandson.y -= 40
+            // this.collisionFlag = true
+            // this.grandsonFSM.transition('kissed')
+            // this.grandmaFSM.transition('kissing')
+            console.log('DEATH GRRRR RAGH')
+        }
     }
 
 }

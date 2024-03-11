@@ -4,79 +4,39 @@ class Credits extends Phaser.Scene {
     }
 
     create() {
+        this.purpleScreen = this.add.tileSprite(0, 0, 2472, 1746, 'purple').setOrigin(0,0).setScale(0.4)
+        this.ControlsText = this.add.bitmapText(game.config.width / 2, game.config.height / 8 , 'blocko',`Controls`, 72).setOrigin(0.5)
 
-        let controlsConfig = {
-            fontFamily: 'American Typewriter',
-            fontSize: '48px', 
-            color: '#FFFFFF',
-            align: 'right', padding: {
-                top: 5,
-                bottom: 5,
-            },
-            fixedWidth: 0
+        // this.finalScore 
+
+        this.controlsText = this.add.bitmapText(game.config.width / 2, game.config.height / 8 , 'blocko',`Controls`, 36).setOrigin(0.5)
+        this.livingRoomText = this.add.bitmapText(game.config.width / 4, game.config.height / 6 , 'blocko',`Living Room`, 36).setOrigin(0.5)
+
+        // this.load.image('livingRoom', './assets/EscapeLivingRoom.png')
+
+        this.add.image(width / 3.5, height / 2, 'livingroom').setScale(0.15)
+        this.streetImage =  this.add.image(width / 1.5, height / 2 + 21, 'street1').setScale(0.305)
+
+        this.streetImage.setCrop(650, 0, 1236, 863)
+
+        this.grandson = this.add.sprite(game.config.width / 2,  height / 1.6 + 40, 'grandson').setScale(0.4)
+        this.grandson.play('jumping-left')
+        this.grandma = new Grandma(this, width / 1.4, height / 1.6 + 20, "grandma", 0, 'left').setScale(0.4)
+        this.grandma.play('chasing-left')
+        this.hearts = this.add.sprite(game.config.width / 2,  height / 2, 'heart').setScale(0.1)
+        this.hearts.play('hearts')
+
+        this.add.image(0, 0, 'gameframe').setOrigin(0).setScale(0.8)
+
+
+        let config = {            
+            fontFamily: 'Courier',
         }
 
-        this.clouds = this.add.tileSprite(0, 0, 14400, 9600, 'clouds').setOrigin(0,0).setScale(0.05)
-        this.test = this.add.image(game.config.width/2, game.config.height/2 - borderPadding - 5, 'blue').setScale(0.9, 0.75).setAlpha(0.85)
-        
-        this.add.text(game.config.width/2, borderUISize + borderPadding / 0.2, 'Credits:', controlsConfig).setOrigin(0.5)
-        controlsConfig.fontSize = '24px'
-
-        this.add.text(game.config.width/8, (borderUISize + borderPadding) / 0.225, `All Sound FXs: Zapsplat`, controlsConfig).setOrigin(0)
-
-
-        this.add.text(game.config.width/8, (borderUISize + borderPadding) / 0.275, `Assets created on Resprite`, controlsConfig).setOrigin(0)
-        this.add.text(game.config.width/8, (borderUISize + borderPadding) / 0.35, `Music created on Garage Band`, controlsConfig).setOrigin(0)
-
-        controlsConfig.fontSize = '14px'
-
-        this.add.text(game.config.width/7, (borderUISize + borderPadding) / 0.19, `Audios:`, controlsConfig).setOrigin(0)
-        this.add.text(game.config.width/6, (borderUISize + borderPadding) / 0.175, `• Game Sound Collect Treasure Coin 001:`, controlsConfig).setOrigin(0)
-        this.add.text(game.config.width/6, (borderUISize + borderPadding) / 0.160, `• Children’s game tone, collect or grab item, single notification, soft ping 1 Sound Effect`, controlsConfig).setOrigin(0)
-        this.add.text(game.config.width/6, (borderUISize + borderPadding) / 0.145, `• Children’s game tone, collect or grab item, single notification, soft ping 2 Sound Effect`, controlsConfig).setOrigin(0)
-        this.add.text(game.config.width/6, (borderUISize + borderPadding) / 0.132, `• Game sound, thud, error, lose, negative 1`, controlsConfig).setOrigin(0)
-
-        this.add.text(game.config.width/8, (borderUISize + borderPadding) / 0.12, `Code credits Nathan Altice where appropriate`, controlsConfig).setOrigin(0)
-
-        
-        playerScore = 0
-
-        controlsConfig.fontSize = '18px'
-        controlsConfig.color = '#000000'
-
-
-        this.begin = this.add.image(3 * game.config.width/4, game.config.height - borderUISize - borderPadding,'frog-button').setScale(0.1)
-        this.menu = this.add.image(game.config.width/4, game.config.height - borderUISize - borderPadding + 10,'button').setScale(0.1)
-        this.add.text(3 * game.config.width/4, game.config.height - borderUISize - borderPadding + 10, 'Play Again', controlsConfig).setOrigin(0.5)
-        this.add.text(game.config.width/4, game.config.height - borderUISize - borderPadding + 10, 'Menu', controlsConfig).setOrigin(0.5)
-
-        this.menu.setInteractive({
-            useHandCursor: true
-        })
-
-        this.begin.setInteractive({
-            useHandCursor: true
-        })
-
-        controlsConfig.color = '#FFFFFF'
-
-        this.mySong = this.sound.add('waiting', {loop: true, volume: 0.8})
-        this.mySong.play()
-
-        this.begin.on('pointerdown', () => {
-            this.mySong.stop()
-            this.sound.play('click')
-            this.scene.start('playScene') 
-        })
-        this.menu.on('pointerdown', () => {
-            this.mySong.stop()
-            this.sound.play('click')
-            this.scene.start('menuScene') 
-        })
+        this.livingRoomInstr = this.add.text(game.config.width / 3.5, game.config.height / 1.3 ,`[<] to jump left\n[>] to jump right\n[SHIFT] to shoot\n[SPACE] Unlocked after shooting grandma\nmore than 3 times\nHold [SPACE] to jump past grandma`, 24).setOrigin(0.5)
 
     }
 
     update() {
-        this.clouds.tilePositionX += 4
     }
 }

@@ -31,7 +31,7 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
     - [ ] Change grandma velocity as points increase
 
 ## Street.js
-    - [ ] Change Street Photo (Less house, more street)
+    - [ ] If player hasn't hit obstacle for 30 seconds, add to score else restart timer
 
 ## GameOver.js
     - [ ] End Screen + Anims (maybe with tweens?)
@@ -59,10 +59,12 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
 
 
 ## March 10
-### 1.5 hrs
+### 3 hrs
 - [X] Code: Fixed super jump state
 - [X] Code: Added score counter tween
 - [ ] Scene: End screen
+- [X] Scene: Worked on Street scene
+- [ ] Scene: Add controls screen for tomorrow
 
 ## March 9
 ### 3 hr
