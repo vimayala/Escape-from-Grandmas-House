@@ -10,7 +10,7 @@ class GameOver extends Phaser.Scene {
         create() {
             this.purpleScreen = this.add.tileSprite(0, 0, 2472, 1746, 'purple').setOrigin(0,0).setScale(0.4)
             this.reachedText = this.add.bitmapText(game.config.width / 2, game.config.height / 8 , 'blocko',`You have reached`, 72).setOrigin(0.5)
-            this.finalScoreText = this.add.bitmapText(game.config.width / 2, game.config.height / 2 , 'blocko', playerScore, 128).setOrigin(0.5)
+            this.finalScoreText = this.add.bitmapText(game.config.width / 2, game.config.height / 2 , 'blocko', Math.round(playerScore), 128).setOrigin(0.5)
 
             // this.finalScore 
             this.tryAgainText = this.add.bitmapText(game.config.width / 2, game.config.height / 1.125 , 'blocko',`T R Y  A G A I N`, 72).setOrigin(0.5)

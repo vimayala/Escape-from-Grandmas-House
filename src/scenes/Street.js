@@ -60,8 +60,7 @@ class Street extends Phaser.Scene {
             this.addBarrier() 
         })
 
-        this.scoreDisplay = this.add.bitmapText(game.config.width / 1.4, borderUISize + borderPadding * 2 + 5 , 'blockFont', playerScore, 72).setOrigin(0.5)
-
+        this.scoreDisplay = this.add.bitmapText(game.config.width / 1.4, borderUISize + borderPadding * 2 + 5 , 'blockFont', Math.round(playerScore), 72).setOrigin(0.5)
         this.gameFrame = this.add.image(0, 0, 'gameframe').setOrigin(0).setScale(0.8)
         this.gameFrame.setDepth(1)
         // const topLayer = this.add.layer()

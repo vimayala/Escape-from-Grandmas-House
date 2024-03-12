@@ -1,13 +1,33 @@
 ## Playtesting
     - [ ] Menu Pink Font + Controls
-    - [ ] Play Gun Sound w/ hit or launch?
     - [ ] Space to move past grandma or jump over?
-        - small screen, jump over doesn't work well
+        - Small screen, jump over doesn't work well
     - [ ] Score placement
     - [ ] Sufficient score amount (50,000 vs 75,000 vs 100,000 or difficulties?)
-        - [ ] Difficulties too much text
-            - [ ] Could do 'press space to continue' then display all options
     - [ ] Is text on menu too much? Should I do transition like above?
+        - [ ] Difficulties too much text
+        - [ ] Could do 'press space to continue' then display all options
     - [ ] Endless or score goal for street sequence?
-        - [ ] Or move grandson's x forward every x points and end when grandson passes a certain x
-    - [ ] Pick up rewards in street sequence ?
+        - [ ] Move to goal and end at specific x so you can see obstacles
+    - [X] Pick up rewards in street sequence ?
+        - Agreed yes
+
+## Feedback received
+    - Nate: Polished
+    - Play Tester #1: Spawn grandma at a further distance
+    - Play Tester #1: Show a signal that you can jump past
+        - Nearly every play tester agreed
+    - Play Tester #1: Player couldn't jump past
+        -  Might have not shot enough times but check if occurs again
+    - Play Tester #2: Adding an interactive controls screen
+    - Play Tester #3: Fix Score Display (currently floats)
+    - Play Tester #3: Got stuck on left side of screen while shooting ****
+    - Play Tester #4: If street scene takes grandson's x too far, can't see upcoming obstacles
+    - Play Tester #4: Faster grandson velocity on the street scene
+    - Play Tester #5: Grandma knockback speed (too slow, easy to shoot her)
+    - Play Tester #6: Stuck on animation, should implement lock out
+    - Play Tester #6: Liked counter tween
+    - Play Tester #7: Fix game frame on menu
+    - Play Tester #7: Don't overdue shooting scene (not many abilities, don't want it to run dry)
+    - Play Tester #7: Shooting cooldown or faster grandma ?
+        - Agreed shooting cooldown would allow slow grandma to stay realistic

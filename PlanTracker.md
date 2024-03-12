@@ -54,6 +54,7 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
     - [ ] Add another level (probably not by due date :/)
 
 ### Fixes
+    - [ ] Shoot on further left gets stuck
     - [ ] Overlapping states ... ?
     - [ ] When Jump SFX + Dart SFX plays
     - [ ] Add more flags ? like kissing states ??
