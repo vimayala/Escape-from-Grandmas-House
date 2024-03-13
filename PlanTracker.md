@@ -25,6 +25,9 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
 
 ## Play.js
     - [ ] Heart and Skull Particles or Anim (or both)
+
+        ** Priority **
+
     - [ ] Currently double jumping...
 
 ## Street.js
@@ -35,6 +38,9 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
 
 ## GameOver.js
     - [ ] End Screen + Anims (maybe with tweens?)
+
+    ** Priority **
+
     - [ ] Allow restarting
 
 ## Other

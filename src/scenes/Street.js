@@ -152,10 +152,14 @@ class Street extends Phaser.Scene {
 
         if(obstaclePicked == 'heart'){
             obstacle.setScale(0.1)
+            obstacle.body.setCircle(obstacle.width / 2)
+
             obstacle.play('hearts')
         }
         else{
             obstacle.setScale(0.15)
+            obstacle.body.setCircle(obstacle.width / 2)
+
             obstacle.play('lips')
         }
         obstacle.body.setImmovable()

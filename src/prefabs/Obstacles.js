@@ -17,6 +17,16 @@ class Obstacle extends Phaser.GameObjects.Sprite {
 
         this.newObstacle = true
         this.speed = speed
+
+        // if(this.image == 'heart'){
+        //     this.body.setCircle(this.image / 2)
+
+        // }
+        // else{
+        //     this.body.setCircle(this.image / 2.25)
+        // }
+
+
     }
 
     update () {
