@@ -5,11 +5,10 @@ class Street extends Phaser.Scene {
 
     init() {
         // Add any constants
-        this.PLAYER_VELOCITY = 75
+        this.PLAYER_VELOCITY = 100
         this.OBSTACLE_SPEED = 2
         this.GRANDMA_VELOCITY = 50
         this.obstacleSpawnDelay = 2500
-
     }
 
     create() {
@@ -39,6 +38,10 @@ class Street extends Phaser.Scene {
         this.grandma = new Grandma(this, width / 8, height / 1.65, "grandma", 0, 'right')
         this.grandma.setScale(0.8)
 
+        this.kid.setDepth(1)
+        this.grandma.setDepth(1)
+
+
         this.savedY = this.kid.y
         this.collisionFlag = false
 
@@ -56,18 +59,39 @@ class Street extends Phaser.Scene {
             runChildUpdate: true
         })
 
+        this.rewardGroup = this.physics.add.group({
+            runChildUpdate: true
+        })
+
+
+        this.addReward()
+
         this.time.delayedCall(this.obstacleSpawnDelay, () => { 
-            this.addBarrier() 
+            this.addObstacle() 
         })
 
         this.scoreDisplay = this.add.bitmapText(game.config.width / 1.4, borderUISize + borderPadding * 2 + 5 , 'blockFont', Math.round(playerScore), 72).setOrigin(0.5)
         this.gameFrame = this.add.image(0, 0, 'gameframe').setOrigin(0).setScale(0.8)
-        this.gameFrame.setDepth(1)
+        this.gameFrame.setDepth(2)
         // const topLayer = this.add.layer()
         // topLayer.add([gameFrame])
         this.physics.add.collider(this.kid, this.grandma, this.handleKidCollision, null, this, this.grandma)
         this.physics.add.collider(this.kid, this.obstacleGroup, this.handleObstacleCollision, null, this, this.obstacleGroup)
+        this.physics.add.collider(this.kid, this.rewardGroup, this.handleRewardCollision, null, this, this.rewardGroup)
 
+
+        // Taken from phaserjs GitHub Counter Tween Example
+        this.updateTween = this.tweens.addCounter({
+            from: oldScore,
+            to: playerScore,
+            duration: 1000,
+            ease: 'linear',
+            onUpdate: tween =>
+            {
+                const value = Math.round(tween.getValue())
+                this.scoreDisplay.setText(`${value}`)
+            }
+        })
         // create new timer
             // restart/destroy timer in obstacle collision
     }
@@ -99,43 +123,45 @@ class Street extends Phaser.Scene {
         playerVector.normalize()
         this.kid.setVelocity(this.PLAYER_VELOCITY * playerVector.x, this.PLAYER_VELOCITY * playerVector.y)
 
-        // if(this.grandma.y == this.savedY){
-        //     this.grandma.setVelocity(0)
-        // }
-        // else{
-        //     console.log(`grandma y: ${this.grandma.y}, saved y: ${this.savedY}`)
+        // this.time.delayedCall(this.obstacleSpawnDelay, () => { 
+        //     this.addObstacle() 
+        // })
 
-        // }
+        // this.time.delayedCall(this.obstacleSpawnDelay, () => { 
+        //     this.addReward() 
+        // })
         
+        console.log(this.kid.x)
 
     }
 
 
-    addBarrier() {
-        var index = Phaser.Math.RND.between(0, 2);
-        // var obstaclePicked = obstacleTypes[index]
-        var obstaclePicked = 'heart'
+    addObstacle() {
+        var index = Phaser.Math.RND.between(0, 1);
+        var obstaclePicked = obstacleTypes[index]
+        // var obstaclePicked = 'heart'
 
         let obstacle = new Obstacle(this, obstaclePicked, this.OBSTACLE_SPEED)
 
         if(obstaclePicked == 'heart'){
-            obstacle.setScale(0.07)
+            obstacle.setScale(0.1)
             obstacle.play('hearts')
         }
-        // else if(trashPicked == 'can') {
-        //     trash.setScale(0.017)
-        //     trash.body.setSize(trash.width / 1.75, trash.height / 2 - 200)
-        //     trash.body.setOffset(350, 750)
-        // }
-        // else{
-        //     trash.body.setSize(920, 600)
-        //     trash.body.setOffset(trash.width / 15, trash.height / 3 + 30)
-        //     trash.setScale(0.06)
-        //     trash.setOrigin(0)
-        //     trash.play('trash-stinky')
-        // }
+        else{
+            obstacle.setScale(0.15)
+            obstacle.play('lips')
+        }
         obstacle.body.setImmovable()
         this.obstacleGroup.add(obstacle)
+    }
+
+
+    addReward() {
+        let reward = new Reward(this, 'star', this.OBSTACLE_SPEED)
+        reward.setScale(0.1)
+        reward.play('stars')
+        reward.body.setImmovable()
+        this.rewardGroup.add(reward)
     }
 
     /*  Add collider for grandson and grandma, when colliding, play animation and find offset OR change hit boxes so no math ? */
@@ -167,17 +193,57 @@ class Street extends Phaser.Scene {
 
 
         kid.x -= 50
-        this.PLAYER_VELOCITY = 100
+    }
+
+    handleRewardCollision(kid, reward){
+        // this.sound.play('damage')
+        // kid.setTint(0xf05a4f)
+
+        playerScore += 500
+
+        reward.destroy()
+
+
+        this.grandma.y = this.kid.y
+
+        // console.log(`Saved Y: ${kid.y}`)
+
+        // this.savedY = kid.y
+
+
+        // let grandmaVector = new Phaser.Math.Vector2(0, 0)
+        // grandmaVector.y = kid.y
+        // grandmaVector.normalize()
+        // this.grandma.setVelocity(0, this.GRANDMA_VELOCITY)
+
+
+        kid.x += 75
+
+        if (this.updateTween.isPlaying()){
+            //  The tween is already running, so we'll update the end value with resetting it
+            this.updateTween.updateTo('value', playerScore)
+        }
+        else {
+            //  The tween has finished, so create a new one
+            this.updateTween = this.tweens.addCounter({
+                from: oldScore,
+                to: playerScore,
+                duration: 1000,
+                ease: 'linear',
+                onUpdate: tween =>
+                {
+                    const value = Math.round(tween.getValue())
+                    this.scoreDisplay.setText(`${value}`)
+                }
+            })
+        }
     }
 
     handleKidCollision(grandson, grandma){
         // console.log('collided')
         if(this.collisionFlag == false){
             this.collisionFlag = true
-            // this.grandsonFSM.transition('kissed')
-            // this.grandmaFSM.transition('kissing')
             this.scene.start('gameOverScene')
-            // console.log('DEATH GRRRR RAGH')
         }
     }
 

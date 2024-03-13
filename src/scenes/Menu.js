@@ -216,9 +216,12 @@ class Menu extends Phaser.Scene {
             key: 'shootGun-after-right',
             frameRate: 6,
             repeat: 0,
+            // frames: this.anims.generateFrameNumbers('grandson', {
+            //     start: 23,
+            //     end: 23
+            // })
             frames: this.anims.generateFrameNumbers('grandson', {
-                start: 23,
-                end: 23
+                frames: [23, 23, 23, 23]
             })
         })
 
@@ -260,6 +263,9 @@ class Menu extends Phaser.Scene {
                 start: 29,
                 end: 29
             })
+            // frames: this.anims.generateFrameNumbers('grandson', {
+            //     frames: [29, 29, 29, 29, 29, 29, 29]
+            // })
         })
 
         this.anims.create({
@@ -269,6 +275,26 @@ class Menu extends Phaser.Scene {
             frames: this.anims.generateFrameNumbers('heart', {
                 start: 0,
                 end: 2
+            })
+        })
+
+        this.anims.create({
+            key: 'lips',
+            frameRate: 3,
+            repeat: -1,
+            frames: this.anims.generateFrameNumbers('lip', {
+                start: 0,
+                end: 2
+            })
+        })
+
+        this.anims.create({
+            key: 'stars',
+            frameRate: 6,
+            repeat: -1,
+            frames: this.anims.generateFrameNumbers('star', {
+                start: 0,
+                end: 5
             })
         })
 

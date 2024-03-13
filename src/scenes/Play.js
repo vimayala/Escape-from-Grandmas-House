@@ -42,10 +42,6 @@ class Play extends Phaser.Scene {
         this.physics.add.collider(this.kid, this.grandma, this.handleKidCollision, null, this, this.grandma)
         this.physics.add.collider(this.grandma, this.dartGroup, this.dartGrandmaCollision, null, this, this.dartGroup)
 
-
-
-        /*  Fix Score Position */
-
         // Add player score
         playerScore = 0
         this.scoreDisplay = this.add.bitmapText(game.config.width / 1.4, borderUISize + borderPadding * 2 + 5 , 'blockFont',`0`, 72).setOrigin(0.5)
@@ -86,13 +82,11 @@ class Play extends Phaser.Scene {
         oldScore = playerScore
         playerScore += 1000 + (500 * this.bonus)
 
-        if (this.updateTween.isPlaying())
-        {
+        if (this.updateTween.isPlaying()){
             //  The tween is already running, so we'll update the end value with resetting it
             this.updateTween.updateTo('value', playerScore)
         }
-        else
-        {
+        else {
             //  The tween has finished, so create a new one
             this.updateTween = this.tweens.addCounter({
                 from: oldScore,
@@ -106,7 +100,6 @@ class Play extends Phaser.Scene {
                 }
             })
         }
-
     }
 
     dartCreate(grandson, factor, speed){
@@ -145,7 +138,15 @@ class Play extends Phaser.Scene {
 
         dart.destroy()
         this.shootCount += 1
-        if(this.shootCount >= 3){
+        if(this.shootCount >= 3 && this.allowSuperJump == false){
+            this.kid.setTint(0x33c446)
+            this.time.addEvent({ delay: 175, callback: () => {
+                this.kid.clearTint()
+                this.time.addEvent({ delay: 100, callback: () => {this.kid.setTint(0x233c446)}, callbackScope: this});
+                this.time.addEvent({ delay: 125, callback: () => {this.kid.clearTint()}, callbackScope: this})
+    
+            }, callbackScope: this})
+
             this.allowSuperJump = true
             this.bonus *= 1.5
         }

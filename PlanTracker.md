@@ -26,26 +26,21 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
 ## Play.js
     - [ ] * Indicate jump available 
         - Tint or particles?
-    - [ ] Points
-        - [ ] Sound effect (?)
+
     - [ ] Heart and Skull Particles or Anim (or both)
 
-    - [ ] Change grandma velocity as points increase
 
 ## Street.js
-    - [ ] If player hasn't hit obstacle for 30 seconds, add to score else restart timer
-        - Redoing concept, add points when colliding with rewards
+    - [ ] Need to fix spawn amount 
+    - [ ] Maybe use level bump method again
 
 ## GameOver.js
     - [ ] End Screen + Anims (maybe with tweens?)
     - [ ] Allow restarting
 
 ## Other
-    - [ ] Export all art
     - [ ] Add More Sound Effects
     - [ ] Music
-    - [ ] Add scared sprites in both directions
-    - [ ] Move jumpAnim to global scope ?
 
 ## If time allows
     - [ ] Add more animation to menu
@@ -53,13 +48,19 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
     - [ ] Add another level (probably not by due date :/)
 
 ### Fixes
-    - [ ] Shoot on further left gets stuck
-    - [ ] Overlapping states ... ?
+    - [ ] Fix getting stuck in shoooting state
     - [ ] When Jump SFX + Dart SFX plays
     - [ ] Add more flags ? like kissing states ??
     - [ ] Make grandson change direction function and direction factor (being reused a lot)
     - [ ] Counter tween cuts off points (not in 500 increments)
     - [ ] Find instances where grandma continues chasing (fix if able)
+
+
+## March 11
+### 1 hr
+- [X] Code: Change grandma velocity as points increase
+- [X] Code: Fixed left and right shooting unable to move issue + other small fixes
+- [X] Code: 
 
 
 ## March 10

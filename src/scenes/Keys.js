@@ -13,8 +13,9 @@ class Keys extends Phaser.Scene {
         this.load.audio('ouch', './assets/470444-Mature_Female_Expressing_Pain_Ow_2_55.wav')
         this.load.audio('jump', './assets/542312-zapsplat-cartoon-spring-boing-jaw-harp-short-60817.wav')
         this.load.audio('damage', './assets/zapsplat_cartoon_hit_thud_thump_003_95554.mp3')
-
-
+        this.load.audio('powerup', './assets/video-game-power-up-jam-fx-1-00-03-trimmed.m4a')
+        this.load.audio('denied', './assets/arcade-game-retro-8-bit-denied-smartsound-fx-1-00-00.mp3')
+        this.load.audio('losingpoints', './assets/arcade-game-retro-8-bit-losing-points-floor-model-1-00-00.mp3')
 
         this.load.bitmapFont('blockFont', './assets/bigblocks.png', './assets/bigblocks.xml')
         this.load.bitmapFont('blocko', './assets/blocko.png', './assets/blocko.xml')
@@ -64,6 +65,20 @@ class Keys extends Phaser.Scene {
             frameHeight: 510,
             startFrame: 0,
             endFrame: 2
+        })
+
+        this.load.spritesheet("lip", "./assets/lips.png",{
+            frameWidth: 480,
+            frameHeight: 510,
+            startFrame: 0,
+            endFrame: 2
+        })
+
+        this.load.spritesheet("star", "./assets/stars.png",{
+            frameWidth: 480,
+            frameHeight: 510,
+            startFrame: 0,
+            endFrame: 5
         })
     }
 

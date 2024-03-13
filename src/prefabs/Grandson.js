@@ -12,7 +12,7 @@ class Grandson extends Phaser.Physics.Arcade.Sprite {
         // Adjust custom grandson properties
         this.body.setCollideWorldBounds(true)
         this.direction = direction 
-        // this.dashCooldown = 300    // in ms
+        this.dartCooldown = true
         
         // Begin scene by playing scared animation
             /* Might need to change to a state */
@@ -229,6 +229,7 @@ class ShootGunState extends State {
 
 
         // grandson.anims.play(`grabGun-${grandson.direction}`).once('animationcomplete', () => {
+            this.dartCooldown = true
             grandson.anims.play(`holdGun-${grandson.direction}`).once('animationcomplete', () => {
                 grandson.anims.play(`shootGun-before-${grandson.direction}`).once('animationcomplete', () => {
                     // Uses frame number so only executed once            
@@ -248,7 +249,9 @@ class ShootGunState extends State {
          
         
                     }
-                    grandson.anims.play(`shootGun-after-${grandson.direction}`)
+                    grandson.anims.play(`shootGun-after-${grandson.direction}`).once('animationcomplete', () =>{
+                        this.dartCooldown = false
+                    })
                 })
             })
         // })
@@ -278,7 +281,7 @@ class ShootGunState extends State {
             return
         }
 
-        if(KEYS.SHIFT.isDown) {
+        if(KEYS.SHIFT.isDown && this.dartCooldown === false) {
             this.stateMachine.transition('shoot')
             return
         }

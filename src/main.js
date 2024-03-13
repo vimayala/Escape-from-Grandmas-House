@@ -48,6 +48,6 @@ let borderPadding = borderUISize / 3
 var playerScore = 0
 var oldScore = 0
 
-const obstacleTypes = ['kiss', 'candy', 'heart']
+const obstacleTypes = ['lip', 'heart']
 
 let { height, width } = game.config
