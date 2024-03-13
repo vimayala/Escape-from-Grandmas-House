@@ -24,18 +24,17 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
         - [ ] Split into screens (?)
 
 ## Play.js
+    - [ ] * Indicate jump available 
+        - Tint or particles?
     - [ ] Points
         - [ ] Sound effect (?)
     - [ ] Heart and Skull Particles or Anim (or both)
 
-    - [ ] Either: 
-        - Get on other side:             
-            - super space
-            - or space to dash past
     - [ ] Change grandma velocity as points increase
 
 ## Street.js
     - [ ] If player hasn't hit obstacle for 30 seconds, add to score else restart timer
+        - Redoing concept, add points when colliding with rewards
 
 ## GameOver.js
     - [ ] End Screen + Anims (maybe with tweens?)

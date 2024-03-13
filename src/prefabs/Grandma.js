@@ -168,7 +168,7 @@ class ShotState extends State {
 // Grandma Kissing State
 class KissingState extends State {
     enter(scene, grandma) {
-        grandma.anims.play(`kissing-${grandma.direction}`)
+        scene.grandma.anims.play(`kissing-${grandma.direction}`)
         /* Play kissing sound */
     }
 

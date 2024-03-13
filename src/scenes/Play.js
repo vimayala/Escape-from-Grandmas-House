@@ -157,10 +157,17 @@ class Play extends Phaser.Scene {
     // If grandson shoots 3 or more times, he can pass through 
     handleKidCollision(grandson, grandma){
         if(this.collisionFlag == false && this.grandsonFSM.state != 'superJump'){
+            if(grandma.x < grandson.x){
+                grandma.direction = 'right'
+            }
+            else{
+                grandma.direction = 'left'
+            }
             grandson.y -= 40
             this.collisionFlag = true
-            this.grandsonFSM.transition('kissed')
             this.grandmaFSM.transition('kissing')
+            this.grandsonFSM.transition('kissed')
+            console.log(`Grandma State: ${this.grandmaFSM.state}`)
         }
     }
 
