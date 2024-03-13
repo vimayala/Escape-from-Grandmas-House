@@ -1,12 +1,11 @@
 ## Art Assets
-- [ ] Menu Screen
+- [X] Menu Screen
 - [ ] Buttons
-- [ ] Living Room
+- [X] Living Room
     - [X] Stairs
     - [X] Walls
     - [X] Closet Door
         - [X] Monsters,     ~3 frames
-    - [ ] Shelf (?)
 - [ ] Grandson
     - [x] Jumping Scared
     - [X] Shooting,     

@@ -17,12 +17,110 @@ class GameOver extends Phaser.Scene {
             /* Haven't implemented restart */
             // this.restartText = this.add.bitmapText(game.config.width / 2, game.config.height / 1.05 , 'blocko',  'Press [Shift] to restart', 36).setOrigin(0.5)
             this.grandson = this.add.sprite(game.config.width / 2,  height / 1.6 + 40, 'grandson').setScale(0.8)
-            this.grandson.play('jumping-left')
+            this.grandson.setFrame(4)
             this.grandma = new Grandma(this, width / 1.4, height / 1.6 + 20, "grandma", 0, 'left').setScale(0.8)
             this.grandma.play('chasing-left')
             this.hearts = this.add.sprite(game.config.width / 1.5,  height / 2, 'heart').setScale(0.1)
             this.hearts.play('hearts')
-            this.add.image(0, 0, 'gameframe').setOrigin(0).setScale(0.8)
+            this.add.image(width / 2 + 0.5, height / 2, 'gameframe').setScale(0.8)
+
+            let grandsonTweenChain = this.tweens.chain({
+                targets: this.grandson,
+                loop: 0,
+                paused: false,
+                tweens:[
+                    {
+                        // onStart: () => {
+                        //     funkypear.setAngle(0)
+                        // },
+                        x: this.grandson.x - 32,
+                        y: this.grandson.y - 32,
+                        duration: 150,
+                        onComplete: () => {
+                            this.grandson.setFrame(5)
+                        }
+                    },
+                    {
+                        x: this.grandson.x - 64,
+                        y: this.grandson.y - 64,
+                        duration: 150,
+                        onComplete: () => {
+                            this.grandson.setFrame(6)
+                        }
+                    },
+                    {
+                        x: this.grandson.x - 82,
+                        // y: this.grandson.y + 10,
+                        duration: 150,
+                        // ease: 'Bounce.easeOut',
+                        onComplete: () => {
+                            this.grandson.setFrame(5)
+                        }
+                    },
+                    {
+                        x: this.grandson.x - 102,
+                        // y: this.grandson.y + 15,
+                        duration: 150,
+                        onComplete: () => {
+                            this.grandson.setFrame(4)
+                        }
+                    },
+                    {
+                        x: this.grandson.x - 120,
+                        y: this.grandson.y,
+                        duration: 150,
+                        onComplete: () => {
+                            this.grandson.setFrame(1)
+                        }
+                    },
+
+                    {
+                        // onStart: () => {
+                        //     funkypear.setAngle(0)
+                        // },
+                        x: this.grandson.x - 134,
+                        y: this.grandson.y - 32,
+                        duration: 150,
+                        onComplete: () => {
+                            this.grandson.setFrame(5)
+                        }
+                    },
+                    {
+                        x: this.grandson.x - 218,
+                        y: this.grandson.y - 64,
+                        duration: 150,
+                        onComplete: () => {
+                            this.grandson.setFrame(6)
+                        }
+                    },
+                    // {
+                    //     x: this.grandson.x - 82,
+                    //     // y: this.grandson.y + 10,
+                    //     duration: 150,
+                    //     // ease: 'Bounce.easeOut',
+                    //     onComplete: () => {
+                    //         this.grandson.setFrame(5)
+                    //     }
+                    // },
+                    // {
+                    //     x: this.grandson.x - 102,
+                    //     // y: this.grandson.y + 15,
+                    //     duration: 150,
+                    //     onComplete: () => {
+                    //         this.grandson.setFrame(4)
+                    //     }
+                    // },
+                    // {
+                    //     x: this.grandson.x - 120,
+                    //     y: this.grandson.y,
+                    //     duration: 150,
+                    //     onComplete: () => {
+                    //         this.grandson.setFrame(1)
+                    //     }
+                    // }
+
+                ]
+            })
         }
     
         update() {

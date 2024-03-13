@@ -75,9 +75,6 @@ class Play extends Phaser.Scene {
             this.scene.start('streetScene')
         }
 
-        console.log(this.grandsonFSM.state)
-        console.log(this.kid.frame.name)
-
     }
 
     // Taken from phaserjs GitHub Counter Tween Example
@@ -154,7 +151,7 @@ class Play extends Phaser.Scene {
             this.allowSuperJump = true
             this.bonus *= 1.5
         }
-        if(playerScore > 50000){
+        if(playerScore >= 50000){
             this.scene.start('streetScene')
         }
         this.velocityBump()
