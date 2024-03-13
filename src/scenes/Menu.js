@@ -310,6 +310,8 @@ class Menu extends Phaser.Scene {
             fixedWidth: 0
         }
 
+        this.gameFrame = this.add.image(width / 2 + 0.5, height / 2, 'gameframe').setScale(0.8)
+        this.gameFrame.setDepth(2)
 
 
         /* Temp - make blink */
