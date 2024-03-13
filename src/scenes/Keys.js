@@ -16,6 +16,12 @@ class Keys extends Phaser.Scene {
         this.load.audio('powerup', './assets/video-game-power-up-jam-fx-1-00-03-trimmed.m4a')
         this.load.audio('denied', './assets/arcade-game-retro-8-bit-denied-smartsound-fx-1-00-00.mp3')
         this.load.audio('losingpoints', './assets/arcade-game-retro-8-bit-losing-points-floor-model-1-00-00.mp3')
+        this.load.audio('reward', './assets/8bit-coin-sound-effect.mp3')
+        this.load.audio('winner', './assets/mixkit-final-level-bonus-2061.wav')
+        this.load.audio('hurt', './assets/hurt_c_08-102842.mp3')
+        this.load.audio('death', './assets/dead-8bit-41400.mp3')
+
+
 
         this.load.bitmapFont('blockFont', './assets/bigblocks.png', './assets/bigblocks.xml')
         this.load.bitmapFont('blocko', './assets/blocko.png', './assets/blocko.xml')

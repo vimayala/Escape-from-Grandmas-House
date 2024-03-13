@@ -3,10 +3,10 @@
 class Reward extends Phaser.GameObjects.Sprite {
     constructor(scene, image, speed) {
 
-        var x = Phaser.Math.RND.between(game.config.width / 1.5, game.config.width);
-        var y = Phaser.Math.RND.between(275, game.config.height);
+        var x = Phaser.Math.RND.between(game.config.width / 1.25, game.config.width);
+        var y = Phaser.Math.RND.between(275, height / 1.525);
 
-        super(scene, x, y, image)
+        super(scene, x, y, image, speed)
         scene.add.existing(this)
         this.image = image
         this.parentScene = scene               // maintain scene context
@@ -21,12 +21,17 @@ class Reward extends Phaser.GameObjects.Sprite {
 
     update () {
         this.x -= this.speed
-        if(this.newReward && this.x < game.config.width / 2) {
+        if(this.newReward && this.x < game.config.width / 1.5) {
+            this.parentScene.rewardCount += 1 
             this.parentScene.addReward()
             this.newReward = false
+
         }
         if(this.x < -this.width) {
             this.destroy()
+            // this.parentScene.addReward()
+            this.parentScene.rewardCount -= 1
+
         }
     }
 

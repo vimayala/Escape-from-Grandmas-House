@@ -57,10 +57,11 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
 
 
 ## March 11
-### 1 hr
+### 3 hr
 - [X] Code: Change grandma velocity as points increase
 - [X] Code: Fixed left and right shooting unable to move issue + other small fixes
-- [X] Code: 
+- [X] Code: Worked on street scene, need to fix calls/delays
+- [X] Assets: Added more sounds and mini art pieces
 
 
 ## March 10

@@ -3,10 +3,10 @@
 class Obstacle extends Phaser.GameObjects.Sprite {
     constructor(scene, image, speed) {
 
-        var x = Phaser.Math.RND.between(game.config.width / 1.5, game.config.width);
+        var x = Phaser.Math.RND.between(game.config.width / 1.25, game.config.width);
         var y = Phaser.Math.RND.between(275, game.config.height);
 
-        super(scene, x, y, image)
+        super(scene, x, y, image, speed)
         scene.add.existing(this)
         this.image = image
         this.parentScene = scene               // maintain scene context
@@ -21,13 +21,14 @@ class Obstacle extends Phaser.GameObjects.Sprite {
 
     update () {
         this.x -= this.speed
-        if(this.newObstacle && this.x < game.config.width / 1.75) {
+        if(this.newObstacle && this.x < game.config.width / 1.5) {
             this.parentScene.addObstacle()
             this.newObstacle = false
-            console.log('called')
         }
         if(this.x < -this.width) {
             this.destroy()
+
+            // this.parentScene.addObstacle()
         }
     }
 

@@ -25,7 +25,7 @@ class Play extends Phaser.Scene {
         // Add Grandma and Grandson from prefabs
         this.kid = new Grandson(this, width / 2.25, height / 1.525 + 20, "grandson", 0, 'right')
         this.kid.setScale(0.8)
-        this.grandma = new Grandma(this, width / 1.65, height / 1.6 + 20, "grandma", 0, 'left')
+        this.grandma = new Grandma(this, width / 1.55, height / 1.6 + 20, "grandma", 0, 'left')
         this.grandma.setScale(0.8)
 
         // Create a dart group to run updates for each prefab item created
@@ -139,6 +139,7 @@ class Play extends Phaser.Scene {
         dart.destroy()
         this.shootCount += 1
         if(this.shootCount >= 3 && this.allowSuperJump == false){
+            this.sound.play('powerup', {volume: 0.25})
             this.kid.setTint(0x33c446)
             this.time.addEvent({ delay: 175, callback: () => {
                 this.kid.clearTint()

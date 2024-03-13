@@ -9,6 +9,13 @@ class Street extends Phaser.Scene {
         this.OBSTACLE_SPEED = 2
         this.GRANDMA_VELOCITY = 50
         this.obstacleSpawnDelay = 2500
+        this.rewardSpawnDelay = 2500
+        this.factor = 1
+        this.rewardCount = 0
+        this.obstacleCount = 0
+        this.addNewReward = true
+        this.addNewObstacle= true
+
     }
 
     create() {
@@ -64,14 +71,14 @@ class Street extends Phaser.Scene {
         })
 
 
-        this.addReward()
 
         this.time.delayedCall(this.obstacleSpawnDelay, () => { 
+            this.addReward()
             this.addObstacle() 
         })
 
         this.scoreDisplay = this.add.bitmapText(game.config.width / 1.4, borderUISize + borderPadding * 2 + 5 , 'blockFont', Math.round(playerScore), 72).setOrigin(0.5)
-        this.gameFrame = this.add.image(0, 0, 'gameframe').setOrigin(0).setScale(0.8)
+        this.gameFrame = this.add.image(width / 2 + 0.5, height / 2, 'gameframe').setScale(0.8)
         this.gameFrame.setDepth(2)
         // const topLayer = this.add.layer()
         // topLayer.add([gameFrame])
@@ -92,8 +99,6 @@ class Street extends Phaser.Scene {
                 this.scoreDisplay.setText(`${value}`)
             }
         })
-        // create new timer
-            // restart/destroy timer in obstacle collision
     }
 
     update() {
@@ -102,12 +107,6 @@ class Street extends Phaser.Scene {
 
         // // get local KEYS reference
         const { KEYS } = this
-
-
-        
-
-        // this.grandsonFSM.step()
-        // this.grandmaFSM.step()
 
         let playerVector = new Phaser.Math.Vector2(0, 0)
         if(KEYS.UP.isDown){    
@@ -122,16 +121,26 @@ class Street extends Phaser.Scene {
         }
         playerVector.normalize()
         this.kid.setVelocity(this.PLAYER_VELOCITY * playerVector.x, this.PLAYER_VELOCITY * playerVector.y)
-
-        // this.time.delayedCall(this.obstacleSpawnDelay, () => { 
-        //     this.addObstacle() 
-        // })
-
-        // this.time.delayedCall(this.obstacleSpawnDelay, () => { 
-        //     this.addReward() 
-        // })
         
-        console.log(this.kid.x)
+        if(this.kid.x > 678){
+            this.scene.start('gameOverScene')
+        }
+        playerScore += 1
+        // might not tween
+        // if(this.rewardCount <= 1 && this.addNewReward){
+        //     this.addReward()
+        //     this.addNewReward = false
+        //     this.time.delayedCall(4500, () => { 
+        //         this.addNewReward = true
+        //     })
+        // }
+        // if(this.obstacleCount <= 1 && this.addNewObstacle){
+        //     this.addObstacle()
+        //     this.addNewObstacle = false
+        //     this.time.delayedCall(4500, () => { 
+        //         this.addNewObstacle = true
+        //     })
+        // }
 
     }
 
@@ -139,8 +148,6 @@ class Street extends Phaser.Scene {
     addObstacle() {
         var index = Phaser.Math.RND.between(0, 1);
         var obstaclePicked = obstacleTypes[index]
-        // var obstaclePicked = 'heart'
-
         let obstacle = new Obstacle(this, obstaclePicked, this.OBSTACLE_SPEED)
 
         if(obstaclePicked == 'heart'){
@@ -168,7 +175,7 @@ class Street extends Phaser.Scene {
 
 
     handleObstacleCollision(kid, obstacle){
-        this.sound.play('damage')
+        this.sound.play('hurt')
         kid.setTint(0xf05a4f)
         this.time.addEvent({ delay: 175, callback: () => {
             kid.clearTint()
@@ -193,15 +200,19 @@ class Street extends Phaser.Scene {
 
 
         kid.x -= 50
+        this.findFactor()
+        console.log(`Obstacle Factor: ${this.factor}`)
+        console.log(`Grandson x: ${this.kid.x}`)
     }
 
     handleRewardCollision(kid, reward){
-        // this.sound.play('damage')
+        this.sound.play('reward', {volume: 0.45})
         // kid.setTint(0xf05a4f)
 
-        playerScore += 500
+        playerScore += 1000
 
         reward.destroy()
+        this.rewardCount -= 1
 
 
         this.grandma.y = this.kid.y
@@ -217,7 +228,11 @@ class Street extends Phaser.Scene {
         // this.grandma.setVelocity(0, this.GRANDMA_VELOCITY)
 
 
-        kid.x += 75
+        kid.x += 50
+        this.findFactor()
+        console.log(`Reward Factor: ${this.factor}`)
+        console.log(`Grandson x: ${this.kid.x}`)
+
 
         if (this.updateTween.isPlaying()){
             //  The tween is already running, so we'll update the end value with resetting it
@@ -237,13 +252,25 @@ class Street extends Phaser.Scene {
                 }
             })
         }
+
     }
 
     handleKidCollision(grandson, grandma){
-        // console.log('collided')
         if(this.collisionFlag == false){
             this.collisionFlag = true
             this.scene.start('gameOverScene')
+        }
+    }
+
+    findFactor(){
+        if(this.kid.x < 450){
+            this.factor = 1
+        }
+        else if(this.kid.x < 550){
+            this.factor = 0.8
+        }
+        else{
+            this.factor = 0.8
         }
     }
 
