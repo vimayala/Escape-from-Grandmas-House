@@ -75,6 +75,9 @@ class Play extends Phaser.Scene {
             this.scene.start('streetScene')
         }
 
+        console.log(this.grandsonFSM.state)
+        console.log(this.kid.frame.name)
+
     }
 
     // Taken from phaserjs GitHub Counter Tween Example

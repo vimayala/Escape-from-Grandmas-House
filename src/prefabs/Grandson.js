@@ -178,21 +178,23 @@ class SuperJumpState extends State {
 
 
         // jump if pressing left or right
-        if(KEYS.LEFT.isDown && (grandson.frame.name === 0 || grandson.frame.name === 1)) {
+        console.log('executing')
+
+        if(KEYS.LEFT.isDown && (grandson.frame.name === 0 || grandson.frame.name === 1 || grandson.frame.name === 23 || grandson.frame.name === 29)) {
             scene.allowSuperJump = false
             grandson.direction = 'left'
             this.stateMachine.transition('jump')
             return
         }
 
-        if(KEYS.RIGHT.isDown && (grandson.frame.name === 0 || grandson.frame.name === 1)) {
+        if(KEYS.RIGHT.isDown && (grandson.frame.name === 0 || grandson.frame.name === 1 || grandson.frame.name === 23 || grandson.frame.name === 29)) {
             scene.allowSuperJump = false
             grandson.direction = 'right'
             this.stateMachine.transition('jump')
             return
         }
 
-        if(KEYS.SHIFT.isDown &&  (grandson.frame.name === 0 || grandson.frame.name === 1)) {
+        if(KEYS.SHIFT.isDown &&  (grandson.frame.name === 0 || grandson.frame.name === 1 || grandson.frame.name === 23 || grandson.frame.name === 29)) {
             scene.allowSuperJump = false
             this.stateMachine.transition('shoot')
             return
@@ -267,7 +269,6 @@ class ShootGunState extends State {
         // If transitions cause issues, reimplement
             //   && (grandson.frame.name === 23 || grandson.frame.name === 29  || grandson.frame.name === 0 || grandson.frame.name === 1)
         if(KEYS.LEFT.isDown) {
-
             grandson.direction = 'left'
             // this.jump = true
             // this.doJump(scene, grandson)

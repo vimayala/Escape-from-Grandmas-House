@@ -21,7 +21,7 @@
         -  Might have not shot enough times but check if occurs again
     - Play Tester #2: Adding an interactive controls screen
     - Play Tester #3: Fix Score Display (currently floats)
-    - Play Tester #3: Got stuck on left side of screen while shooting ****
+    - Play Tester #3: Got stuck on left side of screen while shooting 
     - Play Tester #4: If street scene takes grandson's x too far, can't see upcoming obstacles
     - Play Tester #4: Faster grandson velocity on the street scene
     - Play Tester #5: Grandma knockback speed (too slow, easy to shoot her)

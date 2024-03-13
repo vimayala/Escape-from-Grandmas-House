@@ -200,9 +200,6 @@ class Street extends Phaser.Scene {
 
 
         kid.x -= 50
-        this.findFactor()
-        console.log(`Obstacle Factor: ${this.factor}`)
-        console.log(`Grandson x: ${this.kid.x}`)
     }
 
     handleRewardCollision(kid, reward){
@@ -229,10 +226,6 @@ class Street extends Phaser.Scene {
 
 
         kid.x += 50
-        this.findFactor()
-        console.log(`Reward Factor: ${this.factor}`)
-        console.log(`Grandson x: ${this.kid.x}`)
-
 
         if (this.updateTween.isPlaying()){
             //  The tween is already running, so we'll update the end value with resetting it
@@ -259,18 +252,6 @@ class Street extends Phaser.Scene {
         if(this.collisionFlag == false){
             this.collisionFlag = true
             this.scene.start('gameOverScene')
-        }
-    }
-
-    findFactor(){
-        if(this.kid.x < 450){
-            this.factor = 1
-        }
-        else if(this.kid.x < 550){
-            this.factor = 0.8
-        }
-        else{
-            this.factor = 0.8
         }
     }
 

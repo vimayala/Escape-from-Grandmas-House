@@ -27,8 +27,6 @@ class Obstacle extends Phaser.GameObjects.Sprite {
         }
         if(this.x < -this.width) {
             this.destroy()
-
-            // this.parentScene.addObstacle()
         }
     }
 
