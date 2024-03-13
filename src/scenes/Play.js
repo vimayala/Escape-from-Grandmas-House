@@ -8,6 +8,7 @@ class Play extends Phaser.Scene {
         this.shootCount = 0
         this.allowSuperJump = false
         this.bonus = 1
+        this.mode = 'easy'
     }
 
     create() {
@@ -78,9 +79,6 @@ class Play extends Phaser.Scene {
             this.scene.start('streetScene')
         }
 
-        if(playerScore >= 50000){
-            this.scene.start('streetScene')
-        }
     }
 
     // Taken from phaserjs GitHub Counter Tween Example
@@ -151,6 +149,10 @@ class Play extends Phaser.Scene {
             this.allowSuperJump = true
             this.bonus *= 1.5
         }
+        if(playerScore > 50000){
+            this.scene.start('streetScene')
+        }
+        this.velocityBump()
     }
 
     // If grandma and grandson collide, end the game
@@ -165,9 +167,30 @@ class Play extends Phaser.Scene {
             }
             grandson.y -= 40
             this.collisionFlag = true
+            grandma.anims.play(`kissing-${grandma.direction}`)
             this.grandmaFSM.transition('kissing')
             this.grandsonFSM.transition('kissed')
-            console.log(`Grandma State: ${this.grandmaFSM.state}`)
+            console.log(`Grandma Anim: ${grandma.frame.name}`)
+        }
+    }
+
+    velocityBump(){
+        if(playerScore != this.last_score){
+            if(playerScore > 6250 && this.grandma.velocity <= 0.5){
+                this.last_score = playerScore
+                this.grandma.velocity *= 1.25
+                console.log(`Increased velocity 1: ${this.grandma.velocity}`)
+            }
+            else if (playerScore >= 17500 && this.mode == 'easy'){
+                this.mode = 'middle'
+                this.grandma.velocity *= 1.25
+                console.log(`Increased velocity 2: ${this.grandma.velocity}`)
+            }
+            else if(this.mode != 'end' && playerScore > 34500){
+                this.grandma.velocity *= 1.05
+                this.mode = 'end'
+                console.log(`Increased velocity 3: ${this.grandma.velocity}`)
+            }
         }
     }
 

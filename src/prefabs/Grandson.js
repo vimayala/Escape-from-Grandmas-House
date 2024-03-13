@@ -96,9 +96,6 @@ class JumpState extends State {
     // Allow transition back into jump once animation done or shoot state
     execute(scene, grandson) {
         const { KEYS } = scene
-
-        console.log('grrrl')
-        console.log(grandson.frame.name)
         // jump if pressing left or right
         if(KEYS.LEFT.isDown && (grandson.frame.name === 0 || grandson.frame.name === 1 || grandson.frame.name === 23 || grandson.frame.name === 29)) {
             grandson.direction = 'left'

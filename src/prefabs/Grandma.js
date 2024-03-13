@@ -6,18 +6,10 @@ class Grandma extends Phaser.Physics.Arcade.Sprite {
         scene.physics.add.existing(this)             
 
         
-        // Edit grandma's collision
-
-        // this.body.setCircle(this.width / 4)
-        // this.body.setOffset(this.width/5, this.height/4)
-
-
-
+        // Edit grandma's collision body
         this.body.setSize(this.width / 2, this.height / 1.75)
         this.body.setOffset(this.width / 4, this.height / 3.5)
         this.body.setImmovable()
-
-        // this.setImmovable()
 
         // Change grandma to collide with world bounds set in play
         this.body.setCollideWorldBounds(true)
@@ -168,7 +160,8 @@ class ShotState extends State {
 // Grandma Kissing State
 class KissingState extends State {
     enter(scene, grandma) {
-        scene.grandma.anims.play(`kissing-${grandma.direction}`)
+        grandma.velocity = 0
+        grandma.anims.play(`kissing-${grandma.direction}`)
         /* Play kissing sound */
     }
 
