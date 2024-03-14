@@ -21,8 +21,6 @@ class Keys extends Phaser.Scene {
         this.load.audio('hurt', './assets/hurt_c_08-102842.mp3')
         this.load.audio('death', './assets/dead-8bit-41400.mp3')
 
-
-
         this.load.bitmapFont('blockFont', './assets/bigblocks.png', './assets/bigblocks.xml')
         this.load.bitmapFont('blocko', './assets/blocko.png', './assets/blocko.xml')
         this.load.bitmapFont('pinkblocko', './assets/pinkBlocko.png', './assets/pinkBlocko.xml')
@@ -67,6 +65,13 @@ class Keys extends Phaser.Scene {
         })
 
         this.load.spritesheet("heart", "./assets/hearts.png",{
+            frameWidth: 480,
+            frameHeight: 510,
+            startFrame: 0,
+            endFrame: 2
+        })
+        
+        this.load.spritesheet("skull", "./assets/skulls.png",{
             frameWidth: 480,
             frameHeight: 510,
             startFrame: 0,

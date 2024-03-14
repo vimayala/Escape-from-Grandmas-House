@@ -279,6 +279,16 @@ class Menu extends Phaser.Scene {
         })
 
         this.anims.create({
+            key: 'skulls',
+            frameRate: 3,
+            repeat: -1,
+            frames: this.anims.generateFrameNumbers('skull', {
+                start: 0,
+                end: 2
+            })
+        })
+
+        this.anims.create({
             key: 'lips',
             frameRate: 3,
             repeat: -1,
@@ -369,8 +379,8 @@ class Menu extends Phaser.Scene {
         const { KEYS } = this
 
         if(KEYS.SPACE.isDown) {
-            // this.scene.start('playScene')
-            this.scene.start('gameOverScene')
+            this.scene.start('playScene')
+            // this.scene.start('gameOverScene')
         }
 
         // Credits if shift is clicked

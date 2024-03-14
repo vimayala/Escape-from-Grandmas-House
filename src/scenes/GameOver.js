@@ -217,6 +217,8 @@ class GameOver extends Phaser.Scene {
     
         update() {
             this.grandma.x -= 4
-
+            if(this.grandma.x <= 0){
+                this.grandma.destroy()
+            }
         }
     }

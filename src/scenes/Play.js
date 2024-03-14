@@ -28,6 +28,10 @@ class Play extends Phaser.Scene {
         this.grandma = new Grandma(this, width / 1.55, height / 1.6 + 20, "grandma", 0, 'left')
         this.grandma.setScale(0.8)
 
+        // To be above particles
+        this.kid.setDepth(1)
+        this.grandma.setDepth(1)
+
         // Create a dart group to run updates for each prefab item created
         this.dartGroup = this.physics.add.group({
             runChildUpdate: true
@@ -161,6 +165,40 @@ class Play extends Phaser.Scene {
     // If grandson shoots 3 or more times, he can pass through 
     handleKidCollision(grandson, grandma){
         if(this.collisionFlag == false && this.grandsonFSM.state != 'superJump'){
+            // this.input.on('pointerdown', (pointer) => {
+            this.add.particles(this.grandma.x, this.grandma.y, 'heart', {
+                speed: Phaser.Math.Between(100, 250),
+                // quantity: .01,
+                frame: {
+                    frames: [0, 2]
+                },
+                scale: { start: 0.025, end: 0.0075 },
+                angle: { min: 180, max: 360 },
+                // rotate: Phaser.Math.FloatBetween(180, 360),
+                // alpha: Phaser.Math.FloatBetween(0.25, 1)
+                // x: this.kid.x,
+                y: -70,
+                lifespan: 750,
+                
+            })
+
+            // this.add.particles(this.grandma.x, this.grandma.y, 'skulls', {
+            //     speed: Phaser.Math.Between(100, 250),
+            //     // quantity: .01,
+            //     frame: {
+            //         frames: [0, 2]
+            //     },
+            //     scale: { start: 0.025, end: 0.0075 },
+            //     angle: { min: 180, max: 360 },
+            //     // rotate: Phaser.Math.FloatBetween(180, 360),
+            //     // alpha: Phaser.Math.FloatBetween(0.25, 1)
+            //     // x: this.kid.x,
+            //     y: -70,
+            //     lifespan: 750,
+                
+            // })
+
+            // })
             if(grandma.x < grandson.x){
                 grandma.direction = 'right'
             }
