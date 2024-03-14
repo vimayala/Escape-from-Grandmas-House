@@ -62,6 +62,13 @@ class Play extends Phaser.Scene {
                 this.scoreDisplay.setText(`${value}`)
             }
         })
+
+        this.load.spritesheet('skullsSpritesheet', './aseets/skulls.png', {
+            frameWidth: 480,
+            frameHeight: 510,
+        })
+
+
     }
 
     update() {
@@ -166,13 +173,12 @@ class Play extends Phaser.Scene {
     handleKidCollision(grandson, grandma){
         if(this.collisionFlag == false && this.grandsonFSM.state != 'superJump'){
             // this.input.on('pointerdown', (pointer) => {
-            this.add.particles(this.grandma.x, this.grandma.y, 'heart', {
+            let emitter = this.add.particles(this.grandma.x, this.grandma.y, 'skullsSpritesheet', {
+                anim: ['skulls', 'hearts'],
                 speed: Phaser.Math.Between(100, 250),
                 // quantity: .01,
-                frame: {
-                    frames: [0, 2]
-                },
-                scale: { start: 0.025, end: 0.0075 },
+
+                scale: { start: 0.03, end: 0.0075 },
                 angle: { min: 180, max: 360 },
                 // rotate: Phaser.Math.FloatBetween(180, 360),
                 // alpha: Phaser.Math.FloatBetween(0.25, 1)
@@ -181,6 +187,9 @@ class Play extends Phaser.Scene {
                 lifespan: 750,
                 
             })
+
+            // emitter.addEmitZone({ type: 'edge', source: shape1, quantity: 64, total: 64 })
+
 
             // this.add.particles(this.grandma.x, this.grandma.y, 'skulls', {
             //     speed: Phaser.Math.Between(100, 250),
