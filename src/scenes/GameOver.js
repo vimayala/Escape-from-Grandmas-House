@@ -24,8 +24,12 @@ class GameOver extends Phaser.Scene {
             this.grandma = new Grandma(this, width / 1.4, height / 1.6 + 20, "grandma", 0, 'left').setScale(0.8)
             this.grandma.play('chasing-left')
             this.grandma.body.setSize(0.0005)
-            this.hearts = this.add.sprite(game.config.width / 1.5,  height / 2, 'heart').setScale(0.1)
-            this.hearts.play('hearts')
+            this.hearts1 = this.add.sprite(game.config.width / 1.3,  height / 2 - 15, 'heart').setScale(0.1)
+            this.hearts2 = this.add.sprite(game.config.width / 1.45,  height / 2 - 30, 'heart').setScale(0.1)
+            this.hearts3 = this.add.sprite(game.config.width / 1.65,  height / 2 - 15, 'heart').setScale(0.1)
+            this.hearts1.play('hearts')
+            this.hearts2.play({key: 'hearts', startFrame: 1})
+            this.hearts3.play({key: 'hearts', startFrame: 2})
             this.add.image(width / 2 + 0.5, height / 2, 'gameframe').setScale(0.8)
 
             
@@ -79,6 +83,9 @@ class GameOver extends Phaser.Scene {
                         duration: 75 * factor,
                         onComplete: () => {
                             this.grandson.setFrame(1)
+                            this.hearts1.play('skulls')
+                            this.hearts2.play({key: 'skulls', startFrame: 1})
+                            this.hearts3.play({key: 'skulls', startFrame: 2})
                         }
                     },
 
@@ -131,6 +138,9 @@ class GameOver extends Phaser.Scene {
                         duration: 75 * factor,
                         onComplete: () => {
                             this.grandson.setFrame(1)
+                            this.hearts1.play('hearts')
+                            this.hearts2.play({key: 'hearts', startFrame: 1})
+                            this.hearts3.play({key: 'hearts', startFrame: 2})
                         }
                     },
 
@@ -187,6 +197,9 @@ class GameOver extends Phaser.Scene {
                         ease: 'Bounce.easeOut',
                         onComplete: () => {
                             this.grandson.setFrame(1)
+                            this.hearts1.play('skulls')
+                            this.hearts2.play({key: 'skulls', startFrame: 1})
+                            this.hearts3.play({key: 'skulls', startFrame: 2})
                         }
                     },
                     {
@@ -208,6 +221,12 @@ class GameOver extends Phaser.Scene {
                         duration: 75 * factor,
                         onComplete: () => {
                             this.grandson.setFrame(5)
+
+                            this.time.addEvent({ delay: (450 * factor), callback: () => {
+                                this.hearts1.play('hearts')
+                                this.hearts2.play({key: 'hearts', startFrame: 1})
+                                this.hearts3.play({key: 'hearts', startFrame: 2})
+                            }, callbackScope: this})
                         }
                     },
 
@@ -217,6 +236,9 @@ class GameOver extends Phaser.Scene {
     
         update() {
             this.grandma.x -= 4
+            this.hearts1.x -= 4
+            this.hearts2.x -= 4
+            this.hearts3.x -= 4
             if(this.grandma.x <= 0){
                 this.grandma.destroy()
             }
