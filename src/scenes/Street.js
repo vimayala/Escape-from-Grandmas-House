@@ -158,7 +158,8 @@ class Street extends Phaser.Scene {
         }
         else{
             obstacle.setScale(0.15)
-            obstacle.body.setCircle(obstacle.width / 2)
+            obstacle.body.setCircle(obstacle.width / 2.5)
+            obstacle.body.setOffset(obstacle.width / 7.5, obstacle.height / 5)
 
             obstacle.play('lips')
         }

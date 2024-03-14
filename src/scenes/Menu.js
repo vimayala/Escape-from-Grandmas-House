@@ -326,14 +326,51 @@ class Menu extends Phaser.Scene {
 
         })
 
+        // TweenHelper.flashElement(this, playText);
+
+        this.tweenFlash = this.tweens.chain({
+            loop: -1,
+            tweens: [
+                {
+                    targets: [this.beginText, this.controlText, this.creditText],
+                    duration: 300,
+                    alpha: 0,
+                    ease: 'Stepped'
+                },
+                {
+                    targets: [this.beginText, this.controlText, this.creditText],
+                    duration: 300,
+                    alpha: 1,
+                    ease: 'Stepped'
+                },
+                {
+                    targets:  [this.beginText, this.controlText, this.creditText],
+                    duration: 300,
+                    alpha: 1,
+                    ease: 'Stepped'
+                },
+                {
+                    targets:  [this.beginText, this.controlText, this.creditText],
+                    duration: 250,
+                    alpha: 0,
+                    ease: 'Stepped',
+                    // onComplete: () => {
+                    //     if (repeat === true) {
+                    //         this.flashElement(scene, element);
+                    //     }
+                    // }
+                }
+            ]
+        });
+
     }
 
     update() {
         const { KEYS } = this
 
         if(KEYS.SPACE.isDown) {
-            this.scene.start('playScene')
-            // this.scene.start('gameOverScene')
+            // this.scene.start('playScene')
+            this.scene.start('gameOverScene')
         }
 
         // Credits if shift is clicked

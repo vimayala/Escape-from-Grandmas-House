@@ -47,6 +47,7 @@ let borderPadding = borderUISize / 3
 
 var playerScore = 0
 var oldScore = 0
+var factor = 1
 
 const obstacleTypes = ['lip', 'heart']
 

@@ -8,6 +8,9 @@ class GameOver extends Phaser.Scene {
         }
 
         create() {
+
+            // this.physics.world.setBounds(0, 0, game.config.width, game.config.height)
+
             this.purpleScreen = this.add.tileSprite(0, 0, 2472, 1746, 'purple').setOrigin(0,0).setScale(0.4)
             this.reachedText = this.add.bitmapText(game.config.width / 2, game.config.height / 8 , 'blocko',`You have reached`, 72).setOrigin(0.5)
             this.finalScoreText = this.add.bitmapText(game.config.width / 2, game.config.height / 2 , 'blocko', Math.round(playerScore), 128).setOrigin(0.5)
@@ -20,55 +23,60 @@ class GameOver extends Phaser.Scene {
             this.grandson.setFrame(4)
             this.grandma = new Grandma(this, width / 1.4, height / 1.6 + 20, "grandma", 0, 'left').setScale(0.8)
             this.grandma.play('chasing-left')
+            this.grandma.body.setSize(0.0005)
             this.hearts = this.add.sprite(game.config.width / 1.5,  height / 2, 'heart').setScale(0.1)
             this.hearts.play('hearts')
             this.add.image(width / 2 + 0.5, height / 2, 'gameframe').setScale(0.8)
 
+            
             let grandsonTweenChain = this.tweens.chain({
                 targets: this.grandson,
                 loop: 0,
                 paused: false,
+                ease: 'Sine.easeInOut',                
                 tweens:[
                     {
                         // onStart: () => {
                         //     funkypear.setAngle(0)
                         // },
-                        x: this.grandson.x - 32,
+                        x: this.grandson.x - 30,
                         y: this.grandson.y - 32,
-                        duration: 150,
+                        duration: 75 * factor,
                         onComplete: () => {
                             this.grandson.setFrame(5)
                         }
                     },
                     {
-                        x: this.grandson.x - 64,
-                        y: this.grandson.y - 64,
-                        duration: 150,
+                        x: this.grandson.x - 60,
+                        y: this.grandson.y - 72,
+                        duration: 75 * factor,
+                        // ease: 'Bounce.easeOut',
+
                         onComplete: () => {
                             this.grandson.setFrame(6)
                         }
                     },
                     {
-                        x: this.grandson.x - 82,
+                        x: this.grandson.x - 90,
                         // y: this.grandson.y + 10,
-                        duration: 150,
+                        duration: 75 * factor,
                         // ease: 'Bounce.easeOut',
                         onComplete: () => {
                             this.grandson.setFrame(5)
                         }
                     },
                     {
-                        x: this.grandson.x - 102,
+                        x: this.grandson.x - 120,
                         // y: this.grandson.y + 15,
-                        duration: 150,
+                        duration: 75 * factor,
                         onComplete: () => {
                             this.grandson.setFrame(4)
                         }
                     },
                     {
-                        x: this.grandson.x - 120,
+                        x: this.grandson.x - 150,
                         y: this.grandson.y,
-                        duration: 150,
+                        duration: 75 * factor,
                         onComplete: () => {
                             this.grandson.setFrame(1)
                         }
@@ -78,52 +86,137 @@ class GameOver extends Phaser.Scene {
                         // onStart: () => {
                         //     funkypear.setAngle(0)
                         // },
-                        x: this.grandson.x - 134,
+                        x: this.grandson.x - 160,
                         y: this.grandson.y - 32,
-                        duration: 150,
+                        duration: 75 * factor,
+                        onComplete: () => {
+                            this.grandson.setFrame(4)
+                        }
+                    },
+                    {
+                        x: this.grandson.x - 190,
+                        y: this.grandson.y - 32,
+                        duration: 75 * factor,
                         onComplete: () => {
                             this.grandson.setFrame(5)
                         }
                     },
                     {
-                        x: this.grandson.x - 218,
-                        y: this.grandson.y - 64,
-                        duration: 150,
+                        x: this.grandson.x - 220,
+                        y: this.grandson.y - 72,
+                        duration: 75 * factor,
                         onComplete: () => {
                             this.grandson.setFrame(6)
                         }
                     },
-                    // {
-                    //     x: this.grandson.x - 82,
-                    //     // y: this.grandson.y + 10,
-                    //     duration: 150,
-                    //     // ease: 'Bounce.easeOut',
-                    //     onComplete: () => {
-                    //         this.grandson.setFrame(5)
-                    //     }
-                    // },
-                    // {
-                    //     x: this.grandson.x - 102,
-                    //     // y: this.grandson.y + 15,
-                    //     duration: 150,
-                    //     onComplete: () => {
-                    //         this.grandson.setFrame(4)
-                    //     }
-                    // },
-                    // {
-                    //     x: this.grandson.x - 120,
-                    //     y: this.grandson.y,
-                    //     duration: 150,
-                    //     onComplete: () => {
-                    //         this.grandson.setFrame(1)
-                    //     }
-                    // }
+                    {
+                        x: this.grandson.x - 250,
+                        // y: this.grandson.y + 10,
+                        duration: 75 * factor,
+                        onComplete: () => {
+                            this.grandson.setFrame(5)
+                        }
+                    },
+                    {
+                        x: this.grandson.x - 280,
+                        // y: this.grandson.y + 15,
+                        duration: 75 * factor,
+                        onComplete: () => {
+                            this.grandson.setFrame(4)
+                        }
+                    },
+                    {
+                        x: this.grandson.x - 290,
+                        y: this.grandson.y,
+                        duration: 75 * factor,
+                        onComplete: () => {
+                            this.grandson.setFrame(1)
+                        }
+                    },
+
+                    {
+                        // onStart: () => {
+                        //     funkypear.setAngle(0)
+                        // },
+                        x: this.grandson.x - 300,
+                        y: this.grandson.y - 32,
+                                                ease: 'Bounce.easeOut',
+
+                        duration: 75 * factor,
+                        onComplete: () => {
+                            this.grandson.setFrame(4)
+                        }
+                    },
+                    {
+                        x: this.grandson.x - 330,
+                        y: this.grandson.y - 32,
+                        duration: 75 * factor,
+                        onComplete: () => {
+                            this.grandson.setFrame(5)
+                        }
+                    },
+                    {
+                        x: this.grandson.x - 360,
+                        y: this.grandson.y - 72,
+                        duration: 75 * factor,
+                        onComplete: () => {
+                            this.grandson.setFrame(6)
+                        }
+                    },
+                    {
+                        x: this.grandson.x - 390,
+                        // y: this.grandson.y + 10,
+                        duration: 75 * factor,
+                        // ease: 'Bounce.easeOut',
+                        onComplete: () => {
+                            this.grandson.setFrame(5)
+                        }
+                    },
+                    {
+                        x: this.grandson.x - 420,
+                        // y: this.grandson.y + 15,
+                        duration: 75 * factor,
+                        onComplete: () => {
+                            this.grandson.setFrame(4)
+                        }
+                    },
+                    {
+                        x: this.grandson.x - 450,
+                        y: this.grandson.y,
+                        duration: 75 * factor,
+                        ease: 'Bounce.easeOut',
+                        onComplete: () => {
+                            this.grandson.setFrame(1)
+                        }
+                    },
+                    {
+                        // onStart: () => {
+                        //     funkypear.setAngle(0)
+                        // },
+                        x: this.grandson.x - 460,
+                        y: this.grandson.y - 32,
+                                                ease: 'Bounce.easeOut',
+
+                        duration: 75 * factor,
+                        onComplete: () => {
+                            this.grandson.setFrame(4)
+                        }
+                    },
+                    {
+                        x: this.grandson.x - 490,
+                        y: this.grandson.y - 32,
+                        duration: 75 * factor,
+                        onComplete: () => {
+                            this.grandson.setFrame(5)
+                        }
+                    },
 
                 ]
             })
         }
     
         update() {
+            this.grandma.x -= 4
 
         }
     }
