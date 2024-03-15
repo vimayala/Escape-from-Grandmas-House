@@ -23,12 +23,16 @@ class GameOver extends Phaser.Scene {
 
 
             this.tryAgainText = this.add.bitmapText(game.config.width / 2, game.config.height / 1.125 , 'darkBlueBlocko',`T R Y  A G A I N`, 72).setOrigin(0.5)
+            this.restartText = this.add.bitmapText(game.config.width / 2, game.config.height / 1.05 , 'grandchildPixel',`RESTART WITH [SPACE]`, 24).setOrigin(0.5)
+
             /* Haven't implemented restart */
             // this.restartText = this.add.bitmapText(game.config.width / 2, game.config.height / 1.05 , 'blocko',  'Press [Shift] to restart', 36).setOrigin(0.5)
             if(!winner){
+                this.sound.play('death1')
 
                 if(playerScore >= 50000){
                     this.grandchildType.text = 'TROUBLED GRANDCHILD'
+                    this.sound.play('death2')
                 }
 
                 this.grandson = this.add.sprite(game.config.width / 2,  height / 1.6 + 40, 'grandson').setScale(0.8)
@@ -45,8 +49,16 @@ class GameOver extends Phaser.Scene {
                 this.heartsBottomLeft = this.add.image(game.config.width / 4.375, game.config.height / 1.145, 'heart').setOrigin(0.5).setScale(0.14)
                 this.heartsBottomRight = this.add.image(game.config.width / 1.3, game.config.height / 1.145, 'heart').setOrigin(0.5).setScale(0.14)
     
-                
-                let grandsonTweenChain = this.tweens.chain({
+            }
+            else{
+                this.sound.play('winner')
+                this.grandchildType.text = 'DEVIOUS GRANDCHILD'
+                this.tryAgainText.text = 'P L A Y  A G A I N?'
+                this.heartsBottomLeft = this.add.image(game.config.width / 5.575, game.config.height / 1.145, 'heart').setOrigin(0.5).setScale(0.14)
+                this.heartsBottomRight = this.add.image(game.config.width / 1.225, game.config.height / 1.145, 'heart').setOrigin(0.5).setScale(0.14)
+    
+            }
+            let grandsonTweenChain = this.tweens.chain({
                 targets: this.grandson,
                 loop: 0,
                 paused: false,
@@ -245,14 +257,6 @@ class GameOver extends Phaser.Scene {
 
                 ]
                 })
-            }
-            else{
-                this.grandchildType.text = 'DEVIOUS GRANDCHILD'
-                this.tryAgainText.text = 'P L A Y  A G A I N?'
-                this.heartsBottomLeft = this.add.image(game.config.width / 5.575, game.config.height / 1.145, 'heart').setOrigin(0.5).setScale(0.14)
-                this.heartsBottomRight = this.add.image(game.config.width / 1.225, game.config.height / 1.145, 'heart').setOrigin(0.5).setScale(0.14)
-    
-            }
 
             playerScore = 0
 
@@ -262,25 +266,25 @@ class GameOver extends Phaser.Scene {
                 loop: -1,
                 tweens: [
                     {
-                        targets: [this.finalScoreText],
+                        targets: [this.finalScoreText, this.restartText],
                         duration: 300,
                         alpha: 0,
                         ease: 'Stepped'
                     },
                     {
-                        targets: [this.finalScoreText],
+                        targets: [this.finalScoreText, this.restartText],
                         duration: 300,
                         alpha: 1,
                         ease: 'Stepped'
                     },
                     {
-                        targets:  [this.finalScoreText],
+                        targets:  [this.finalScoreText, this.restartText],
                         duration: 300,
                         alpha: 1,
                         ease: 'Stepped'
                     },
                     {
-                        targets:  [this.finalScoreText],
+                        targets:  [this.finalScoreText, this.restartText],
                         duration: 250,
                         alpha: 0,
                         ease: 'Stepped',
@@ -303,8 +307,8 @@ class GameOver extends Phaser.Scene {
                     this.grandma.destroy()
                 }
             }
-            // if(KEYS.SPACE.isDown) {
-            //     this.scene.start('playScene') 
-            // }
+            if(KEYS.SPACE.isDown) {
+                this.scene.start('playScene') 
+            }
         }
     }

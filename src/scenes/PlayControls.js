@@ -31,7 +31,6 @@ class PlayControls extends Phaser.Scene {
 
         this.add.image(0, 0, 'gameframe').setOrigin(0).setScale(0.8)
 
-
         let config = {            
             fontFamily: 'Courier',
         }

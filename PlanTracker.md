@@ -34,12 +34,10 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
     - [ ] Make grandma move slowly towards player (?)
 
 ## GameOver.js
-
-    ** Priority **
     - [ ] Test restarting
-
-    - [ ] 3 level messages
-        - with sounds 
+    - [ ] Animation replacement ?
+    - [ ]
+    - If time
     - [ ] Smoother anims
 
 
@@ -49,14 +47,18 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
 ## If time allows
     - [ ] Warning/tint when you're gonna be captured
     - [ ] Add another level (probably not by due date :/)
+    - [ ] Tween game over text
 
 ### Fixes
     - [ ] Currently double jumping...
     - [ ] Find instances where grandma continues chasing (fix if able)
 
 ## March 15
-###
-- []
+### 1 hr
+- [X] Scene: Fixed Game Over Scene
+- Goals:
+    - [ ] Scene: Living Room Controls
+    - [ ] Scene: Street Controls
 
 ## March 14
 ### 3 hr
