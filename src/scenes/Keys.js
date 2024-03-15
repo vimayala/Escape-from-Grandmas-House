@@ -24,6 +24,10 @@ class Keys extends Phaser.Scene {
         this.load.bitmapFont('blockFont', './assets/bigblocks.png', './assets/bigblocks.xml')
         this.load.bitmapFont('blocko', './assets/blocko.png', './assets/blocko.xml')
         this.load.bitmapFont('pinkblocko', './assets/pinkBlocko.png', './assets/pinkBlocko.xml')
+        this.load.bitmapFont('darkBlueBlocko', './assets/darkBlueBlocko.png', './assets/darkBlueBlocko.xml')
+
+        this.load.bitmapFont('grandchildPixel', './assets/grandchildDePixel.png', './assets/grandchildDePixel.xml')
+
 
 
         this.load.image('livingroom', './assets/EscapeLivingRoom.png')

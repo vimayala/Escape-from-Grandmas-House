@@ -336,8 +336,6 @@ class Menu extends Phaser.Scene {
 
         })
 
-        // TweenHelper.flashElement(this, playText);
-
         this.tweenFlash = this.tweens.chain({
             loop: -1,
             tweens: [
@@ -364,14 +362,9 @@ class Menu extends Phaser.Scene {
                     duration: 250,
                     alpha: 0,
                     ease: 'Stepped',
-                    // onComplete: () => {
-                    //     if (repeat === true) {
-                    //         this.flashElement(scene, element);
-                    //     }
-                    // }
                 }
             ]
-        });
+        })
 
     }
 

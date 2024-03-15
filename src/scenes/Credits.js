@@ -10,6 +10,7 @@ class Credits extends Phaser.Scene {
 
         // Envato Elements - End Winning Sound 
         // Orange Free Sounds - Coin Sound Effect
+        // Dafont
     }
 
     update() {

@@ -9,6 +9,7 @@ class Play extends Phaser.Scene {
         this.allowSuperJump = false
         this.bonus = 1
         this.mode = 'easy'
+        this.last_score = 0
     }
 
     create() {
@@ -47,7 +48,6 @@ class Play extends Phaser.Scene {
         this.physics.add.collider(this.grandma, this.dartGroup, this.dartGrandmaCollision, null, this, this.dartGroup)
 
         // Add player score
-        playerScore = 0
         this.scoreDisplay = this.add.bitmapText(game.config.width / 1.4, borderUISize + borderPadding * 2 + 5 , 'blockFont',`0`, 72).setOrigin(0.5)
 
         // Taken from phaserjs GitHub Counter Tween Example

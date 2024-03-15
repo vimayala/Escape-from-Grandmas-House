@@ -36,7 +36,7 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
 ## GameOver.js
 
     ** Priority **
-    - [ ] Allow restarting
+    - [ ] Test restarting
 
     - [ ] 3 level messages
         - with sounds 
@@ -53,6 +53,10 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
 ### Fixes
     - [ ] Currently double jumping...
     - [ ] Find instances where grandma continues chasing (fix if able)
+
+## March 15
+###
+- []
 
 ## March 14
 ### 3 hr

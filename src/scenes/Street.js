@@ -15,7 +15,6 @@ class Street extends Phaser.Scene {
         this.obstacleCount = 0
         this.addNewReward = true
         this.addNewObstacle= true
-        playerScore = 0
 
     }
 
@@ -124,9 +123,12 @@ class Street extends Phaser.Scene {
         this.kid.setVelocity(this.PLAYER_VELOCITY * playerVector.x, this.PLAYER_VELOCITY * playerVector.y)
         
         if(this.kid.x > 678){
+            winner = true
             this.scene.start('gameOverScene')
         }
         playerScore += 1
+
+        this.grandma.setVelocity(this.GRANDMA_VELOCITY * playerVector.x, this.GRANDMA_VELOCITY * playerVector.y)
         // might not tween
         // if(this.rewardCount <= 1 && this.addNewReward){
         //     this.addReward()
