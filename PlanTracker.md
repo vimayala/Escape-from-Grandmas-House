@@ -16,6 +16,7 @@ Shoot the grandma as much as possible until x points (maybe 50,000, may adjust) 
 Avoid the hearts and kisses while grandma chases you. If you run into one, slow down and get closer to grandma. Or grandma gets closer instead.
 
 ### Need
+## Add to personal GitHub ?
 ## Menu.js
     - [ ] Change button preview for credit and controls
 
@@ -54,7 +55,7 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
     - [ ] Find instances where grandma continues chasing (fix if able)
 
 ## March 15
-### 1 hr
+### 1.5 hr
 - [X] Scene: Fixed Game Over Scene
 - Goals:
     - [ ] Scene: Living Room Controls

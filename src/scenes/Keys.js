@@ -25,8 +25,8 @@ class Keys extends Phaser.Scene {
         this.load.bitmapFont('blocko', './assets/blocko.png', './assets/blocko.xml')
         this.load.bitmapFont('pinkblocko', './assets/pinkBlocko.png', './assets/pinkBlocko.xml')
         this.load.bitmapFont('darkBlueBlocko', './assets/darkBlueBlocko.png', './assets/darkBlueBlocko.xml')
-        this.load.bitmapFont('blackPixel', './assets/blackPixel.png', './assets/blackPixel.xml')
-        this.load.bitmapFont('grandchildPixel', './assets/grandchildDePixel.png', './assets/grandchildDePixel.xml')
+        this.load.bitmapFont('whitePixel', './assets/whitePixel.png', './assets/whitePixel.xml')
+        this.load.bitmapFont('purplePixel', './assets/grandchildDePixel.png', './assets/grandchildDePixel.xml')
 
 
 
@@ -37,10 +37,11 @@ class Keys extends Phaser.Scene {
         this.load.image('street1', './assets/street1.png')
 
         this.load.image('button', './assets/button.png')              // buttons
+        this.load.image('smallButton', './assets/smallButton.png')              // buttons
         this.load.image('up', './assets/up.png')                  
         this.load.image('down', './assets/down.png')
-        // this.load.image('left', './assets/up.png')                  
-        // this.load.image('right', './assets/down.png')
+        this.load.image('left', './assets/left.png')                  
+        this.load.image('right', './assets/right.png')
         this.load.image('dart', './assets/dart.png')
 
         this.load.spritesheet('lives', './assets/lives.png', {
@@ -110,6 +111,10 @@ class Keys extends Phaser.Scene {
             S: KeyCodes.S,
             UP: KeyCodes.UP,
             DOWN: KeyCodes.DOWN,
+            M: KeyCodes.M,
+            ENTER: KeyCodes.ENTER,
+            C: KeyCodes.C,
+
         })
         
         // launch next scene so it will run concurrently with this one
