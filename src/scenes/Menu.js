@@ -380,6 +380,7 @@ class Menu extends Phaser.Scene {
 
         if(KEYS.SPACE.isDown) {
             this.scene.start('playScene')
+            // this.scene.start('playControlScene')
             // this.scene.start('gameOverScene')
         }
 

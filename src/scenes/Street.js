@@ -15,6 +15,7 @@ class Street extends Phaser.Scene {
         this.obstacleCount = 0
         this.addNewReward = true
         this.addNewObstacle= true
+        playerScore = 0
 
     }
 

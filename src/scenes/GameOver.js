@@ -9,6 +9,8 @@ class GameOver extends Phaser.Scene {
 
         create() {
 
+            this.KEYS = this.scene.get('sceneKeys').KEYS
+
             // this.physics.world.setBounds(0, 0, game.config.width, game.config.height)
 
             this.purpleScreen = this.add.tileSprite(0, 0, 2472, 1746, 'purple').setOrigin(0,0).setScale(0.4)
@@ -235,12 +237,20 @@ class GameOver extends Phaser.Scene {
         }
     
         update() {
+
+            const { KEYS } = this
+
             this.grandma.x -= 4
             this.hearts1.x -= 4
             this.hearts2.x -= 4
             this.hearts3.x -= 4
+
             if(this.grandma.x <= 0){
                 this.grandma.destroy()
+            }
+
+            if(KEYS.SPACE.isDown) {
+                this.scene.start('playScene') 
             }
         }
     }

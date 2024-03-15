@@ -22,26 +22,26 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
 ## Controls.js
     - [ ] Make prettier
         - [ ] Split into screens (?)
+            - different screens before scene ?
 
 ## Play.js
-    - [ ] Heart and Skull Particles or Anim (or both)
-
-        ** Priority **
-
-    - [ ] Currently double jumping...
+    - [ ] Currently double jumping...(when shift and space)
+    - [ ] Fix particle spawn (if time)
 
 ## Street.js
     - [ ] Testing scores and timing
     - [ ] Increasing speed ?
-    - [ ] Tween score ?
-    - [ ] Make grandma move slowly (?)
+    - [ ] Make grandma move slowly towards player (?)
 
 ## GameOver.js
-    - [ ] End Screen + Anims (maybe with tweens?)
 
     ** Priority **
-
     - [ ] Allow restarting
+
+    - [ ] 3 level messages
+        - with sounds 
+    - [ ] Smoother anims
+
 
 ## Other
     - [ ] Add Music
@@ -52,12 +52,16 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
 
 ### Fixes
     - [ ] Currently double jumping...
-    - [ ] Fix getting stuck in shoooting state
-    - [ ] Counter tween cuts off points (not in 500 increments)
     - [ ] Find instances where grandma continues chasing (fix if able)
 
-## March 12
-### 2.5 hr
+## March 14
+### 3 hr
+- [X] Code: Added particles
+- [X] Code: Added end screen animations
+- [X] Scene: Started Play Control
+
+## March 13
+### 3.5 hr
 - [X] Code: Fix street obstacle/reward spawns
 - [X] Assets: Fixed Menu Issues
 

@@ -35,6 +35,8 @@ class Keys extends Phaser.Scene {
         this.load.image('button', './assets/button.png')              // buttons
         this.load.image('up', './assets/up.png')                  
         this.load.image('down', './assets/down.png')
+        // this.load.image('left', './assets/up.png')                  
+        // this.load.image('right', './assets/down.png')
         this.load.image('dart', './assets/dart.png')
 
         this.load.spritesheet('lives', './assets/lives.png', {
@@ -94,9 +96,9 @@ class Keys extends Phaser.Scene {
     }
 
     create() {
+        
         const { KeyCodes } = Phaser.Input.Keyboard
         this.KEYS = this.input.keyboard.addKeys({
-            JUMP:   KeyCodes.SPACE,
             LEFT:   KeyCodes.LEFT,
             RIGHT:  KeyCodes.RIGHT,
             SHIFT:  KeyCodes.SHIFT,
