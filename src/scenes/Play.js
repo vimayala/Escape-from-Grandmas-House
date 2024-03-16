@@ -175,34 +175,10 @@ class Play extends Phaser.Scene {
 
                 scale: { start: 0.03, end: 0.0075 },
                 angle: { min: 180, max: 360 },
-                // rotate: Phaser.Math.FloatBetween(180, 360),
-                // alpha: Phaser.Math.FloatBetween(0.25, 1)
-                // x: this.kid.x,
                 y: -70,
                 lifespan: 750,
                 
             })
-
-            // emitter.addEmitZone({ type: 'edge', source: shape1, quantity: 64, total: 64 })
-
-
-            // this.add.particles(this.grandma.x, this.grandma.y, 'skulls', {
-            //     speed: Phaser.Math.Between(100, 250),
-            //     // quantity: .01,
-            //     frame: {
-            //         frames: [0, 2]
-            //     },
-            //     scale: { start: 0.025, end: 0.0075 },
-            //     angle: { min: 180, max: 360 },
-            //     // rotate: Phaser.Math.FloatBetween(180, 360),
-            //     // alpha: Phaser.Math.FloatBetween(0.25, 1)
-            //     // x: this.kid.x,
-            //     y: -70,
-            //     lifespan: 750,
-                
-            // })
-
-            // })
             if(grandma.x < grandson.x){
                 grandma.direction = 'right'
             }
@@ -214,7 +190,6 @@ class Play extends Phaser.Scene {
             grandma.anims.play(`kissing-${grandma.direction}`)
             this.grandmaFSM.transition('kissing')
             this.grandsonFSM.transition('kissed')
-            console.log(`Grandma Anim: ${grandma.frame.name}`)
         }
     }
 
@@ -223,17 +198,14 @@ class Play extends Phaser.Scene {
             if(playerScore > 6250 && this.grandma.velocity <= 0.5){
                 this.last_score = playerScore
                 this.grandma.velocity *= 1.25
-                console.log(`Increased velocity 1: ${this.grandma.velocity}`)
             }
             else if (playerScore >= 17500 && this.mode == 'easy'){
                 this.mode = 'middle'
                 this.grandma.velocity *= 1.25
-                console.log(`Increased velocity 2: ${this.grandma.velocity}`)
             }
             else if(this.mode != 'end' && playerScore > 34500){
                 this.grandma.velocity *= 1.05
                 this.mode = 'end'
-                console.log(`Increased velocity 3: ${this.grandma.velocity}`)
             }
         }
     }

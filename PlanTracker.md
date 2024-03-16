@@ -25,6 +25,7 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
 
 ## Play.js
     - [ ] Grandma chasing once animation done
+        - [ ] Change grandma to play anim and move direction until done
     - [ ] Grandson change shooting frames on left
     - [ ] Currently double jumping...(when shift and space)
     - [ ] Fix particle spawn (if time)

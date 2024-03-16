@@ -143,10 +143,7 @@ class JumpState extends State {
 class SuperJumpState extends State {
     // To simulate jump, play frame by frame with delayed called
     enter(scene, grandson) {
-        console.log('superJump')
-
         scene.sound.play('jump', {rate: 1.16})
-        console.log(grandson.direction)
 
         if(grandson.direction === 'left'){
             if(grandson.x > 280){
@@ -178,7 +175,6 @@ class SuperJumpState extends State {
 
 
         // jump if pressing left or right
-        console.log('executing')
 
         if(KEYS.LEFT.isDown && (grandson.frame.name === 0 || grandson.frame.name === 1 || grandson.frame.name === 23 || grandson.frame.name === 29)) {
             scene.allowSuperJump = false
@@ -232,6 +228,7 @@ class ShootGunState extends State {
 
         // grandson.anims.play(`grabGun-${grandson.direction}`).once('animationcomplete', () => {
             this.dartCooldown = true
+            this.allowJump = false
             grandson.anims.play(`holdGun-${grandson.direction}`).once('animationcomplete', () => {
                 grandson.anims.play(`shootGun-before-${grandson.direction}`).once('animationcomplete', () => {
                     // Uses frame number so only executed once            
@@ -254,6 +251,7 @@ class ShootGunState extends State {
                     grandson.anims.play(`shootGun-after-${grandson.direction}`).once('animationcomplete', () =>{
                         this.dartCooldown = false
                     })
+                    this.allowJump = true
                 })
             })
         // })
@@ -268,15 +266,13 @@ class ShootGunState extends State {
 
         // If transitions cause issues, reimplement
             //   && (grandson.frame.name === 23 || grandson.frame.name === 29  || grandson.frame.name === 0 || grandson.frame.name === 1)
-        if(KEYS.LEFT.isDown) {
+        if(KEYS.LEFT.isDown && this.dartCooldown === false) {
             grandson.direction = 'left'
-            // this.jump = true
-            // this.doJump(scene, grandson)
             this.stateMachine.transition('jump')
             return
         }
 
-        if(KEYS.RIGHT.isDown) {
+        if(KEYS.RIGHT.isDown && this.dartCooldown === false) {
             grandson.direction = 'right'
             this.stateMachine.transition('jump')
             return

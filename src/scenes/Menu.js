@@ -214,14 +214,14 @@ class Menu extends Phaser.Scene {
         
         this.anims.create({
             key: 'shootGun-after-right',
-            frameRate: 6,
+            frameRate: 4,
             repeat: 0,
             // frames: this.anims.generateFrameNumbers('grandson', {
             //     start: 23,
             //     end: 23
             // })
             frames: this.anims.generateFrameNumbers('grandson', {
-                frames: [23, 23, 23, 23]
+                frames: [23, 23]
             })
         })
 
@@ -257,10 +257,10 @@ class Menu extends Phaser.Scene {
 
         this.anims.create({
             key: 'shootGun-after-left',
-            frameRate: 6,
+            frameRate: 4,
             repeat: 0,
             frames: this.anims.generateFrameNumbers('grandson', {
-                frames: [29, 29, 29, 29]
+                frames: [29, 29]
             })
         })
 
