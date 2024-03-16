@@ -17,29 +17,21 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
 
 ### Need
 ## Add to personal GitHub ?
+
 ## Menu.js
     - [ ] Change button preview for credit and controls
 
 ## Controls.js
-    - [ ] Make prettier
-        - [ ] Split into screens (?)
-            - different screens before scene ?
 
 ## Play.js
+    - [ ] Grandma chasing once animation done
+    - [ ] Grandson change shooting frames on left
     - [ ] Currently double jumping...(when shift and space)
     - [ ] Fix particle spawn (if time)
 
-## Street.js
-    - [ ] Testing scores and timing
-    - [ ] Increasing speed ?
-    - [ ] Make grandma move slowly towards player (?)
 
 ## GameOver.js
-    - [ ] Test restarting
-    - [ ] Animation replacement ?
-    - [ ]
-    - If time
-    - [ ] Smoother anims
+    - [ ] View credits and menu options
 
 
 ## Other
@@ -49,17 +41,23 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
     - [ ] Warning/tint when you're gonna be captured
     - [ ] Add another level (probably not by due date :/)
     - [ ] Tween game over text
+    - Street.js
+        - [ ] Increasing speed ?
 
 ### Fixes
     - [ ] Currently double jumping...
     - [ ] Find instances where grandma continues chasing (fix if able)
 
-## March 15
-### 1.5 hr
+## March 16
+### 0.5 hr
 - [X] Scene: Fixed Game Over Scene
-- Goals:
-    - [ ] Scene: Living Room Controls
-    - [ ] Scene: Street Controls
+- [X] Code: Fixed Grandson ShootingAnimation
+
+## March 15
+### 3 hr
+- [X] Scene: Fixed Game Over Scene
+- [X] Scene: Living Room Controls
+- [X] Scene: Street Controls
 
 ## March 14
 ### 3 hr

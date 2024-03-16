@@ -8,7 +8,6 @@ class GameOver extends Phaser.Scene {
         }
 
         create() {
-
             this.KEYS = this.scene.get('sceneKeys').KEYS
 
             // this.physics.world.setBounds(0, 0, game.config.width, game.config.height)
@@ -27,19 +26,18 @@ class GameOver extends Phaser.Scene {
             this.spaceButton = this.add.image(game.config.width / 1.575, game.config.height / 1.05875, 'button').setScale(0.1).setOrigin(0.5)
             this.spaceText = this.add.bitmapText(game.config.width / 1.575, game.config.height / 1.07725 , 'whitePixel',`SPACE`, 48).setOrigin(0.5)
 
-            /* Haven't implemented restart */
+            this.grandma = new Grandma(this, width / 1.4, height / 1.6 + 20, "grandma", 0, 'left').setScale(0.8)
+
             // this.restartText = this.add.bitmapText(game.config.width / 2, game.config.height / 1.05 , 'blocko',  'Press [Shift] to restart', 36).setOrigin(0.5)
             if(!winner){
                 this.sound.play('death1')
+                this.grandson = this.add.sprite(game.config.width / 2,  height / 1.6 + 40, 'grandson').setScale(0.8)
+                this.grandson.setFrame(4)
 
                 if(playerScore >= 50000){
                     this.grandchildType.text = 'TROUBLED GRANDCHILD'
                     this.sound.play('death2')
                 }
-
-                this.grandson = this.add.sprite(game.config.width / 2,  height / 1.6 + 40, 'grandson').setScale(0.8)
-                this.grandson.setFrame(4)
-                this.grandma = new Grandma(this, width / 1.4, height / 1.6 + 20, "grandma", 0, 'left').setScale(0.8)
                 this.grandma.play('chasing-left')
                 this.grandma.body.setSize(0.0005)
                 this.hearts1 = this.add.sprite(game.config.width / 1.3,  height / 2 - 15, 'heart').setScale(0.1)
@@ -54,212 +52,223 @@ class GameOver extends Phaser.Scene {
             }
             else{
                 this.sound.play('winner')
+                this.grandma.x = width / 1.75
+                // this.grandson.x = width / 3
+
+                this.dartGroup = this.physics.add.group({
+                    runChildUpdate: true
+                })
+                this.physics.add.collider(this.grandma, this.dartGroup, this.dartGrandmaCollision, null, this, this.dartGroup)
+
+
+                this.grandson = this.add.sprite(game.config.width / 3,  height / 1.6 + 40, 'grandson').setScale(0.8)
+                this.grandson.play('holdGun-right').once('animationcomplete', () => {
+                    this.grandson.play('shootGun-before-right').once('animationcomplete', () => {
+                        this.grandson.play('shootGun-after-right')
+                        let dart = new Dart(this, this.grandson.x + 48, this.grandson.y + 30 , 'dart', 0, 'right', 10)
+                        this.dartGroup.add(dart)
+                    })
+
+                })
                 this.grandchildType.text = 'DEVIOUS GRANDCHILD'
                 this.tryAgainText.text = 'P L A Y  A G A I N?'
                 this.heartsBottomLeft = this.add.image(game.config.width / 5.575, game.config.height / 1.145, 'heart').setOrigin(0.5).setScale(0.14)
                 this.heartsBottomRight = this.add.image(game.config.width / 1.225, game.config.height / 1.145, 'heart').setOrigin(0.5).setScale(0.14)
     
             }
-            let grandsonTweenChain = this.tweens.chain({
-                targets: this.grandson,
-                loop: 0,
-                paused: false,
-                ease: 'Sine.easeInOut',                
-                tweens:[
-                    {
-                        // onStart: () => {
-                        //     funkypear.setAngle(0)
-                        // },
-                        x: this.grandson.x - 30,
-                        y: this.grandson.y - 32,
-                        duration: 75 * factor,
-                        onComplete: () => {
-                            this.grandson.setFrame(5)
-                        }
-                    },
-                    {
-                        x: this.grandson.x - 60,
-                        y: this.grandson.y - 72,
-                        duration: 75 * factor,
-                        // ease: 'Bounce.easeOut',
+            if(!winner){
+                let grandsonTweenChain = this.tweens.chain({
+                    targets: this.grandson,
+                    loop: 0,
+                    paused: false,
+                    ease: 'Sine.easeInOut',                
+                    tweens:[
+                        {
+                            x: this.grandson.x - 30,
+                            y: this.grandson.y - 32,
+                            duration: 75 * factor,
+                            onComplete: () => {
+                                this.grandson.setFrame(5)
+                            }
+                        },
+                        {
+                            x: this.grandson.x - 60,
+                            y: this.grandson.y - 72,
+                            duration: 75 * factor,
+                            // ease: 'Bounce.easeOut',
 
-                        onComplete: () => {
-                            this.grandson.setFrame(6)
-                        }
-                    },
-                    {
-                        x: this.grandson.x - 90,
-                        // y: this.grandson.y + 10,
-                        duration: 75 * factor,
-                        // ease: 'Bounce.easeOut',
-                        onComplete: () => {
-                            this.grandson.setFrame(5)
-                        }
-                    },
-                    {
-                        x: this.grandson.x - 120,
-                        // y: this.grandson.y + 15,
-                        duration: 75 * factor,
-                        onComplete: () => {
-                            this.grandson.setFrame(4)
-                        }
-                    },
-                    {
-                        x: this.grandson.x - 150,
-                        y: this.grandson.y,
-                        duration: 75 * factor,
-                        onComplete: () => {
-                            this.grandson.setFrame(1)
-                            this.hearts1.play('skulls')
-                            this.hearts2.play({key: 'skulls', startFrame: 1})
-                            this.hearts3.play({key: 'skulls', startFrame: 2})
-                        }
-                    },
+                            onComplete: () => {
+                                this.grandson.setFrame(6)
+                            }
+                        },
+                        {
+                            x: this.grandson.x - 90,
+                            // y: this.grandson.y + 10,
+                            duration: 75 * factor,
+                            // ease: 'Bounce.easeOut',
+                            onComplete: () => {
+                                this.grandson.setFrame(5)
+                            }
+                        },
+                        {
+                            x: this.grandson.x - 120,
+                            // y: this.grandson.y + 15,
+                            duration: 75 * factor,
+                            onComplete: () => {
+                                this.grandson.setFrame(4)
+                            }
+                        },
+                        {
+                            x: this.grandson.x - 150,
+                            y: this.grandson.y,
+                            duration: 75 * factor,
+                            onComplete: () => {
+                                this.grandson.setFrame(1)
+                                this.hearts1.play('skulls')
+                                this.hearts2.play({key: 'skulls', startFrame: 1})
+                                this.hearts3.play({key: 'skulls', startFrame: 2})
+                                
+                            }
+                        },
 
-                    {
-                        // onStart: () => {
-                        //     funkypear.setAngle(0)
-                        // },
-                        x: this.grandson.x - 160,
-                        y: this.grandson.y - 32,
-                        duration: 75 * factor,
-                        onComplete: () => {
-                            this.grandson.setFrame(4)
-                        }
-                    },
-                    {
-                        x: this.grandson.x - 190,
-                        y: this.grandson.y - 32,
-                        duration: 75 * factor,
-                        onComplete: () => {
-                            this.grandson.setFrame(5)
-                        }
-                    },
-                    {
-                        x: this.grandson.x - 220,
-                        y: this.grandson.y - 72,
-                        duration: 75 * factor,
-                        onComplete: () => {
-                            this.grandson.setFrame(6)
-                        }
-                    },
-                    {
-                        x: this.grandson.x - 250,
-                        // y: this.grandson.y + 10,
-                        duration: 75 * factor,
-                        onComplete: () => {
-                            this.grandson.setFrame(5)
-                        }
-                    },
-                    {
-                        x: this.grandson.x - 280,
-                        // y: this.grandson.y + 15,
-                        duration: 75 * factor,
-                        onComplete: () => {
-                            this.grandson.setFrame(4)
-                        }
-                    },
-                    {
-                        x: this.grandson.x - 290,
-                        y: this.grandson.y,
-                        duration: 75 * factor,
-                        onComplete: () => {
-                            this.grandson.setFrame(1)
-                            this.hearts1.play('hearts')
-                            this.hearts2.play({key: 'hearts', startFrame: 1})
-                            this.hearts3.play({key: 'hearts', startFrame: 2})
-                        }
-                    },
-
-                    {
-                        // onStart: () => {
-                        //     funkypear.setAngle(0)
-                        // },
-                        x: this.grandson.x - 300,
-                        y: this.grandson.y - 32,
-                                                ease: 'Bounce.easeOut',
-
-                        duration: 75 * factor,
-                        onComplete: () => {
-                            this.grandson.setFrame(4)
-                        }
-                    },
-                    {
-                        x: this.grandson.x - 330,
-                        y: this.grandson.y - 32,
-                        duration: 75 * factor,
-                        onComplete: () => {
-                            this.grandson.setFrame(5)
-                        }
-                    },
-                    {
-                        x: this.grandson.x - 360,
-                        y: this.grandson.y - 72,
-                        duration: 75 * factor,
-                        onComplete: () => {
-                            this.grandson.setFrame(6)
-                        }
-                    },
-                    {
-                        x: this.grandson.x - 390,
-                        // y: this.grandson.y + 10,
-                        duration: 75 * factor,
-                        // ease: 'Bounce.easeOut',
-                        onComplete: () => {
-                            this.grandson.setFrame(5)
-                        }
-                    },
-                    {
-                        x: this.grandson.x - 420,
-                        // y: this.grandson.y + 15,
-                        duration: 75 * factor,
-                        onComplete: () => {
-                            this.grandson.setFrame(4)
-                        }
-                    },
-                    {
-                        x: this.grandson.x - 450,
-                        y: this.grandson.y,
-                        duration: 75 * factor,
-                        ease: 'Bounce.easeOut',
-                        onComplete: () => {
-                            this.grandson.setFrame(1)
-                            this.hearts1.play('skulls')
-                            this.hearts2.play({key: 'skulls', startFrame: 1})
-                            this.hearts3.play({key: 'skulls', startFrame: 2})
-                        }
-                    },
-                    {
-                        // onStart: () => {
-                        //     funkypear.setAngle(0)
-                        // },
-                        x: this.grandson.x - 460,
-                        y: this.grandson.y - 32,
-                                                ease: 'Bounce.easeOut',
-
-                        duration: 75 * factor,
-                        onComplete: () => {
-                            this.grandson.setFrame(4)
-                        }
-                    },
-                    {
-                        x: this.grandson.x - 490,
-                        y: this.grandson.y - 32,
-                        duration: 75 * factor,
-                        onComplete: () => {
-                            this.grandson.setFrame(5)
-
-                            this.time.addEvent({ delay: (450 * factor), callback: () => {
+                        {
+                            x: this.grandson.x - 160,
+                            y: this.grandson.y - 32,
+                            duration: 75 * factor,
+                            onComplete: () => {
+                                this.grandson.setFrame(4)
+                            }
+                        },
+                        {
+                            x: this.grandson.x - 190,
+                            y: this.grandson.y - 32,
+                            duration: 75 * factor,
+                            onComplete: () => {
+                                this.grandson.setFrame(5)
+                            }
+                        },
+                        {
+                            x: this.grandson.x - 220,
+                            y: this.grandson.y - 72,
+                            duration: 75 * factor,
+                            onComplete: () => {
+                                this.grandson.setFrame(6)
+                            }
+                        },
+                        {
+                            x: this.grandson.x - 250,
+                            // y: this.grandson.y + 10,
+                            duration: 75 * factor,
+                            onComplete: () => {
+                                this.grandson.setFrame(5)
+                            }
+                        },
+                        {
+                            x: this.grandson.x - 280,
+                            // y: this.grandson.y + 15,
+                            duration: 75 * factor,
+                            onComplete: () => {
+                                this.grandson.setFrame(4)
+                            }
+                        },
+                        {
+                            x: this.grandson.x - 290,
+                            y: this.grandson.y,
+                            duration: 75 * factor,
+                            onComplete: () => {
+                                this.grandson.setFrame(1)
                                 this.hearts1.play('hearts')
                                 this.hearts2.play({key: 'hearts', startFrame: 1})
                                 this.hearts3.play({key: 'hearts', startFrame: 2})
-                            }, callbackScope: this})
-                        }
-                    },
+                            }
+                        },
 
-                ]
-                })
+                        {
+                            // onStart: () => {
+                            //     funkypear.setAngle(0)
+                            // },
+                            x: this.grandson.x - 300,
+                            y: this.grandson.y - 32,
+                                                    ease: 'Bounce.easeOut',
 
+                            duration: 75 * factor,
+                            onComplete: () => {
+                                this.grandson.setFrame(4)
+                            }
+                        },
+                        {
+                            x: this.grandson.x - 330,
+                            y: this.grandson.y - 32,
+                            duration: 75 * factor,
+                            onComplete: () => {
+                                this.grandson.setFrame(5)
+                            }
+                        },
+                        {
+                            x: this.grandson.x - 360,
+                            y: this.grandson.y - 72,
+                            duration: 75 * factor,
+                            onComplete: () => {
+                                this.grandson.setFrame(6)
+                            }
+                        },
+                        {
+                            x: this.grandson.x - 390,
+                            duration: 75 * factor,
+                            onComplete: () => {
+                                this.grandson.setFrame(5)
+                            }
+                        },
+                        {
+                            x: this.grandson.x - 420,
+                            // y: this.grandson.y + 15,
+                            duration: 75 * factor,
+                            onComplete: () => {
+                                this.grandson.setFrame(4)
+                            }
+                        },
+                        {
+                            x: this.grandson.x - 450,
+                            y: this.grandson.y,
+                            duration: 75 * factor,
+                            ease: 'Bounce.easeOut',
+                            onComplete: () => {
+                                this.grandson.setFrame(1)
+                                this.hearts1.play('skulls')
+                                this.hearts2.play({key: 'skulls', startFrame: 1})
+                                this.hearts3.play({key: 'skulls', startFrame: 2})
+                            }
+                        },
+                        {
+                            // onStart: () => {
+                            //     funkypear.setAngle(0)
+                            // },
+                            x: this.grandson.x - 460,
+                            y: this.grandson.y - 32,
+                                                    ease: 'Bounce.easeOut',
+
+                            duration: 75 * factor,
+                            onComplete: () => {
+                                this.grandson.setFrame(4)
+                            }
+                        },
+                        {
+                            x: this.grandson.x - 490,
+                            y: this.grandson.y - 32,
+                            duration: 75 * factor,
+                            onComplete: () => {
+                                this.grandson.setFrame(5)
+                                this.time.addEvent({ delay: (450 * factor), callback: () => {
+                                    this.hearts1.play('hearts')
+                                    this.hearts2.play({key: 'hearts', startFrame: 1})
+                                    this.hearts3.play({key: 'hearts', startFrame: 2})
+                                }, callbackScope: this})
+                            }
+                        },
+
+                    ]
+                    })
+            }
             playerScore = 0
 
             this.add.image(width / 2 + 0.5, height / 2, 'gameframe').setScale(0.8)
@@ -309,8 +318,18 @@ class GameOver extends Phaser.Scene {
                     this.grandma.destroy()
                 }
             }
+
             if(KEYS.SPACE.isDown) {
                 this.scene.start('playScene') 
             }
+        }
+    
+        dartGrandmaCollision(grandma, dart){
+            this.sound.play('toy-gun1')
+            this.grandma.play('shot-left').once('animationcomplete', () => {
+                this.grandma.setFrame(0)
+            })
+            dart.destroy()
+            
         }
     }

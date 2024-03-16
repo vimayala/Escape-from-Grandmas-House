@@ -10,6 +10,7 @@ class Play extends Phaser.Scene {
         this.bonus = 1
         this.mode = 'easy'
         this.last_score = 0
+        winner = false
     }
 
     create() {

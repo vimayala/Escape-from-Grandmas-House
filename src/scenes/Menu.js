@@ -260,12 +260,8 @@ class Menu extends Phaser.Scene {
             frameRate: 6,
             repeat: 0,
             frames: this.anims.generateFrameNumbers('grandson', {
-                start: 29,
-                end: 29
+                frames: [29, 29, 29, 29]
             })
-            // frames: this.anims.generateFrameNumbers('grandson', {
-            //     frames: [29, 29, 29, 29, 29, 29, 29]
-            // })
         })
 
         this.anims.create({
