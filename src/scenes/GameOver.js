@@ -17,13 +17,15 @@ class GameOver extends Phaser.Scene {
             this.reachedText = this.add.bitmapText(game.config.width / 2, game.config.height / 9 , 'darkBlueBlocko',`You have reached`, 52).setOrigin(0.5)
             this.heartsTopLeft = this.add.image(game.config.width / 3.75, game.config.height / 9.75, 'heart').setOrigin(0.5).setScale(0.1)
             this.heartsTopRight = this.add.image(game.config.width / 1.375, game.config.height / 9.75, 'heart').setOrigin(0.5).setScale(0.1)
-            this.grandchildType = this.add.bitmapText(game.config.width / 2, game.config.height / 2.5 , 'grandchildPixel',`UNGRATEFUL GRANDCHILD`, 42).setOrigin(0.5)
+            this.grandchildType = this.add.bitmapText(game.config.width / 2, game.config.height / 2.5 , 'purplePixel',`UNGRATEFUL GRANDCHILD`, 42).setOrigin(0.5)
 
             this.finalScoreText = this.add.bitmapText(game.config.width / 2, game.config.height / 3.5 , 'blocko', Math.round(playerScore), 128).setOrigin(0.5)
 
 
             this.tryAgainText = this.add.bitmapText(game.config.width / 2, game.config.height / 1.125 , 'darkBlueBlocko',`T R Y  A G A I N`, 72).setOrigin(0.5)
-            this.restartText = this.add.bitmapText(game.config.width / 2, game.config.height / 1.05 , 'grandchildPixel',`RESTART WITH [SPACE]`, 24).setOrigin(0.5)
+            this.restartText = this.add.bitmapText(game.config.width / 2.325, game.config.height / 1.0575 , 'purplePixel',`RESTART WITH`, 24).setOrigin(0.5)
+            this.spaceButton = this.add.image(game.config.width / 1.575, game.config.height / 1.05875, 'button').setScale(0.1).setOrigin(0.5)
+            this.spaceText = this.add.bitmapText(game.config.width / 1.575, game.config.height / 1.07725 , 'whitePixel',`SPACE`, 48).setOrigin(0.5)
 
             /* Haven't implemented restart */
             // this.restartText = this.add.bitmapText(game.config.width / 2, game.config.height / 1.05 , 'blocko',  'Press [Shift] to restart', 36).setOrigin(0.5)
@@ -265,30 +267,30 @@ class GameOver extends Phaser.Scene {
             this.tweenFlash = this.tweens.chain({
                 loop: -1,
                 tweens: [
+                    // {
+                    //     targets: [this.finalScoreText, this.restartText],
+                    //     duration: 300,
+                    //     alpha: 0,
+                    //     ease: 'Stepped'
+                    // },
                     {
-                        targets: [this.finalScoreText, this.restartText],
-                        duration: 300,
-                        alpha: 0,
-                        ease: 'Stepped'
-                    },
-                    {
-                        targets: [this.finalScoreText, this.restartText],
-                        duration: 300,
+                        targets: [this.finalScoreText, this.restartText, this.spaceButton, this.spaceText],
+                        duration: 900,
                         alpha: 1,
                         ease: 'Stepped'
                     },
                     {
-                        targets:  [this.finalScoreText, this.restartText],
-                        duration: 300,
-                        alpha: 1,
-                        ease: 'Stepped'
-                    },
-                    {
-                        targets:  [this.finalScoreText, this.restartText],
-                        duration: 250,
+                        targets:  [this.finalScoreText, this.restartText, this.spaceButton, this.spaceText],
+                        duration: 500,
                         alpha: 0,
-                        ease: 'Stepped',
+                        ease: 'Stepped'
                     }
+                    // {
+                    //     targets:  [this.finalScoreText, this.restartText],
+                    //     duration: 300,
+                    //     alpha: 0,
+                    //     ease: 'Stepped',
+                    // }
                 ]
             })
 
@@ -307,8 +309,8 @@ class GameOver extends Phaser.Scene {
                     this.grandma.destroy()
                 }
             }
-            if(KEYS.SPACE.isDown) {
-                this.scene.start('playScene') 
-            }
+            // if(KEYS.SPACE.isDown) {
+            //     this.scene.start('playScene') 
+            // }
         }
     }
