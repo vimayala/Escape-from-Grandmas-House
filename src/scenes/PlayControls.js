@@ -56,14 +56,14 @@ class PlayControls extends Phaser.Scene {
         // this.add.text(game.config.width / 2, game.config.height / 1.25 ,`Unlocked after shooting\n grandma more than 3 times\nHold [SPACE] to jump past grandma`).setOrigin(0.5)
 
         this.add.image(game.config.width / 1.5, game.config.height / 1.75, 'right').setScale(0.125)
-        this.add.bitmapText(game.config.width / 1.25, game.config.height / 1.8 , 'whitePixel', `Jump Right`, 38, 1).setOrigin(0.5)
+        this.add.bitmapText(game.config.width / 1.295, game.config.height / 1.8 , 'whitePixel', `Jump Right`, 38, 1).setOrigin(0.5)
 
 
         this.add.image(game.config.width / 3, game.config.height / 1.75, 'left').setScale(0.125)
         this.add.bitmapText(game.config.width / 4.25, game.config.height / 1.8 , 'whitePixel', `Jump Left`, 38, 1).setOrigin(0.5)
 
         this.menuButton = this.add.image(game.config.width / 2.7, game.config.height / 1.0575, 'smallButton').setScale(0.1)
-        this.menuLetter = this.add.bitmapText(game.config.width / 2.685, game.config.height / 1.07575 , 'whitePixel',`M`, 40).setOrigin(0.5)
+        this.menuLetter = this.add.bitmapText(game.config.width / 2.695, game.config.height / 1.07575 , 'whitePixel',`M`, 40).setOrigin(0.5)
         this.menuText = this.add.bitmapText(game.config.width / 2.25, game.config.height / 1.05 , 'pinkblocko',`Menu`, 36).setOrigin(0.5)
 
         this.playButton = this.add.image(game.config.width / 1.85, game.config.height / 1.0575, 'button').setScale(0.08)
