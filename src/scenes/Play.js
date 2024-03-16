@@ -157,7 +157,7 @@ class Play extends Phaser.Scene {
             this.bonus *= 1.5
         }
         if(playerScore >= 50000){
-            this.scene.start('streetScene')
+            this.scene.start('streetControlScene')
         }
         this.velocityBump()
     }

@@ -309,8 +309,8 @@ class GameOver extends Phaser.Scene {
                     this.grandma.destroy()
                 }
             }
-            // if(KEYS.SPACE.isDown) {
-            //     this.scene.start('playScene') 
-            // }
+            if(KEYS.SPACE.isDown) {
+                this.scene.start('playScene') 
+            }
         }
     }
