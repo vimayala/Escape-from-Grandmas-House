@@ -46,6 +46,16 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
 ### Fixes
     - [ ] Find instances where grandma continues chasing (fix if able)
 
+## March 18
+### 1 hr
+- [X] Scene: Credits
+- [X] Assets: Fixed Music Playing After Game Over
+
+## March 17
+### 1 hr
+- [X] Assets: Added Music to Scenes
+- [X] Scene: Started Credits
+
 ## March 16
 ### 1 hr
 - [X] Scene: Fixed Game Over Scene

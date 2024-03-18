@@ -4,7 +4,13 @@ class StreetControls extends Phaser.Scene {
     }
 
     create() {
-        this.KEYS = this.scene.get('sceneKeys', {volume :0.7}).KEYS
+
+        if(!actionMusic.isPlaying){
+            actionMusic.play({volume: 0.7, loop: true})
+        }
+
+        this.KEYS = this.scene.get('sceneKeys').KEYS
+        
         this.PLAYER_VELOCITY = 100
 
 

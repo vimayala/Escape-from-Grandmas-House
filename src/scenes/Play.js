@@ -19,9 +19,6 @@ class Play extends Phaser.Scene {
 
         // Get keyboard binding from Keys scene
         this.KEYS = this.scene.get('sceneKeys').KEYS
-        // this.sound.add('scaryMusic2')
-
-        // console.log(this.sound.get('scaryMusic2').isPlaying)
 
         if(!music.isPlaying){
             playing = true
@@ -157,13 +154,13 @@ class Play extends Phaser.Scene {
             this.allowSuperJump = true
             this.bonus *= 1.5
         }
-        if(playerScore >= 50000){
+        if(playerScore >= 500){
             this.sound.get('scaryMusic').stop()
+            playing = false
             var winSFX = this.sound.add('partialwinner', {volume: 0.9})
-            winSFX.once('complete', () => {
-                console.log('ended')
-                this.sound.play('actionMusic', {loop: true})
-            })
+            // winSFX.once('complete', () => {
+            //     // this.sound.play('actionMusic', {loop: true})
+            // })
             winSFX.play()
             this.scene.start('streetControlScene')
 

@@ -10,7 +10,6 @@ class Keys extends Phaser.Scene {
     preload() {
         this.load.audio('scaryMusic', './assets/blockman-kevin-macleod-main-version-01-58-8001.mp3')
         this.load.audio('scaryMusic2', './assets/blockman-kevin-macleod-main-version-01-58-8001.mp3')
-
         this.load.audio('actionMusic', './assets/2021-10-19_-_Funny_Bit_-_www.FesliyanStudios.com.mp3')
 
         this.load.audio('toy-gun1', './assets/356906-FGF-GunShot-DryFire-FoamGun4-MediumChamber-SilentThud3-96k.wav')
@@ -24,7 +23,7 @@ class Keys extends Phaser.Scene {
         this.load.audio('partialwinner', './assets/mixkit-final-level-bonus-2061-trimmed.wav')
         this.load.audio('winner', './assets/mixkit-final-level-bonus-2061.wav')
         this.load.audio('hurt', './assets/hurt_c_08-102842.mp3')
-        this.load.audio('death1', './assets/dead-8bit-41400.mp3')
+        this.load.audio('death1', './assets/death-trimmed.m4a')
         this.load.audio('death2', './assets/arcade-game-retro-8-bit-losing-points-floor-model-1-00-00.mp3')
 
         this.load.bitmapFont('blockFont', './assets/bigblocks.png', './assets/bigblocks.xml')
@@ -108,6 +107,7 @@ class Keys extends Phaser.Scene {
 
     create() {
         music = this.sound.add('scaryMusic')
+        actionMusic = this.sound.add('actionMusic')
 
         const { KeyCodes } = Phaser.Input.Keyboard
         this.KEYS = this.input.keyboard.addKeys({

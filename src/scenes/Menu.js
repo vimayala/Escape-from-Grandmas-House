@@ -8,10 +8,14 @@ class Menu extends Phaser.Scene {
         // Get keyboard binding from Keys scene
         this.KEYS = this.scene.get('sceneKeys').KEYS
 
-        if(!playing){
+        if(!music.isPlaying && gameOverFlag){
             playing = true
             music.play({loop: true, volume: 0.9})
         }
+        // else{
+        //     this.time.addEvent({ delay: 2500, callback: () => music.play({loop: true, volume: 0.9}), callbackScope: this});
+
+        // }
 
         // Menu Animations
         this.anims.create({
@@ -324,12 +328,15 @@ class Menu extends Phaser.Scene {
         this.gameFrame = this.add.image(width / 2 + 0.5, height / 2, 'gameframe').setScale(0.8)
         this.gameFrame.setDepth(2)
 
+        this.spaceButton = this.add.image(game.config.width / 2.75, game.config.height / 1.125, 'button').setScale(0.1).setOrigin(0.5)
+        this.spaceText = this.add.bitmapText(game.config.width / 2.75, game.config.height / 1.15 , 'whitePixel',`SPACE`, 48).setOrigin(0.5)
+        this.controlText = this.add.bitmapText(game.config.width / 2, game.config.height / 1.112 , 'pinkblocko',`        to Continue`, 48).setOrigin(0.5)
 
-        /* Temp - make blink */
 
-        this.beginText = this.add.bitmapText(game.config.width / 2, game.config.height / 1.1325 , 'pinkblocko',`[ Space ] - Play`, 48).setOrigin(0.5)
-        this.controlText = this.add.bitmapText(game.config.width / 2, game.config.height / 1.075 , 'pinkblocko',`[ Shift ] -  Controls`, 32).setOrigin(0.5)
-        this.creditText = this.add.bitmapText(game.config.width / 2, game.config.height / 1.0325 , 'pinkblocko',`[ F ]     -   Credits`, 32).setOrigin(0.5)
+        this.cButton = this.add.image(game.config.width / 2.75, game.config.height / 1.055, 'smallButton').setScale(0.1).setOrigin(0.5)
+        this.cText = this.add.bitmapText(game.config.width / 2.75, game.config.height / 1.075 , 'whitePixel',`C`, 48).setOrigin(0.5)
+        this.creditText = this.add.bitmapText(game.config.width / 1.925, game.config.height / 1.047 , 'pinkblocko',`        to view credits`, 36).setOrigin(0.5)
+
 
         this.menu.play("startup").once('animationcomplete', () => {
 
@@ -341,25 +348,25 @@ class Menu extends Phaser.Scene {
             loop: -1,
             tweens: [
                 {
-                    targets: [this.beginText, this.controlText, this.creditText],
+                    targets: [this.spaceButton, this.spaceText, this.controlText, this.cButton, this.cText, this.creditText],
                     duration: 225,
                     alpha: 0,
                     ease: 'Stepped'
                 },
                 {
-                    targets: [this.beginText, this.controlText, this.creditText],
+                    targets: [this.spaceButton, this.spaceText, this.controlText, this.cButton, this.cText, this.creditText],
                     duration: 225,
                     alpha: 1,
                     ease: 'Stepped'
                 },
                 {
-                    targets:  [this.beginText, this.controlText, this.creditText],
+                    targets: [this.spaceButton, this.spaceText, this.controlText, this.cButton, this.cText, this.creditText],
                     duration: 200,
                     alpha: 1,
                     ease: 'Stepped'
                 },
                 {
-                    targets:  [this.beginText, this.controlText, this.creditText],
+                    targets: [this.spaceButton, this.spaceText, this.controlText, this.cButton, this.cText, this.creditText],
                     duration: 200,
                     alpha: 0,
                     ease: 'Stepped',
@@ -371,7 +378,10 @@ class Menu extends Phaser.Scene {
 
     update() {
         const { KEYS } = this
-
+        if(!music.isPlaying && gameOverFlag){
+            playing = true
+            music.play({loop: true, volume: 0.9})
+        }
         if(KEYS.SPACE.isDown) {
             this.scene.start('playControlScene')
             // this.scene.start('gameOverScene')
@@ -383,13 +393,10 @@ class Menu extends Phaser.Scene {
         }
 
         // Controls if shift is clicked
+        // Hidden, more for playtesting and debug/grader convenience
         if(KEYS.SHIFT.isDown) {
             this.scene.start('controlsScene')
         }
-
-        // if(Phaser.Input.Keyboard.JustDown(keySPACE)) {
-        //     this.scene.start("playScene")
-        // }
 
     }
 

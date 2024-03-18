@@ -124,6 +124,7 @@ class Street extends Phaser.Scene {
         
         if(this.kid.x > 678){
             winner = true
+            this.sound.get('actionMusic').stop()
             this.scene.start('gameOverScene')
         }
         playerScore += 1
@@ -183,7 +184,7 @@ class Street extends Phaser.Scene {
 
 
     handleObstacleCollision(kid, obstacle){
-        this.sound.play('hurt')
+        this.sound.play('hurt', {volume: 1.4})
         kid.setTint(0xf05a4f)
         this.time.addEvent({ delay: 175, callback: () => {
             kid.clearTint()

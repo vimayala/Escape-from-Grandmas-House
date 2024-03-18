@@ -9,9 +9,11 @@ class GameOver extends Phaser.Scene {
 
         create() {                        
             this.sound.get('scaryMusic').stop()
+            this.sound.get('actionMusic').stop()
+
+            gameOverFlag = false
 
             this.KEYS = this.scene.get('sceneKeys').KEYS
-
             // this.physics.world.setBounds(0, 0, game.config.width, game.config.height)
 
             this.purpleScreen = this.add.tileSprite(0, 0, 2472, 1746, 'purple').setOrigin(0,0).setScale(0.4)
@@ -24,21 +26,41 @@ class GameOver extends Phaser.Scene {
 
 
             this.tryAgainText = this.add.bitmapText(game.config.width / 2, game.config.height / 1.125 , 'darkBlueBlocko',`T R Y  A G A I N`, 72).setOrigin(0.5)
-            this.restartText = this.add.bitmapText(game.config.width / 2.325, game.config.height / 1.0575 , 'purplePixel',`RESTART WITH`, 24).setOrigin(0.5)
-            this.spaceButton = this.add.image(game.config.width / 1.575, game.config.height / 1.05875, 'button').setScale(0.1).setOrigin(0.5)
-            this.spaceText = this.add.bitmapText(game.config.width / 1.575, game.config.height / 1.07725 , 'whitePixel',`SPACE`, 48).setOrigin(0.5)
+            // this.restartText = this.add.bitmapText(game.config.width / 2.325, game.config.height / 1.0575 , 'purplePixel',`RESTART WITH`, 24).setOrigin(0.5)
+            // this.spaceButton = this.add.image(game.config.width / 1.575, game.config.height / 1.05875, 'button').setScale(0.1).setOrigin(0.5)
+            // this.spaceText = this.add.bitmapText(game.config.width / 1.575, game.config.height / 1.07725 , 'whitePixel',`SPACE`, 48).setOrigin(0.5)
+
+
+            this.menuButton = this.add.image(game.config.width / 2.7, game.config.height / 1.0575, 'smallButton').setScale(0.1)
+            this.menuLetter = this.add.bitmapText(game.config.width / 2.695, game.config.height / 1.07575 , 'whitePixel',`M`, 40).setOrigin(0.5)
+            this.menuText = this.add.bitmapText(game.config.width / 2.25, game.config.height / 1.05 , 'pinkblocko',`Menu`, 36).setOrigin(0.5)
+    
+            this.spaceButton = this.add.image(game.config.width / 1.85, game.config.height / 1.0575, 'button').setScale(0.08)
+            this.spaceText = this.add.bitmapText(game.config.width / 1.85, game.config.height / 1.07575 , 'whitePixel',`SPACE`, 40).setOrigin(0.5)
+            this.restartText = this.add.bitmapText(game.config.width / 1.5875, game.config.height / 1.05 , 'pinkblocko',`Play`, 36).setOrigin(0.5)
+    
+    
+
 
             this.grandma = new Grandma(this, width / 1.4, height / 1.6 + 20, "grandma", 0, 'left').setScale(0.8)
 
             // this.restartText = this.add.bitmapText(game.config.width / 2, game.config.height / 1.05 , 'blocko',  'Press [Shift] to restart', 36).setOrigin(0.5)
             if(!winner){
-                this.sound.play('death1')
+                var gameOverSFX = this.sound.add('death1')
+                gameOverSFX.once('complete', () => {
+                    gameOverFlag = true
+                })
+                gameOverSFX.play()
                 this.grandson = this.add.sprite(game.config.width / 2,  height / 1.6 + 40, 'grandson').setScale(0.8)
                 this.grandson.setFrame(4)
 
                 if(playerScore >= 50000){
                     this.grandchildType.text = 'TROUBLED GRANDCHILD'
-                    this.sound.play('death2')
+                    var gameOverSFX = this.sound.add('death2')
+                    gameOverSFX.once('completed', () => {
+                        gameOverFlag = true
+                    })
+                    gameOverSFX.play()
                 }
                 this.grandma.play('chasing-left')
                 this.grandma.body.setSize(0.0005)
@@ -53,7 +75,12 @@ class GameOver extends Phaser.Scene {
     
             }
             else{
-                this.sound.play('winner')
+                // this.sound.play('winner')
+                var winnerSFX = this.sound.add('winner')
+                winnerSFX.once('complete', () => {
+                    gameOverFlag = true
+                })
+                winnerSFX.play()
                 this.grandma.x = width / 1.75
                 // this.grandson.x = width / 3
 
@@ -285,13 +312,13 @@ class GameOver extends Phaser.Scene {
                     //     ease: 'Stepped'
                     // },
                     {
-                        targets: [this.finalScoreText, this.restartText, this.spaceButton, this.spaceText],
+                        targets: [this.finalScoreText, this.restartText, this.spaceButton, this.spaceText, this.menuButton, this.menuLetter, this.menuText],
                         duration: 900,
                         alpha: 1,
                         ease: 'Stepped'
                     },
                     {
-                        targets:  [this.finalScoreText, this.restartText, this.spaceButton, this.spaceText],
+                        targets: [this.finalScoreText, this.restartText, this.spaceButton, this.spaceText, this.menuButton, this.menuLetter, this.menuText],
                         duration: 500,
                         alpha: 0,
                         ease: 'Stepped'
@@ -323,6 +350,9 @@ class GameOver extends Phaser.Scene {
 
             if(KEYS.SPACE.isDown) {
                 this.scene.start('playScene') 
+            }
+            if(KEYS.M.isDown) {
+                this.scene.start('menuScene')
             }
         }
     

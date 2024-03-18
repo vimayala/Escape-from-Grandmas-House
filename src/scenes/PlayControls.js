@@ -127,39 +127,4 @@ class PlayControls extends Phaser.Scene {
         this.dartGroup.add(dart)
     }
 
-    // dartGrandmaCollision(grandma, dart){
-    //     this.sound.play('toy-gun1') 
-
-    //     if(grandma.direction == dart.direction){
-    //        if(grandma.direction === 'left'){
-    //         this.grandma.changeDirection = true
-    //         this.grandmaFSM.transition('shot')
-    //        }
-    //        else{
-    //         this.grandma.changeDirection = true
-    //         this.grandmaFSM.transition('shot')
-    //        }
-    //     }
-    //     else{
-
-    //         this.grandmaFSM.transition('shot')
-    //     }
-
-    //     dart.destroy()
-    //     this.shootCount += 1
-    //     if(this.shootCount >= 3 && this.allowSuperJump == false){
-    //         this.sound.play('powerup', {volume: 0.25})
-    //         this.kid.setTint(0x33c446)
-    //         this.time.addEvent({ delay: 175, callback: () => {
-    //             this.kid.clearTint()
-    //             this.time.addEvent({ delay: 100, callback: () => {this.kid.setTint(0x233c446)}, callbackScope: this});
-    //             this.time.addEvent({ delay: 125, callback: () => {this.kid.clearTint()}, callbackScope: this})
-    
-    //         }, callbackScope: this})
-
-    //         this.allowSuperJump = true
-    //         this.bonus *= 1.5
-    //     }
-    // }
-
 }
