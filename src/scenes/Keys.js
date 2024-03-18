@@ -33,8 +33,6 @@ class Keys extends Phaser.Scene {
         this.load.bitmapFont('whitePixel', './assets/whitePixel.png', './assets/whitePixel.xml')
         this.load.bitmapFont('purplePixel', './assets/grandchildDePixel.png', './assets/grandchildDePixel.xml')
 
-
-
         this.load.image('livingroom', './assets/EscapeLivingRoom.png')
         this.load.image('gameframe', './assets/gameframe.png')
         this.load.image('purple', './assets/purple.png')
