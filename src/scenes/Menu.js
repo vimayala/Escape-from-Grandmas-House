@@ -8,6 +8,8 @@ class Menu extends Phaser.Scene {
         // Get keyboard binding from Keys scene
         this.KEYS = this.scene.get('sceneKeys').KEYS
 
+        this.sound.play('scaryMusic', {loop: true})
+
         // Menu Animations
         this.anims.create({
             key: 'startup',
@@ -337,25 +339,25 @@ class Menu extends Phaser.Scene {
             tweens: [
                 {
                     targets: [this.beginText, this.controlText, this.creditText],
-                    duration: 300,
+                    duration: 225,
                     alpha: 0,
                     ease: 'Stepped'
                 },
                 {
                     targets: [this.beginText, this.controlText, this.creditText],
-                    duration: 300,
+                    duration: 225,
                     alpha: 1,
                     ease: 'Stepped'
                 },
                 {
                     targets:  [this.beginText, this.controlText, this.creditText],
-                    duration: 300,
+                    duration: 200,
                     alpha: 1,
                     ease: 'Stepped'
                 },
                 {
                     targets:  [this.beginText, this.controlText, this.creditText],
-                    duration: 250,
+                    duration: 200,
                     alpha: 0,
                     ease: 'Stepped',
                 }

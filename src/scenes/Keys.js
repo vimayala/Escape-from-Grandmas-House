@@ -8,6 +8,9 @@ class Keys extends Phaser.Scene {
     }
 
     preload() {
+        this.load.audio('scaryMusic', './assets/blockman-kevin-macleod-main-version-01-58-8001.mp3')
+        this.load.audio('actionMusic', './assets/2021-10-19_-_Funny_Bit_-_www.FesliyanStudios.com.mp3')
+
         this.load.audio('toy-gun1', './assets/356906-FGF-GunShot-DryFire-FoamGun4-MediumChamber-SilentThud3-96k.wav')
         this.load.audio('toy-gun2', './assets/356914-FGF-GunShot-DryFire-FoamGun15-MediumChamber-SpringRecoil5-96k.wav')
         this.load.audio('ouch', './assets/470444-Mature_Female_Expressing_Pain_Ow_2_55.wav')

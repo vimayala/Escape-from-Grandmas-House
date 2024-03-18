@@ -2,16 +2,13 @@
 // Escape from Grandma's House
 
 
-// +5 Your game uses at least five of Phaser's major components, which may include: 
+// Your game uses at least five of Phaser's major components, which may include: 
 // physics systems, 
-// cameras, 
 // particle effects, 
 // text objects, 
 // the animation manager, 
 // the tween manager, 
-// timers, 
-// tilemaps, 
-// pipeline FX, etc.
+// timers
 
 
 

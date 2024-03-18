@@ -7,10 +7,18 @@ class Credits extends Phaser.Scene {
         this.purpleScreen = this.add.tileSprite(0, 0, 2472, 1746, 'purple').setOrigin(0,0).setScale(0.4)
 
 
-
-        // Envato Elements - End Winning Sound 
-        // Orange Free Sounds - Coin Sound Effect
-        // Dafont
+        // Idea from The Simpsons Season 2, Episode 1
+        // Assets created on Resprite
+        // Sound FX from
+        //      Envato Elements
+        //      Orange Free Sounds
+        //      Zapslapt
+        //      Pixabay
+        //      Uppbeat
+        //      Soundsnap
+        //      Mixkit
+        // Fonts from Dafont
+        // Code credits provided in files including Nathan Altice, < state machine >, Phaser 3 examples
     }
 
     update() {
