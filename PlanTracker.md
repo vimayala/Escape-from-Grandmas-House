@@ -18,24 +18,8 @@ Avoid the hearts and kisses while grandma chases you. If you run into one, slow 
 ### Need
 ## Add to personal GitHub ?
 
-## Menu.js
-    - [ ] Change button preview for credit and controls
-
-## Controls.js
-
 ## Play.js
-    - [ ] Grandma chasing once animation done
-        - [ ] Change grandma to play anim and move direction until done
-    - [ ] Grandson change shooting frames on left
-    - [ ] Currently double jumping...(when shift and space)
     - [ ] Fix particle spawn (if time)
-
-
-## GameOver.js
-    - [ ] View credits and menu options
-
-## Other
-    - [ ] Add Music
 
 ## If time allows
     - [ ] Warning/tint when you're gonna be captured

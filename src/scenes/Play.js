@@ -154,7 +154,7 @@ class Play extends Phaser.Scene {
             this.allowSuperJump = true
             this.bonus *= 1.5
         }
-        if(playerScore >= 500){
+        if(playerScore >= 50000){
             this.sound.get('scaryMusic').stop()
             playing = false
             var winSFX = this.sound.add('partialwinner', {volume: 0.9})
