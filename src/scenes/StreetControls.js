@@ -4,7 +4,7 @@ class StreetControls extends Phaser.Scene {
     }
 
     create() {
-        this.KEYS = this.scene.get('sceneKeys').KEYS
+        this.KEYS = this.scene.get('sceneKeys', {volume :0.7}).KEYS
         this.PLAYER_VELOCITY = 100
 
 
@@ -56,25 +56,25 @@ class StreetControls extends Phaser.Scene {
             tweens: [
                 {
                     targets: [this.playButton, this.playLetter, this.playText],
-                    duration: 300,
+                    duration: 225,
                     alpha: 0,
                     ease: 'Stepped'
                 },
                 {
                     targets: [this.playButton, this.playLetter, this.playText],
-                    duration: 300,
+                    duration: 225,
                     alpha: 1,
                     ease: 'Stepped'
                 },
                 {
                     targets: [this.playButton, this.playLetter, this.playText],
-                    duration: 300,
+                    duration: 200,
                     alpha: 1,
                     ease: 'Stepped'
                 },
                 {
                     targets: [this.playButton, this.playLetter, this.playText],
-                    duration: 250,
+                    duration: 200,
                     alpha: 0,
                     ease: 'Stepped',
                 }

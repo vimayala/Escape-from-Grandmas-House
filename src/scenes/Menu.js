@@ -8,7 +8,10 @@ class Menu extends Phaser.Scene {
         // Get keyboard binding from Keys scene
         this.KEYS = this.scene.get('sceneKeys').KEYS
 
-        this.sound.play('scaryMusic', {loop: true})
+        if(!playing){
+            playing = true
+            music.play({loop: true, volume: 0.9})
+        }
 
         // Menu Animations
         this.anims.create({
@@ -374,10 +377,10 @@ class Menu extends Phaser.Scene {
             // this.scene.start('gameOverScene')
         }
 
-        // Credits if shift is clicked
-        // if(KEYS.SHIFT.isDown) {
-        //     this.scene.start('playScene')
-        // }
+        // Credits if C is clicked
+        if(KEYS.C.isDown) {
+            this.scene.start('creditsScene')
+        }
 
         // Controls if shift is clicked
         if(KEYS.SHIFT.isDown) {

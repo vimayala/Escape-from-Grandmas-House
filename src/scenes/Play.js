@@ -14,12 +14,19 @@ class Play extends Phaser.Scene {
     }
 
     create() {
-
         // Set custom world bounds to for living room floor
         this.physics.world.setBounds(125, 0, 700, game.config.height)
 
         // Get keyboard binding from Keys scene
         this.KEYS = this.scene.get('sceneKeys').KEYS
+        // this.sound.add('scaryMusic2')
+
+        // console.log(this.sound.get('scaryMusic2').isPlaying)
+
+        if(!music.isPlaying){
+            playing = true
+            music.play({loop: true, volume: 0.9})
+        }
 
         // Add living room background
         this.livingRoom = this.add.tileSprite(0, 0, 2472, 1746, 'livingroom').setOrigin(0,0).setScale(0.4)
@@ -73,13 +80,6 @@ class Play extends Phaser.Scene {
         // Update state machines
         this.grandsonFSM.step()
         this.grandmaFSM.step()
-
-        // 
-
-        /* Temporary: Start street scene */
-        if(KEYS.S.isDown){
-            this.scene.start('streetScene')
-        }
 
     }
 
@@ -158,7 +158,15 @@ class Play extends Phaser.Scene {
             this.bonus *= 1.5
         }
         if(playerScore >= 50000){
+            this.sound.get('scaryMusic').stop()
+            var winSFX = this.sound.add('partialwinner', {volume: 0.9})
+            winSFX.once('complete', () => {
+                console.log('ended')
+                this.sound.play('actionMusic', {loop: true})
+            })
+            winSFX.play()
             this.scene.start('streetControlScene')
+
         }
         this.velocityBump()
     }

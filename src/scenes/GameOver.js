@@ -7,7 +7,9 @@ class GameOver extends Phaser.Scene {
             super('gameOverScene')
         }
 
-        create() {
+        create() {                        
+            this.sound.get('scaryMusic').stop()
+
             this.KEYS = this.scene.get('sceneKeys').KEYS
 
             // this.physics.world.setBounds(0, 0, game.config.width, game.config.height)

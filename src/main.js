@@ -36,8 +36,9 @@ let config = {
 }
 
 let game = new Phaser.Game(config)
-let keyLEFT, keyRIGHT, keySPACE, cursors
+let keyLEFT, keyRIGHT, keySPACE, cursors, music
 let winner = false
+let playing = false
 
 
 let borderUISize = game.config.height / 15

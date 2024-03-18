@@ -82,25 +82,25 @@ class PlayControls extends Phaser.Scene {
             tweens: [
                 {
                     targets: [this.menuButton, this.menuLetter, this.menuText, this.playButton, this.playLetter, this.playText],
-                    duration: 300,
+                    duration: 225,
                     alpha: 0,
                     ease: 'Stepped'
                 },
                 {
                     targets: [this.menuButton, this.menuLetter, this.menuText, this.playButton, this.playLetter, this.playText],
-                    duration: 300,
+                    duration: 225,
                     alpha: 1,
                     ease: 'Stepped'
                 },
                 {
                     targets: [this.menuButton, this.menuLetter, this.menuText, this.playButton, this.playLetter, this.playText],
-                    duration: 300,
+                    duration: 200,
                     alpha: 1,
                     ease: 'Stepped'
                 },
                 {
                     targets:  [this.menuButton, this.menuLetter, this.menuText, this.playButton, this.playLetter, this.playText],
-                    duration: 250,
+                    duration: 200,
                     alpha: 0,
                     ease: 'Stepped',
                 }
