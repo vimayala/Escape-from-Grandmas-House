@@ -154,14 +154,14 @@ class Play extends Phaser.Scene {
             this.allowSuperJump = true
             this.bonus *= 1.5
         }
-        // if(playerScore >= 50000){
-        //     this.sound.get('scaryMusic').stop()
-        //     playing = false
-        //     var winSFX = this.sound.add('partialwinner', {volume: 0.9})
-        //     winSFX.play()
-        //     this.scene.start('streetControlScene')
+        if(playerScore >= 50000){
+            this.sound.get('scaryMusic').stop()
+            playing = false
+            var winSFX = this.sound.add('partialwinner', {volume: 0.9})
+            winSFX.play()
+            this.scene.start('streetControlScene')
 
-        // }
+        }
         this.velocityBump()
     }
 
