@@ -155,7 +155,6 @@ class Play extends Phaser.Scene {
             this.bonus *= 1.5
         }
         if(playerScore >= 50000){
-            console.log(playerScore)
             this.sound.get('scaryMusic').stop()
             playing = false
             var winSFX = this.sound.add('partialwinner', {volume: 0.9})
