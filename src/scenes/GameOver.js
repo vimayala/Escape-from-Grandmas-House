@@ -41,18 +41,21 @@ class GameOver extends Phaser.Scene {
 
             // If the player lost, implement different end messages, sounds, and animations
             if(!winner){
-                var gameOverSFX = this.sound.add('death1')
-                gameOverSFX.once('complete', () => {
-                    gameOverFlag = true
-                })
-                gameOverSFX.play()
+
                 this.grandson = this.add.sprite(game.config.width / 2,  height / 1.6 + 40, 'grandson').setScale(0.8)
                 this.grandson.setFrame(4)
 
                 if(playerScore >= 50000){
                     this.grandchildType.text = 'TROUBLED GRANDCHILD'
-                    var gameOverSFX = this.sound.add('death2')
-                    gameOverSFX.once('completed', () => {
+                    var gameOverSFX2 = this.sound.add('death2')
+                    gameOverSFX2.once('completed', () => {
+                        gameOverFlag = true
+                    })
+                    gameOverSFX2.play()
+                }
+                else{
+                    var gameOverSFX = this.sound.add('death1')
+                    gameOverSFX.once('complete', () => {
                         gameOverFlag = true
                     })
                     gameOverSFX.play()
@@ -101,7 +104,7 @@ class GameOver extends Phaser.Scene {
             }
             this.heartsBottomLeft.play({key: 'hearts', startFrame: 2})
             this.heartsBottomRight.play('hearts')
-            
+
             // Grandson tween to run away if player lost
             if(!winner){
                 let grandsonTweenChain = this.tweens.chain({
