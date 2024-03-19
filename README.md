@@ -1,4 +1,8 @@
 # Escape-from-Grandmas-House
+## Note to Graders
+    - To access debug control screen, click [ Shift ] from Menu screen
+        - not entirely helpful but might be easier for you to view all controls in one place without having to play through a level
+
 The Simpson's Escape from Grandma's House Adaptation with Phaser 3
 
 === INFRASTRUCTURE ==

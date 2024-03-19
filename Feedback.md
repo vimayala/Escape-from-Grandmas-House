@@ -1,6 +1,6 @@
 ## Playtesting
-    - [ ] Menu Pink Font + Controls
-    - [ ] Space to move past grandma or jump over?
+    - [X] Menu Pink Font + Controls
+    - [X] Space to move past grandma or jump over?
         - Small screen, jump over doesn't work well
     - [X] Score placement
     - [ ] Sufficient score amount (50,000 vs 75,000 vs 100,000 or difficulties?)

@@ -9,6 +9,12 @@
 // the tween manager (Nearly every scene to indicate buttons w flashing + GameOver grandson jumping animation made with tweens + playerScore increments with tween in Play.js and Street.js), 
 // timers (not sure if this counts but various delay calls like in Street,js)
 
+// Not sure of any specific polish, creativity, technical prowess, and/or originality, but I did make the assets work together as well as making extra art assets to
+// give the game more polish
+// I also used various mechanics to  make 2 types of levels instead of just a shooter and make it feel more minigame like and arcade like
+// I also didn't use any pointer/mouse control to maintain the arcade feeling since the game would have used buttons and joysticks
+// I think everything ties well together for the arcade genre (art, fonts, style, sounds, and music) and I got a handful of compliments for this during the playtest :')
+
 let config = {
     parent: 'phaser-game',  // for info text
     type: Phaser.AUTO,     // for tinting
