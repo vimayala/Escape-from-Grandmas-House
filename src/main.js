@@ -1,16 +1,13 @@
 // Victoria Ayala
 // Escape from Grandma's House
 
-
 // Your game uses at least five of Phaser's major components, which may include: 
-// physics systems, 
-// particle effects, 
-// text objects, 
-// the animation manager, 
-// the tween manager, 
-// timers
-
-
+// physics systems (Play.js and Street.js are prime examples w/ Grandma + Kid collision and Grandma + Dart collision),
+// particle effects (Play.js on Kid + Grandma collision), 
+// text objects (Every scene), 
+// the animation manager (Menu.js), 
+// the tween manager (Nearly every scene to indicate buttons w flashing + GameOver grandson jumping animation made with tweens + playerScore increments with tween in Play.js and Street.js), 
+// timers (not sure if this counts but various delay calls like in Street,js)
 
 let config = {
     parent: 'phaser-game',  // for info text

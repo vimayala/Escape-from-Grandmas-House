@@ -29,10 +29,6 @@ class Grandma extends Phaser.Physics.Arcade.Sprite {
 
 
     }
-
-    // // Grandma update (left out because state machine updates in play)
-    // update () {
-    // }
     
 }
 
@@ -95,17 +91,6 @@ class ShotState extends State {
             this.jumpAnim(scene, grandma, 6, 300, 3 * directionFactor, 0)
             this.jumpAnim(scene, grandma, 7, 400, 2 * directionFactor, 0)
 
-            // grandma.anims.play(`shot-${grandma.direction}`)
-
-            // if(grandma.changeDirection == true){
-            //     if(grandma.direction === 'right'){
-            //         grandma.direction = 'left'
-            //     }
-            //     else{
-            //         grandma.direction = 'right'
-            //     }
-            // }
-
         } 
         else {
 
@@ -118,18 +103,13 @@ class ShotState extends State {
         }
     }
 
-    /* State changes even if held down >:( */
-
     // When animation played, change to chasing state
     execute(scene, grandma) {
 
         scene.time.addEvent({ delay: 525, callback: () => {
 
             const { KEYS } = scene
-            // if(KEYS.SHIFT.isUp){
-            //     console.log('key up')
                 this.stateMachine.transition('chasing')
-            // }
 
             
             
@@ -162,9 +142,9 @@ class KissingState extends State {
     enter(scene, grandma) {
         grandma.velocity = 0
         grandma.anims.play(`kissing-${grandma.direction}`)
-        /* Play kissing sound */
     }
 
     execute(scene, grandson) {
+
     }
 }

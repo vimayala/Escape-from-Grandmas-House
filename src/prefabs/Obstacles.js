@@ -18,17 +18,11 @@ class Obstacle extends Phaser.GameObjects.Sprite {
         this.newObstacle = true
         this.speed = speed
 
-        // if(this.image == 'heart'){
-        //     this.body.setCircle(this.image / 2)
-
-        // }
-        // else{
-        //     this.body.setCircle(this.image / 2.25)
-        // }
-
-
     }
 
+
+    // Move across screen while still in range
+    // Add another obstacle if this obstacle's x is past width / 1.5
     update () {
         this.x -= this.speed
         if(this.newObstacle && this.x < game.config.width / 1.5) {

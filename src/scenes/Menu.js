@@ -8,14 +8,11 @@ class Menu extends Phaser.Scene {
         // Get keyboard binding from Keys scene
         this.KEYS = this.scene.get('sceneKeys').KEYS
 
+        // Play music if music is not current playing and death SFX not playing
         if(!music.isPlaying && gameOverFlag){
             playing = true
             music.play({loop: true, volume: 0.9})
         }
-        // else{
-        //     this.time.addEvent({ delay: 2500, callback: () => music.play({loop: true, volume: 0.9}), callbackScope: this});
-
-        // }
 
         // Menu Animations
         this.anims.create({

@@ -7,14 +7,14 @@ class GameOver extends Phaser.Scene {
             super('gameOverScene')
         }
 
-        create() {                        
+        create() {    
+            // Adding Base Images and Text to Game Over                    
             this.sound.get('scaryMusic').stop()
             this.sound.get('actionMusic').stop()
 
             gameOverFlag = false
 
             this.KEYS = this.scene.get('sceneKeys').KEYS
-            // this.physics.world.setBounds(0, 0, game.config.width, game.config.height)
 
             this.purpleScreen = this.add.tileSprite(0, 0, 2472, 1746, 'purple').setOrigin(0,0).setScale(0.4)
             this.reachedText = this.add.bitmapText(game.config.width / 2, game.config.height / 9 , 'darkBlueBlocko',`You have reached`, 52).setOrigin(0.5)
@@ -24,12 +24,7 @@ class GameOver extends Phaser.Scene {
 
             this.finalScoreText = this.add.bitmapText(game.config.width / 2, game.config.height / 3.5 , 'blocko', Math.round(playerScore), 128).setOrigin(0.5)
 
-
             this.tryAgainText = this.add.bitmapText(game.config.width / 2, game.config.height / 1.125 , 'darkBlueBlocko',`T R Y  A G A I N`, 72).setOrigin(0.5)
-            // this.restartText = this.add.bitmapText(game.config.width / 2.325, game.config.height / 1.0575 , 'purplePixel',`RESTART WITH`, 24).setOrigin(0.5)
-            // this.spaceButton = this.add.image(game.config.width / 1.575, game.config.height / 1.05875, 'button').setScale(0.1).setOrigin(0.5)
-            // this.spaceText = this.add.bitmapText(game.config.width / 1.575, game.config.height / 1.07725 , 'whitePixel',`SPACE`, 48).setOrigin(0.5)
-
 
             this.menuButton = this.add.image(game.config.width / 2.7, game.config.height / 1.0575, 'smallButton').setScale(0.1)
             this.menuLetter = this.add.bitmapText(game.config.width / 2.695, game.config.height / 1.07575 , 'whitePixel',`M`, 40).setOrigin(0.5)
@@ -38,13 +33,10 @@ class GameOver extends Phaser.Scene {
             this.spaceButton = this.add.image(game.config.width / 1.85, game.config.height / 1.0575, 'button').setScale(0.08)
             this.spaceText = this.add.bitmapText(game.config.width / 1.85, game.config.height / 1.07575 , 'whitePixel',`SPACE`, 40).setOrigin(0.5)
             this.restartText = this.add.bitmapText(game.config.width / 1.5875, game.config.height / 1.05 , 'pinkblocko',`Play`, 36).setOrigin(0.5)
-    
-    
-
-
+ 
             this.grandma = new Grandma(this, width / 1.4, height / 1.6 + 20, "grandma", 0, 'left').setScale(0.8)
 
-            // this.restartText = this.add.bitmapText(game.config.width / 2, game.config.height / 1.05 , 'blocko',  'Press [Shift] to restart', 36).setOrigin(0.5)
+            // If the player lost, implement different end messages, sounds, and animations
             if(!winner){
                 var gameOverSFX = this.sound.add('death1')
                 gameOverSFX.once('complete', () => {
@@ -74,8 +66,8 @@ class GameOver extends Phaser.Scene {
                 this.heartsBottomRight = this.add.image(game.config.width / 1.3, game.config.height / 1.145, 'heart').setOrigin(0.5).setScale(0.14)
     
             }
+            // If they won, play the winner sound and animate differently
             else{
-                // this.sound.play('winner')
                 var winnerSFX = this.sound.add('winner')
                 winnerSFX.once('complete', () => {
                     gameOverFlag = true
@@ -105,6 +97,7 @@ class GameOver extends Phaser.Scene {
                 this.heartsBottomRight = this.add.image(game.config.width / 1.225, game.config.height / 1.145, 'heart').setOrigin(0.5).setScale(0.14)
     
             }
+            // Grandson tween to run away if player lost
             if(!winner){
                 let grandsonTweenChain = this.tweens.chain({
                     targets: this.grandson,
@@ -213,9 +206,6 @@ class GameOver extends Phaser.Scene {
                         },
 
                         {
-                            // onStart: () => {
-                            //     funkypear.setAngle(0)
-                            // },
                             x: this.grandson.x - 300,
                             y: this.grandson.y - 32,
                                                     ease: 'Bounce.easeOut',
@@ -269,9 +259,6 @@ class GameOver extends Phaser.Scene {
                             }
                         },
                         {
-                            // onStart: () => {
-                            //     funkypear.setAngle(0)
-                            // },
                             x: this.grandson.x - 460,
                             y: this.grandson.y - 32,
                                                     ease: 'Bounce.easeOut',
@@ -300,17 +287,13 @@ class GameOver extends Phaser.Scene {
             }
             playerScore = 0
 
+            // Add arcade-like game frame
             this.add.image(width / 2 + 0.5, height / 2, 'gameframe').setScale(0.8)
 
+            // Tween to flash buttons on and off
             this.tweenFlash = this.tweens.chain({
                 loop: -1,
                 tweens: [
-                    // {
-                    //     targets: [this.finalScoreText, this.restartText],
-                    //     duration: 300,
-                    //     alpha: 0,
-                    //     ease: 'Stepped'
-                    // },
                     {
                         targets: [this.finalScoreText, this.restartText, this.spaceButton, this.spaceText, this.menuButton, this.menuLetter, this.menuText],
                         duration: 900,
@@ -323,12 +306,6 @@ class GameOver extends Phaser.Scene {
                         alpha: 0,
                         ease: 'Stepped'
                     }
-                    // {
-                    //     targets:  [this.finalScoreText, this.restartText],
-                    //     duration: 300,
-                    //     alpha: 0,
-                    //     ease: 'Stepped',
-                    // }
                 ]
             })
 
@@ -337,6 +314,8 @@ class GameOver extends Phaser.Scene {
         update() {
 
             const { KEYS } = this
+
+            // Animates images if they exist in the scene
             if(!winner){
                 this.grandma.x -= 4
                 this.hearts1.x -= 4
@@ -356,6 +335,7 @@ class GameOver extends Phaser.Scene {
             }
         }
     
+        // Allows for dart collision in winner screen, simplified from Play.js
         dartGrandmaCollision(grandma, dart){
             this.sound.play('toy-gun1')
             this.grandma.play('shot-left').once('animationcomplete', () => {

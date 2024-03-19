@@ -1,11 +1,37 @@
 # Escape-from-Grandmas-House
 The Simpson's Escape from Grandma's House Adaptation with Phaser 3
 
-- [X] Basic Scene structure: You have defined Scenes (yes, plural) and some means to switch between them (e.g., via in-game actions, temporary key presses, etc.).  (1 point)
-    - Space for Menu -> Play, S for Play -> Street
-- [X] Player interaction: The player can interact with the game. You should have at least one primary mechanic operational. If you make a platformer, perhaps movement and jumping are implemented. If you make a narrative game, perhaps the dialog boxes are implemented. If you're making a hidden object game, perhaps the basic point/click verbs are implemented. Primary mechanics will vary from game to game. (1 point)
-    - Grandson is able to shoot
-    - Grandson is able to jump
-- [X] Temporary visual assets: What good are core loops and interactions if there is nothing to look at? These should be assets in place, even if they are geometric primitives, quick doodles, or magazine cutouts. (1 point)
-- [X] Temporary sound assets: Don't leave decisions about sound until the end of the design process. Sound is integral to making a game feel "real." Make sure your game makes some noise. (1 point)
-- [X] Code organization and hygiene: Be sure you're using good software engineering practices, including version control (git/GitHub), code commenting, code encapsulation (Scenes, prefabs, etc.), and other quality-of-life features (e.g., indenting, logical variable names, etc.). It doesn't have to be perfect, but a grader should be able to look at your GitHub repository and understand how your code is structured and how it works. (1 point)
+=== INFRASTRUCTURE ==
+
++2 The game runs/executes without critical errors or crashes
+
++3 The project has a well-maintained and updated GitHub page
+
+=== LOOK & FEEL ===
+
++5 The game includes 
+    -(1) a title screen, 
+    - (2) some means to view credits, 
+    - (3) some means of completion/conclusion, 
+    - (4) the ability to restart from within the game, and 
+    - (5) in-game instructions/tutorial that allow the player to learn the game's premise and controls
+
++10 Your game has artistic cohesion, i.e. the art, sound, typography, etc. reflect your target media's aesthetic goals
+
+=== TECHNICAL EXECUTION ===
+
++5 Your game uses at least five of Phaser's major components, which may include: 
+    - physics systems, cameras, 
+    - particle effects, 
+    - text objects, 
+    - the animation manager, 
+    - the tween manager, 
+    - timers, tilemaps, pipeline FX, etc. (Please list these components in your main.js file.)
+
++10 Your game has mechanical cohesion, i.e. the mechanics reflect your adaptation's technical goals, the game controls and performs as expected, and the mechanics are well-implemented.
+
++5 Your project and code are well-structured and organized, including legible comments, appropriate data structures, sensible prefabs, meaningful variable names, logical scene structures, etc. (Nathan's examples are a good baseline.)
+
+=== POLISH & STYLE ===
+
++5 Your game has that extra bit of polish, creativity, technical prowess, and/or originality that helps it stand out from other games. We use this criteria as a grade "tilt" to reward games that we really enjoyed, that are bold and inventive, that adapt their target media thoughtfully, that demonstrate strong technical skills, and/or went beyond the stated objectives of the assignment. Feel free to add a comment to your main.js/Canvas submission if you wish to point out any features that we might miss.

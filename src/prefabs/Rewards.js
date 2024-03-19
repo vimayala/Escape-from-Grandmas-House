@@ -19,6 +19,8 @@ class Reward extends Phaser.GameObjects.Sprite {
         this.speed = speed
     }
 
+    // Move across screen while still in range
+    // Add another reward if this reward's x is past width / 1.5
     update () {
         this.x -= this.speed
         if(this.newReward && this.x < game.config.width / 1.5) {
@@ -29,7 +31,6 @@ class Reward extends Phaser.GameObjects.Sprite {
         }
         if(this.x < -this.width) {
             this.destroy()
-            // this.parentScene.addReward()
             this.parentScene.rewardCount -= 1
 
         }

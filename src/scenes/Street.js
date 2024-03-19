@@ -15,26 +15,15 @@ class Street extends Phaser.Scene {
         this.obstacleCount = 0
         this.addNewReward = true
         this.addNewObstacle= true
-
     }
 
     create() {
-
         this.physics.world.setBounds(220, 0, 550, game.config.height)
 
         // Get keyboard binding from Keys scene
         this.KEYS = this.scene.get('sceneKeys').KEYS
 
-
-        // // keys defined
-        // keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT)
-        // keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT)
-        // cursors = this.input.keyboard.createCursorKeys()
-
-        // Add street background
-
         this.physics.world.setBounds(50, 0, 700, game.config.height)
-
 
         this.street = this.add.tileSprite(0, 0, 9888, 1746, 'street1').setOrigin(0,0).setScale(0.8)
         this.street.y -= 100
@@ -47,7 +36,6 @@ class Street extends Phaser.Scene {
 
         this.kid.setDepth(1)
         this.grandma.setDepth(1)
-
 
         this.savedY = this.kid.y
         this.collisionFlag = false
@@ -70,18 +58,18 @@ class Street extends Phaser.Scene {
             runChildUpdate: true
         })
 
-
-
         this.time.delayedCall(this.obstacleSpawnDelay, () => { 
             this.addReward()
             this.addObstacle() 
         })
 
+        // Add score
+        // Add game frame on top of all other images for arcade feel
         this.scoreDisplay = this.add.bitmapText(game.config.width / 1.4, borderUISize + borderPadding * 2 + 5 , 'blockFont', Math.round(playerScore), 72).setOrigin(0.5)
         this.gameFrame = this.add.image(width / 2 + 0.5, height / 2, 'gameframe').setScale(0.8)
         this.gameFrame.setDepth(2)
-        // const topLayer = this.add.layer()
-        // topLayer.add([gameFrame])
+
+        // Add colliders to handle corresponding collisions
         this.physics.add.collider(this.kid, this.grandma, this.handleKidCollision, null, this, this.grandma)
         this.physics.add.collider(this.kid, this.obstacleGroup, this.handleObstacleCollision, null, this, this.obstacleGroup)
         this.physics.add.collider(this.kid, this.rewardGroup, this.handleRewardCollision, null, this, this.rewardGroup)
@@ -101,8 +89,11 @@ class Street extends Phaser.Scene {
         })
     }
 
+    // Move street
+    // Move kid according to response
+    // Add to score for surviving
+    // Grandma slowly heads towards kid in y direction
     update() {
-
         this.street.tilePositionX += 4
 
         // // get local KEYS reference
@@ -130,25 +121,10 @@ class Street extends Phaser.Scene {
         playerScore += 1
 
         this.grandma.setVelocity(this.GRANDMA_VELOCITY * playerVector.x, this.GRANDMA_VELOCITY * playerVector.y)
-        // might not tween
-        // if(this.rewardCount <= 1 && this.addNewReward){
-        //     this.addReward()
-        //     this.addNewReward = false
-        //     this.time.delayedCall(4500, () => { 
-        //         this.addNewReward = true
-        //     })
-        // }
-        // if(this.obstacleCount <= 1 && this.addNewObstacle){
-        //     this.addObstacle()
-        //     this.addNewObstacle = false
-        //     this.time.delayedCall(4500, () => { 
-        //         this.addNewObstacle = true
-        //     })
-        // }
-
     }
 
-
+    // Method to add obstacles (stars) to the scene
+    // Called by Obstacle.js
     addObstacle() {
         var index = Phaser.Math.RND.between(0, 1);
         var obstaclePicked = obstacleTypes[index]
@@ -171,7 +147,8 @@ class Street extends Phaser.Scene {
         this.obstacleGroup.add(obstacle)
     }
 
-
+    // Method to add rewards (stars) to the scene
+    // Called by Rewards.js
     addReward() {
         let reward = new Reward(this, 'star', this.OBSTACLE_SPEED)
         reward.setScale(0.1)
@@ -180,9 +157,8 @@ class Street extends Phaser.Scene {
         this.rewardGroup.add(reward)
     }
 
-    /*  Add collider for grandson and grandma, when colliding, play animation and find offset OR change hit boxes so no math ? */
-
-
+    // If kid bumps into obstacle, show and play sound
+    // Move x closer to grandma and destroy obstacle
     handleObstacleCollision(kid, obstacle){
         this.sound.play('hurt', {volume: 1.4})
         kid.setTint(0xf05a4f)
@@ -194,45 +170,23 @@ class Street extends Phaser.Scene {
         }, callbackScope: this})
         obstacle.destroy()
 
-
         this.grandma.y = this.kid.y
-
-        // console.log(`Saved Y: ${kid.y}`)
-
-        // this.savedY = kid.y
-
-
-        // let grandmaVector = new Phaser.Math.Vector2(0, 0)
-        // grandmaVector.y = kid.y
-        // grandmaVector.normalize()
-        // this.grandma.setVelocity(0, this.GRANDMA_VELOCITY)
-
 
         kid.x -= 50
     }
 
+    // Move grandson forward if he collides with a reward
+    // Let the grandma reach his y values
+    // Update Score Tween
     handleRewardCollision(kid, reward){
         this.sound.play('reward', {volume: 0.45})
-        // kid.setTint(0xf05a4f)
 
         playerScore += 1000
 
         reward.destroy()
         this.rewardCount -= 1
 
-
         this.grandma.y = this.kid.y
-
-        // console.log(`Saved Y: ${kid.y}`)
-
-        // this.savedY = kid.y
-
-
-        // let grandmaVector = new Phaser.Math.Vector2(0, 0)
-        // grandmaVector.y = kid.y
-        // grandmaVector.normalize()
-        // this.grandma.setVelocity(0, this.GRANDMA_VELOCITY)
-
 
         kid.x += 50
 
@@ -257,6 +211,7 @@ class Street extends Phaser.Scene {
 
     }
 
+    // End the game if grandma captures kid
     handleKidCollision(grandson, grandma){
         if(this.collisionFlag == false){
             this.collisionFlag = true

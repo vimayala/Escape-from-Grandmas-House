@@ -3,7 +3,6 @@ class Dart extends Phaser.Physics.Arcade.Sprite {
     constructor(scene, x, y, texture, frame, direction, speed) {
         super(scene, x, y, texture, frame, direction)
         scene.add.existing(this)
-        // this.texture = 'dart'
         this.parentScene = scene               // maintain scene context
 
         // set up physics sprite
@@ -12,7 +11,6 @@ class Dart extends Phaser.Physics.Arcade.Sprite {
         this.setScale(0.075)
 
         this.body.setImmovable()
-
 
         this.speed = speed
         this.direction = direction
@@ -25,6 +23,7 @@ class Dart extends Phaser.Physics.Arcade.Sprite {
 
     }
 
+    // Move quickly across screen until past game frame
     update () {
         this.x += this.speed * this.directionFactor
         if(this.x > 920 || this.x < 100) {
@@ -32,7 +31,4 @@ class Dart extends Phaser.Physics.Arcade.Sprite {
         }
     }
 
-    // reset() {
-    //     this.x = game.config.width
-    // }
 }

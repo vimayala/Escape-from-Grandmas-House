@@ -8,10 +8,10 @@ class Keys extends Phaser.Scene {
     }
 
     preload() {
+        // Preload audios, images, fonts, and spritesheets 
         this.load.audio('scaryMusic', './assets/blockman-kevin-macleod-main-version-01-58-8001.mp3')
         this.load.audio('scaryMusic2', './assets/blockman-kevin-macleod-main-version-01-58-8001.mp3')
         this.load.audio('actionMusic', './assets/2021-10-19_-_Funny_Bit_-_www.FesliyanStudios.com.mp3')
-
         this.load.audio('toy-gun1', './assets/356906-FGF-GunShot-DryFire-FoamGun4-MediumChamber-SilentThud3-96k.wav')
         this.load.audio('toy-gun2', './assets/356914-FGF-GunShot-DryFire-FoamGun15-MediumChamber-SpringRecoil5-96k.wav')
         this.load.audio('ouch', './assets/470444-Mature_Female_Expressing_Pain_Ow_2_55.wav')
@@ -25,6 +25,7 @@ class Keys extends Phaser.Scene {
         this.load.audio('hurt', './assets/hurt_c_08-102842.mp3')
         this.load.audio('death1', './assets/death-trimmed.m4a')
         this.load.audio('death2', './assets/arcade-game-retro-8-bit-losing-points-floor-model-1-00-00.mp3')
+        this.load.audio('grandmaKiss', './assets/kiss-test-pixabay.wav')
 
         this.load.bitmapFont('blockFont', './assets/bigblocks.png', './assets/bigblocks.xml')
         this.load.bitmapFont('blocko', './assets/blocko.png', './assets/blocko.xml')
@@ -39,8 +40,8 @@ class Keys extends Phaser.Scene {
         this.load.image('street', './assets/street.png')
         this.load.image('street1', './assets/street1.png')
 
-        this.load.image('button', './assets/button.png')              // buttons
-        this.load.image('smallButton', './assets/smallButton.png')              // buttons
+        this.load.image('button', './assets/button.png')
+        this.load.image('smallButton', './assets/smallButton.png')
         this.load.image('up', './assets/up.png')                  
         this.load.image('down', './assets/down.png')
         this.load.image('left', './assets/left.png')                  
@@ -104,6 +105,7 @@ class Keys extends Phaser.Scene {
     }
 
     create() {
+        // Add music as global variables
         music = this.sound.add('scaryMusic')
         actionMusic = this.sound.add('actionMusic')
 

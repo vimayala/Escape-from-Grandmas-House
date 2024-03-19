@@ -2,12 +2,12 @@
     - [ ] Menu Pink Font + Controls
     - [ ] Space to move past grandma or jump over?
         - Small screen, jump over doesn't work well
-    - [ ] Score placement
+    - [X] Score placement
     - [ ] Sufficient score amount (50,000 vs 75,000 vs 100,000 or difficulties?)
-    - [ ] Is text on menu too much? Should I do transition like above?
+    - [X] Is text on menu too much? Should I do transition like above?
         - [ ] Difficulties too much text
         - [ ] Could do 'press space to continue' then display all options
-    - [ ] Endless or score goal for street sequence?
+    - [X] Endless or score goal for street sequence?
         - [ ] Move to goal and end at specific x so you can see obstacles
     - [X] Pick up rewards in street sequence ?
         - Agreed yes

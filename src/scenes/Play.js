@@ -117,13 +117,9 @@ class Play extends Phaser.Scene {
     // Destroy the dart 
     dartGrandmaCollision(grandma, dart){
         this.sound.play('toy-gun1')
-        // this.updateTween.updateTo('value', playerScore)
-        // this.scoreDisplay.text = playerScore
-
 
         this.updateScore()
     
-
         if(grandma.direction == dart.direction){
            if(grandma.direction === 'left'){
             this.grandma.changeDirection = true
@@ -154,6 +150,7 @@ class Play extends Phaser.Scene {
             this.allowSuperJump = true
             this.bonus *= 1.5
         }
+        // Check if the score has been reached to move to next stage
         if(playerScore >= 50000){
             this.sound.get('scaryMusic').stop()
             playing = false
@@ -195,6 +192,7 @@ class Play extends Phaser.Scene {
         }
     }
 
+    // If player reaches certain scores, grandma will chase the player faster
     velocityBump(){
         if(playerScore != this.last_score){
             if(playerScore > 6250 && this.grandma.velocity <= 0.5){

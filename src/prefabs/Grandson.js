@@ -294,9 +294,13 @@ class KissedState extends State {
     enter(scene, grandson){
         // scene.grandmaFSM.transition('kissing')
         // swap directions
+        scene.sound.play('grandmaKiss', {rate: 1.75, volume: 1})
         grandson.anims.play(`kissed-right`).once('animationcomplete', () => {
+            scene.sound.play('grandmaKiss', {rate: 1.75, volume: 1})
             grandson.anims.play(`kissed-left`).once('animationcomplete', () => {
+                scene.sound.play('grandmaKiss', {rate: 1.75, volume: 1})
                 grandson.anims.play(`kissed-right`).once('animationcomplete', () => {
+                    scene.sound.play('grandmaKiss', {rate: 1.75, volume: 1})
                     grandson.anims.play(`kissed-left`).once('animationcomplete', () => {
                         scene.scene.start('gameOverScene')
                     })

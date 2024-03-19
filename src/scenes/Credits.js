@@ -48,6 +48,7 @@ class Credits extends Phaser.Scene {
 
         this.add.image(0, 0, 'gameframe').setOrigin(0).setScale(0.8)
 
+        // Tween flashes buttons like arcade games and matches music tempo
         this.tweenFlash = this.tweens.chain({
             loop: -1,
             tweens: [
