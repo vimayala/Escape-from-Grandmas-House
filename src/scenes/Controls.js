@@ -10,7 +10,7 @@ class Controls extends Phaser.Scene {
         this.purpleScreen = this.add.tileSprite(0, 0, 2472, 1746, 'purple').setOrigin(0,0).setScale(0.4)
         this.ControlsText = this.add.bitmapText(game.config.width / 2, game.config.height / 8 , 'blocko',`Controls`, 72).setOrigin(0.5)
 
-        this.controlsText = this.add.bitmapText(game.config.width / 2, game.config.height / 1.05 , 'blocko',`[S] to return to menu`, 36).setOrigin(0.5)
+        this.controlsText = this.add.bitmapText(game.config.width / 2, game.config.height / 1.05 , 'blocko',`[M] to return to menu`, 36).setOrigin(0.5)
         this.livingRoomText = this.add.bitmapText(game.config.width / 3.5, game.config.height / 3.5 , 'blocko',`Living Room`, 36).setOrigin(0.5)
         this.streetText = this.add.bitmapText(game.config.width / 1.475, game.config.height / 3.5 , 'blocko',`Street`, 36).setOrigin(0.5)
 
@@ -38,7 +38,7 @@ class Controls extends Phaser.Scene {
     update() {
         const { KEYS } = this
 
-        if(KEYS.S.isDown) {
+        if(KEYS.M.isDown) {
             this.scene.start('menuScene')
         }
     }
