@@ -18,9 +18,12 @@ class GameOver extends Phaser.Scene {
 
             this.purpleScreen = this.add.tileSprite(0, 0, 2472, 1746, 'purple').setOrigin(0,0).setScale(0.4)
             this.reachedText = this.add.bitmapText(game.config.width / 2, game.config.height / 9 , 'darkBlueBlocko',`You have reached`, 52).setOrigin(0.5)
-            this.heartsTopLeft = this.add.image(game.config.width / 3.75, game.config.height / 9.75, 'heart').setOrigin(0.5).setScale(0.1)
+            this.heartsTopLeft = this.add.image(game.config.width / 3.625, game.config.height / 9.75, 'heart').setOrigin(0.5).setScale(0.1)
             this.heartsTopRight = this.add.image(game.config.width / 1.375, game.config.height / 9.75, 'heart').setOrigin(0.5).setScale(0.1)
             this.grandchildType = this.add.bitmapText(game.config.width / 2, game.config.height / 2.5 , 'purplePixel',`UNGRATEFUL GRANDCHILD`, 42).setOrigin(0.5)
+
+            // this.heartsTopLeft.play('hearts')
+            // this.heartsTopRight.play({key: 'hearts', startFrame: 1})
 
             this.finalScoreText = this.add.bitmapText(game.config.width / 2, game.config.height / 3.5 , 'blocko', Math.round(playerScore), 128).setOrigin(0.5)
 
@@ -62,9 +65,8 @@ class GameOver extends Phaser.Scene {
                 this.hearts1.play('hearts')
                 this.hearts2.play({key: 'hearts', startFrame: 1})
                 this.hearts3.play({key: 'hearts', startFrame: 2})
-                this.heartsBottomLeft = this.add.image(game.config.width / 4.375, game.config.height / 1.145, 'heart').setOrigin(0.5).setScale(0.14)
-                this.heartsBottomRight = this.add.image(game.config.width / 1.3, game.config.height / 1.145, 'heart').setOrigin(0.5).setScale(0.14)
-    
+                this.heartsBottomLeft = this.add.sprite(game.config.width / 4.375, game.config.height / 1.145, 'heart').setOrigin(0.5).setScale(0.14)
+                this.heartsBottomRight = this.add.sprite(game.config.width / 1.3, game.config.height / 1.145, 'heart').setOrigin(0.5).setScale(0.14)
             }
             // If they won, play the winner sound and animate differently
             else{
@@ -93,10 +95,13 @@ class GameOver extends Phaser.Scene {
                 })
                 this.grandchildType.text = 'DEVIOUS GRANDCHILD'
                 this.tryAgainText.text = 'P L A Y  A G A I N?'
-                this.heartsBottomLeft = this.add.image(game.config.width / 5.575, game.config.height / 1.145, 'heart').setOrigin(0.5).setScale(0.14)
-                this.heartsBottomRight = this.add.image(game.config.width / 1.225, game.config.height / 1.145, 'heart').setOrigin(0.5).setScale(0.14)
+                this.heartsBottomLeft = this.add.sprite(game.config.width / 5.575, game.config.height / 1.145, 'heart').setOrigin(0.5).setScale(0.14)
+                this.heartsBottomRight = this.add.sprite(game.config.width / 1.225, game.config.height / 1.145, 'heart').setOrigin(0.5).setScale(0.14)
     
             }
+            this.heartsBottomLeft.play({key: 'hearts', startFrame: 2})
+            this.heartsBottomRight.play('hearts')
+            
             // Grandson tween to run away if player lost
             if(!winner){
                 let grandsonTweenChain = this.tweens.chain({
